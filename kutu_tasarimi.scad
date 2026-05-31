@@ -2,7 +2,7 @@
 // MUTFAK GERİ SAYIM ALARMI - DİKEY ELEGAN 3D KUTU TASARIMI (OpenSCAD)
 // =========================================================================
 // Tasarım Özellikleri:
-// - Dikey Form Faktörü: 60mm Genişlik x 80mm Yükseklik x 45mm Derinlik
+// - Dikey Form Faktörü: 60mm Genişlik x 100mm Yükseklik x 45mm Derinlik
 // - Sol Üst: Döner Enkoder Mili
 // - Sağ Üst: TM1637 Yatay Gösterge Penceresi
 // - Alt Orta: Dairesel Baklava Izgarası (50mm Çap / 25mm Yarıçap)
@@ -21,7 +21,7 @@ secilen_parca = "montaj"; // [govde, kapak, montaj]
 
 // --- KUTU BOYUTLARI ---
 kutu_g = 60.0;   // Dış Genişlik (X ekseni)
-kutu_y = 80.0;   // Dış Yükseklik (Y ekseni)
+kutu_y = 100.0;  // Dış Yükseklik (Y ekseni)
 kutu_d = 30.0;   // Dış Derinlik (Z ekseni)
 duvar = 2.0;     // Kutu et/duvar kalınlığı
 r_kose = 6.0;    // Köşelerin yuvarlatılma yarıçapı
