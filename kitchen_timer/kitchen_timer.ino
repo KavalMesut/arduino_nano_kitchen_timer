@@ -28,14 +28,17 @@
 #define PIN_MOSFET   9   // MOSFET Sinyal Pini (Hoparlör Tetikleyici)
 
 // EEPROM Bellek Adresleri
-#define EEPROM_ADDR_MAGIC   10  // Belleğin daha önce yazılıp yazılmadığını kontrol etmek için sihirli bayt
-#define EEPROM_ADDR_TIME    0   // Sürenin kaydedileceği adres (unsigned long veya int)
-#define EEPROM_MAGIC_VAL    0xA5
+#define EEPROM_ADDR_MAGIC        10  // Belleğin daha önce yazılıp yazılmadığını kontrol etmek için sihirli bayt
+#define EEPROM_ADDR_TIME         0   // Sürenin kaydedileceği adres (unsigned long veya int)
+#define EEPROM_MAGIC_VAL         0xA5
+#define EEPROM_ADDR_VOLUME       1   // Ses seviyesinin kaydedileceği adres [YENİ]
+#define EEPROM_ADDR_VOLUME_MAGIC 11  // Ses seviyesi geçerlilik magic adresi [YENİ]
+#define EEPROM_VOLUME_MAGIC_VAL  0x5A
 
 // Sınır Değerler (Süre dakika cinsinden ayarlandığı için 0-99 dk arası)
 #define MAX_MINUTES 99
 #define MIN_MINUTES 0
-#define DEFAULT_TIME_SECONDS 0 // Varsayılan 0 dakika (0 saniye)
+#define DEFAULT_TIME_SECONDS 3 // [GEÇİCİ TEST] Test kolaylığı için ilk başlangıç süresi 3 saniye yapıldı (Normalde 0)
 
 // Sistem Durumları (State Machine)
 enum SystemState {
@@ -43,14 +46,16 @@ enum SystemState {
   STATE_ADJUSTING,  // Süre Ayarlama Modu (Döndürüldüğünde girilir, süre ayarlanır)
   STATE_COUNTDOWN,  // Geri Sayım Aktif
   STATE_PAUSED,     // Geri Sayım Duraklatıldı
-  STATE_ALARM       // Alarm Aktif (Süre bitti, hoparlör ötüyor)
+  STATE_ALARM,      // Alarm Aktif (Süre bitti, hoparlör ötüyor)
+  STATE_VOLUME_SETTING // Ses Seviyesi Ayarlama Modu [YENİ]
 };
 
 // Enkoder Buton Olayları
 enum ButtonEvent {
   BTN_NONE,
   BTN_SHORT,
-  BTN_LONG
+  BTN_LONG,
+  BTN_VERY_LONG // [YENİ]
 };
 
 // Global Değişkenler
@@ -96,6 +101,9 @@ const uint8_t SEG_ALRT[] = {
   0x78  // t (0b01111000)
 };
 
+// --- GÜNCEL SES AYARI DEĞİŞKENLERİ ---
+int volumeLevel = 5; // Varsayılan ses seviyesi (1-10 arası, 5 = orta) [YENİ]
+
 // --- FONKSİYON PROTOTİPLERİ ---
 void encoderISR();
 ButtonEvent checkButton();
@@ -103,6 +111,10 @@ void updateDisplay();
 void handleAlarmSpeaker();
 void saveTimeToEEPROM();
 void loadTimeFromEEPROM();
+void saveVolumeToEEPROM(); // [YENİ]
+void loadVolumeFromEEPROM(); // [YENİ]
+void startTonePWM(unsigned int frequency, int volumeLevel); // [YENİ]
+void stopTonePWM(); // [YENİ]
 
 void setup() {
   // Teşhis (Diagnostic) için dahili LED çıkış yapılıyor
@@ -124,6 +136,7 @@ void setup() {
   
   // Kalıcı hafızadan son ayarlanan başarılı süreyi yükle
   loadTimeFromEEPROM();
+  loadVolumeFromEEPROM(); // [YENİ]
   remainingSeconds = targetTimeSeconds;
 
   // CLK pinindeki her değişimde (D2 pini HIGH/LOW geçişlerinde) encoderISR tetiklenecek (Durum Makinesi için CHANGE)
@@ -151,45 +164,57 @@ void loop() {
     if (delta != 0) {
       lastStateChangeTime = currentMillis;
 
-      // Eğer alarm çalıyorsa veya geri sayım yapılıyorsa enkoder hareketi sistemi güvenli moda çeker
-      if (currentState == STATE_ALARM) {
-        currentState = STATE_STANDBY;
-        remainingSeconds = targetTimeSeconds;
+      if (currentState == STATE_VOLUME_SETTING) {
+        volumeLevel += delta;
+        if (volumeLevel > 10) volumeLevel = 10;
+        if (volumeLevel < 1) volumeLevel = 1;
+
+        // Ses seviyesi değiştiğinde bildirim sesi ver (50ms bip)
+        startTonePWM(3000, volumeLevel);
+        delay(50);
+        stopTonePWM();
       } 
-      else if (currentState == STATE_COUNTDOWN || currentState == STATE_PAUSED) {
-        // Geri sayım veya duraklatma esnasında enkoder çevrilirse süre ayarlama moduna döner
-        currentState = STATE_ADJUSTING;
-      }
-      else if (currentState == STATE_STANDBY) {
-        currentState = STATE_ADJUSTING;
-      }
-
-      // Dinamik adım boyutu: 30 dk ve altında 1'er dk (60 sn), üstünde 5'er dk (300 sn)
-      long stepSeconds = 60;
-      if (delta > 0) { // Artırma
-        if (targetTimeSeconds >= 30 * 60) {
-          stepSeconds = 300; // 5 dakika
-        } else {
-          stepSeconds = 60;  // 1 dakika
+      else {
+        // Eğer alarm çalıyorsa veya geri sayım yapılıyorsa enkoder hareketi sistemi güvenli moda çeker
+        if (currentState == STATE_ALARM) {
+          currentState = STATE_STANDBY;
+          remainingSeconds = targetTimeSeconds;
+        } 
+        else if (currentState == STATE_COUNTDOWN || currentState == STATE_PAUSED) {
+          // Geri sayım veya duraklatma esnasında enkoder çevrilirse süre ayarlama moduna döner
+          currentState = STATE_ADJUSTING;
         }
-      } else { // Azaltma
-        if (targetTimeSeconds > 30 * 60) {
-          stepSeconds = 300; // 5 dakika
-        } else {
-          stepSeconds = 60;  // 1 dakika
+        else if (currentState == STATE_STANDBY) {
+          currentState = STATE_ADJUSTING;
         }
-      }
-      targetTimeSeconds += delta * stepSeconds;
 
-      // Sınır kontrolleri (1 dakika ile 99 dakika arası)
-      if (targetTimeSeconds > (MAX_MINUTES * 60)) {
-        targetTimeSeconds = MAX_MINUTES * 60;
+        // Dinamik adım boyutu: 30 dk ve altında 1'er dk (60 sn), üstünde 5'er dk (300 sn)
+        long stepSeconds = 60;
+        if (delta > 0) { // Artırma
+          if (targetTimeSeconds >= 30 * 60) {
+            stepSeconds = 300; // 5 dakika
+          } else {
+            stepSeconds = 60;  // 1 dakika
+          }
+        } else { // Azaltma
+          if (targetTimeSeconds > 30 * 60) {
+            stepSeconds = 300; // 5 dakika
+          } else {
+            stepSeconds = 60;  // 1 dakika
+          }
+        }
+        targetTimeSeconds += delta * stepSeconds;
+
+        // Sınır kontrolleri (1 dakika ile 99 dakika arası)
+        if (targetTimeSeconds > (MAX_MINUTES * 60)) {
+          targetTimeSeconds = MAX_MINUTES * 60;
+        }
+        if (targetTimeSeconds < (MIN_MINUTES * 60)) {
+          targetTimeSeconds = MIN_MINUTES * 60;
+        }
+        
+        remainingSeconds = targetTimeSeconds;
       }
-      if (targetTimeSeconds < (MIN_MINUTES * 60)) {
-        targetTimeSeconds = MIN_MINUTES * 60;
-      }
-      
-      remainingSeconds = targetTimeSeconds;
     }
   }
 
@@ -212,6 +237,11 @@ void loop() {
           targetTimeSeconds = DEFAULT_TIME_SECONDS;
           remainingSeconds = targetTimeSeconds;
           EEPROM.update(EEPROM_ADDR_TIME, 0);
+        } else if (btn == BTN_VERY_LONG) {
+          currentState = STATE_VOLUME_SETTING;
+          startTonePWM(3000, volumeLevel);
+          delay(100);
+          stopTonePWM();
         }
         break;
 
@@ -229,6 +259,11 @@ void loop() {
           remainingSeconds = targetTimeSeconds;
           EEPROM.update(EEPROM_ADDR_TIME, 0);
           currentState = STATE_STANDBY;
+        } else if (btn == BTN_VERY_LONG) {
+          currentState = STATE_VOLUME_SETTING;
+          startTonePWM(3000, volumeLevel);
+          delay(100);
+          stopTonePWM();
         }
         break;
 
@@ -260,6 +295,15 @@ void loop() {
         currentState = STATE_STANDBY;
         remainingSeconds = targetTimeSeconds;
         break;
+
+      case STATE_VOLUME_SETTING:
+        // Herhangi bir tuş basışı ses ayarını kaydeder ve çıkar
+        saveVolumeToEEPROM();
+        startTonePWM(3500, volumeLevel);
+        delay(150);
+        stopTonePWM();
+        currentState = STATE_STANDBY;
+        break;
     }
   }
 
@@ -287,6 +331,17 @@ void loop() {
           lastAlarmActionTime = currentMillis;
           lastAlarmDisplayToggle = currentMillis;
         }
+      }
+      break;
+
+    case STATE_VOLUME_SETTING:
+      // Ses ayarlama modunda 5 saniye boyunca işlem yapılmazsa otomatik kaydet ve çık
+      if (currentMillis - lastStateChangeTime > 5000) {
+        saveVolumeToEEPROM();
+        startTonePWM(3500, volumeLevel);
+        delay(150);
+        stopTonePWM();
+        currentState = STATE_STANDBY;
       }
       break;
 
@@ -343,6 +398,7 @@ ButtonEvent checkButton() {
   static unsigned long lastDebounceTime = 0;
   static unsigned long buttonPressTime = 0;
   static bool longPressTriggered = false;
+  static bool veryLongPressTriggered = false;
 
   bool rawState = digitalRead(PIN_ENC_SW);
   ButtonEvent event = BTN_NONE;
@@ -362,11 +418,14 @@ ButtonEvent checkButton() {
       if (lastStableState == LOW) {
         buttonPressTime = currentMillis;
         longPressTriggered = false;
+        veryLongPressTriggered = false;
       } 
       else {
         if (!longPressTriggered) {
           unsigned long pressDuration = currentMillis - buttonPressTime;
-          if (pressDuration >= 1000) {
+          if (pressDuration >= 2000) {
+            event = BTN_VERY_LONG;
+          } else if (pressDuration >= 1000) {
             event = BTN_LONG;
           } else {
             event = BTN_SHORT;
@@ -380,6 +439,12 @@ ButtonEvent checkButton() {
   if (lastStableState == LOW && !longPressTriggered && (currentMillis - buttonPressTime >= 1000)) {
     longPressTriggered = true;
     event = BTN_LONG;
+  }
+
+  // Buton hala basılıyken 2 saniye geçtiyse bırakmasını beklemeden VERY_LONG_PRESS tetikle
+  if (lastStableState == LOW && !veryLongPressTriggered && (currentMillis - buttonPressTime >= 2000)) {
+    veryLongPressTriggered = true;
+    event = BTN_VERY_LONG;
   }
 
   return event;
@@ -468,6 +533,23 @@ void updateDisplay() {
       }
       break;
     }
+    
+    case STATE_VOLUME_SETTING: {
+      // Ses Seviyesi Ayarlama Modu: Ekran parlaklığı maksimumdur. Ekranda "U- 5" gibi gösterilir.
+      display.setBrightness(7);
+      uint8_t segments[4];
+      segments[0] = 0x3E; // 'U'
+      segments[1] = 0x40; // '-'
+      if (volumeLevel < 10) {
+        segments[2] = 0x00; // Boşluk
+        segments[3] = display.encodeDigit(volumeLevel);
+      } else {
+        segments[2] = display.encodeDigit(1);
+        segments[3] = display.encodeDigit(0);
+      }
+      display.setSegments(segments);
+      break;
+    }
   }
 }
 
@@ -484,8 +566,7 @@ void handleAlarmSpeaker() {
   // Eğer alarm durumunda değilsek hoparlörü hemen kapatıp emniyete alıyoruz.
   if (currentState != STATE_ALARM) {
     if (wasAlarmRunning) {
-      noTone(PIN_MOSFET);
-      digitalWrite(PIN_MOSFET, LOW); // Emniyet için pini LOW yap (Sürekli akım çekimini önler)
+      stopTonePWM();
       alarmPatternState = 0;
       wasAlarmRunning = false;
     }
@@ -497,14 +578,14 @@ void handleAlarmSpeaker() {
   // 2. Alternatif: Çift Tonlu Polis Sireni Algoritması
   switch (alarmPatternState) {
     case 0: // 1. Ton Başlangıcı (2500 Hz)
-      tone(PIN_MOSFET, 2500); 
+      startTonePWM(2500, volumeLevel); 
       lastAlarmActionTime = currentMillis;
       alarmPatternState = 1;
       break;
       
     case 1: // 1. Ton Süresi Sonu (100ms geçince 3500 Hz'e geç)
       if (elapsed >= 100) {
-        tone(PIN_MOSFET, 3500); // 2. Ton Başlangıcı
+        startTonePWM(3500, volumeLevel); // 2. Ton Başlangıcı
         lastAlarmActionTime = currentMillis;
         alarmPatternState = 2;
       }
@@ -547,6 +628,11 @@ void loadTimeFromEEPROM() {
   if (magic == EEPROM_MAGIC_VAL) {
     byte loadedMinutes = EEPROM.read(EEPROM_ADDR_TIME);
     if (loadedMinutes >= MIN_MINUTES && loadedMinutes <= MAX_MINUTES) {
+      // [GEÇİCİ TEST] Eğer kalıcı hafızadaki süre 0 ise hızlı test kolaylığı için 3 saniye yapalım
+      if (loadedMinutes == 0) {
+        targetTimeSeconds = 3;
+        return;
+      }
       targetTimeSeconds = (long)loadedMinutes * 60;
       return;
     }
@@ -554,4 +640,63 @@ void loadTimeFromEEPROM() {
   
   // Hafıza geçersizse varsayılan süreyi kullan
   targetTimeSeconds = DEFAULT_TIME_SECONDS;
+}
+
+/**
+ * Son ayarlanan ses seviyesini kalıcı hafızaya (EEPROM) kaydeder.
+ */
+void saveVolumeToEEPROM() {
+  if (EEPROM.read(EEPROM_ADDR_VOLUME) != volumeLevel) {
+    EEPROM.update(EEPROM_ADDR_VOLUME, volumeLevel);
+  }
+  if (EEPROM.read(EEPROM_ADDR_VOLUME_MAGIC) != EEPROM_VOLUME_MAGIC_VAL) {
+    EEPROM.update(EEPROM_ADDR_VOLUME_MAGIC, EEPROM_VOLUME_MAGIC_VAL);
+  }
+}
+
+/**
+ * Cihaz açıldığında kalıcı hafızadan ses seviyesini yükler.
+ */
+void loadVolumeFromEEPROM() {
+  byte magic = EEPROM.read(EEPROM_ADDR_VOLUME_MAGIC);
+  if (magic == EEPROM_VOLUME_MAGIC_VAL) {
+    byte vol = EEPROM.read(EEPROM_ADDR_VOLUME);
+    if (vol >= 1 && vol <= 10) {
+      volumeLevel = vol;
+      return;
+    }
+  }
+  volumeLevel = 5; // Varsayılan orta ses seviyesi
+}
+
+/**
+ * Timer 1 kullanarak MOSFET çıkışı üzerinden donanımsal olarak ses üretir.
+ * volumeLevel (1-10) arası ayarlanabilir ve PWM doluluk oranı (duty cycle) ile ses şiddetini belirler.
+ */
+void startTonePWM(unsigned int frequency, int volumeLevel) {
+  // Pin modunu çıkış yap
+  pinMode(PIN_MOSFET, OUTPUT);
+  
+  // 16 MHz ana saat frekansı ve Prescaler = 8 ile Timer 1 sayma hızı = 2,000,000 Hz'dir.
+  unsigned long top = 2000000UL / frequency;
+  ICR1 = top;
+  
+  // Logaritmik/Kuadratik işitme eğrisi kullanarak doluluk oranını belirle
+  // OCR1A = top * (volumeLevel^2) / 200 (Level 10 için %50, Level 1 için %0.5 doluluk)
+  unsigned long ocr = (top * (unsigned long)(volumeLevel * volumeLevel)) / 200UL;
+  if (ocr == 0 && volumeLevel > 0) ocr = 1; // Ses seviyesi 0'dan büyükse en azından 1 adım tetikleme ver
+  OCR1A = ocr;
+  
+  // COM1A1: Karşılaştırma eşleştiğinde OC1A pinini (D9) temizle, BOTTOM'da set et (Fast PWM Modu 14)
+  TCCR1A = _BV(COM1A1) | _BV(WGM11);
+  TCCR1B = _BV(WGM13) | _BV(WGM12) | _BV(CS11); // Mod 14, Prescaler = 8
+}
+
+/**
+ * Hoparlör sesini kapatır ve MOSFET pinini tam emniyetli şekilde LOW seviyesine çeker.
+ */
+void stopTonePWM() {
+  TCCR1A = 0; // Donanımsal bağlantıyı kes
+  TCCR1B = 0;
+  digitalWrite(PIN_MOSFET, LOW); // Emniyet için pini LOW yap (DC akımı keser)
 }

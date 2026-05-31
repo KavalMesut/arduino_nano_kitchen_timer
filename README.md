@@ -97,8 +97,10 @@ Elinizde en az 1W gücünde direnç yoksa:
 * **4 adet 47 Ohm 1/4W standart direnç paralel bağlanmıştır.** 
 * Bu sayede dirençlerin güçleri birleşerek **1W güç kapasitesi** elde edilmiş ve direnç değeri mutfak için ideal ses seviyesi sunan **~11.7 Ohm** değerine çekilmiştir.
 
-### 2. Yazılımsal Koruma (DC Emniyeti)
-Arduino pini yanlışlıkla `HIGH` konumda takılı kalırsa hoparlör bobini sürekli akım altında kalarak yanabilir. Bunu önlemek için ses üretimi **tamamen kesikli sinyalle (`tone()` kütüphanesiyle)** yapılır. Ses çalınmadığı bekleme durumlarında pin yazılımsal olarak `LOW` konumuna çekilerek hoparlör hattı tamamen izole edilir.
+### 2. Yazılımsal Koruma (DC Emniyeti ve Donanımsal PWM)
+Arduino pini yanlışlıkla `HIGH` konumda takılı kalırsa hoparlör bobini sürekli akım altında kalarak yanabilir. Bunu önlemek ve mükemmel ses seviyesi ayarlayabilmek için:
+* Ses üretimi **Arduino Timer 1 donanımsal Fast PWM (Pin D9) üzerinden donanımsal olarak** yapılır. 
+* Ses çalınmadığı bekleme durumlarında pin donanımsal ve yazılımsal olarak tamamen kapatılıp `LOW` konumuna çekilerek hoparlör hattı elektriksel olarak izole edilir.
 
 ---
 
@@ -112,18 +114,26 @@ Yazılım, mutfakta pratik kullanım sunmak amacıyla kararlı bir **durum makin
 * **COUNTDOWN (Geri Sayım)**: Geri sayım aktiftir. Ekran parlaklığı maksimumdur (7). İki nokta her saniye flaşör gibi yanıp söner.
 * **PAUSED (Duraklama)**: Geri sayım esnasında butona basılırsa ekrandaki süre komple yanıp sönerek sayımın durdurulduğunu belirtir.
 * **ALARM (Alarm)**: Süre bittiğinde devreye girer. Ekranda dönüşümlü olarak `00:00` ve `End ` (Son) ibaresi yanıp söner. Çift tonlu ritmik polis sireni çalar.
+* **VOLUME_SETTING (Ses Seviyesi Ayarı)**: 1 ile 10 arasında ses şiddetini ayarlamayı sağlayan premium mod.
 
-### 2. Dinamik Süre Ayarı (Sayısal Adım Kontrolü)
+### 2. Donanımsal PWM Tabanlı Ses Seviyesi Kontrolü [YENİ]
+Hoparlör bir MOSFET üzerinden sürüldüğü için standart analog sinyal ile ses seviyesi ayarlanamaz. Bunun yerine **Timer 1 donanımsal PWM frekans doluluk oranı (duty cycle)** kontrolü kullanılmıştır:
+* **Hassas Kontrol**: Ses seviyesi 1-10 arasında ayarlanabilir. 
+* **Logaritmik/Kuadratik Eğri**: İnsan kulağının işitme yapısına uyumlu olması için ses seviyesi kuadratik eğriyle kapı doluluk oranına dönüştürülür ($OCR1A = TOP \times V^2 / 200$). Level 1 için çok loş/hafif bir pıtırtı sesi verirken, Level 10'da %50 doluluk oranıyla tam 5W güçte çalar.
+* **Kalıcı Hafıza**: En son ayarladığınız ses seviyesi Arduino'nun kalıcı hafızasına (EEPROM) kaydedilir ve her açılışta otomatik yüklenir.
+
+### 3. Dinamik Süre Ayarı (Sayısal Adım Kontrolü)
 Mutfakta uzun süreleri ayarlarken yüzlerce kez enkoder döndürmeyi önlemek adına enkoder adımları dinamikleştirilmiştir:
 * **30 dakika ve altında**: Süre **1'er dakika** aralıklarla değişir (örn: 01:00, 02:00 ... 29:00, 30:00).
 * **30 dakikadan sonra**: Süre **5'er dakika** aralıklarla değişir (örn: 30:00, 35:00, 40:00 ... 95:00, cap 99:00).
 * **Kusursuz Simetri**: CW/CCW geçişleri tam simetriktir; `29:00`'dan artırınca `30:00` ve ardından `35:00` olurken, `35:00`'dan geri alındığında `30:00` ve ardından `29:00` olur.
 
-### 3. Filtreleme ve Kararlılık
+### 4. Filtreleme ve Kararlılık
 * **Enkoder Debounce (30ms)**: Klon enkoderlerde görülen ark gürültülerini en kararlı biçimde süzmek için donanımsal kesme (Interrupt) filtresi **30ms** olarak optimize edilmiştir.
 * **Buton Debounce (50ms)**: Enkoder butonundaki basmama veya çift tıklama hataları 50ms'lik dijital filtre ile giderilmiştir.
 * **Teşhis LED'i (Diagnostic)**: Donanımsal bağlantıyı test etmek için butona basıldığında Arduino üzerindeki dahili **L LED'i** anında yanar.
-* **Uzun Basış Kontrolü**: Butona 1 saniye basılı tutulursa süre baştaki ayara sıfırlanır; Standby durumundayken 1 saniye basılırsa EEPROM bellek silinerek süre tamamen `00:00` yapılır.
+* **Uzun Basış Kontrolü (1 saniye)**: Butona 1 saniye basılı tutulursa süre baştaki ayara sıfırlanır; Standby durumundayken 1 saniye basılırsa EEPROM bellek silinerek süre tamamen `00:00` yapılır.
+* **Çok Uzun Basış Kontrolü (2 saniye) [YENİ]**: Standby veya Ayar ekranındayken butona 2 saniye basılı tutulduğunda **Ses Seviyesi Ayar Moduna** girilir. Ekranda **`U- 5`** (seviye 5) veya **`U-10`** (seviye 10) gibi bir ibare belirir. Enkoder sağa/sola çevrilerek ses ayarlanır, her adımda yeni seviyede geri bildirim sesi duyulur. Kısa basıldığında veya 5 saniye boş bırakıldığında değer hafızaya kaydedilip Standby moduna dönülür.
 
 ---
 
