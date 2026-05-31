@@ -713,7 +713,12 @@ void startTonePWM(unsigned int frequency, int volumeLevel) {
   
   // 16 MHz ana saat frekansı ve Prescaler = 8 ile Timer 1 sayma hızı = 2,000,000 Hz'dir.
   unsigned long top = 2000000UL / frequency;
-  ICR1 = top;
+  
+  // Eğer yeni frekans eskisiyle aynıysa hiçbir şey yapma (Gereksiz sıfırlamaları önler)
+  if (ICR1 != top) {
+    ICR1 = top;
+    TCNT1 = 0; // Donanımsal Çözüm: Sayacı sıfırlayarak TCNT1 > ICR1 aşım hatasını (32ms kesinti) engeller!
+  }
   
   // Logaritmik/Kuadratik işitme eğrisi kullanarak doluluk oranını belirle
   // OCR1A = top * (volumeLevel^2) / 200 (Level 10 için %50, Level 1 için %0.5 doluluk)
