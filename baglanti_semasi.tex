@@ -1,0 +1,108 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[turkish]{babel}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+\geometry{a4paper, margin=1in}
+
+\title{Arduino Nano ile Mutfak Geri Sayım Alarmı\\Donanım Bağlantı Kılavuzu (EC11 ve D4184 Uyumlu)}
+\author{Mutfak Zamanlayıcı Projesi}
+\date{30 Mayıs 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Giriş ve Önemli Güvenlik Uyarıları}
+Bu belge, Arduino Nano tabanlı, TM1637 7 segment göstergeli, EC11 döner enkoder kontrollü ve çiftli D4184 MOSFET modüllü mutfak geri sayım alarmı projesine ait kablolama kılavuzunu içermektedir. Sistemin tamamı \textbf{5V 3A harici adaptör} ile beslenecektir.
+
+\subsection{Hoparlör ve MOSFET Emniyet Direnci}
+4 Ohm 5W gücündeki hoparlörün yüksek anlık akım çekerek Arduino'ya reset attırmasını ve hoparlör bobininin zarar görmesini engellemek amacıyla hoparlör hattına seri olarak \textbf{10--15 Ohm (en az 1W)} koruma direnci bağlanmalıdır. 
+
+\textbf{Direnç Birleştirme İpucu:} Elinizde sadece 1/4W gücünde standart dirençler varsa, \textbf{4 adet 47 Ohm 1/4W direnci birbirine paralel lehimleyerek} 11.7 Ohm değerinde 1W gücünde son derece güvenli ve ısınmayan bir direnç bloğu oluşturabilirsiniz.
+
+\subsection{Donanım Bileşenleri Hakkında}
+\begin{itemize}
+    \item \textbf{Çıplak EC11 Enkoder:} Bu tip enkodere harici \textbf{+5V / VCC bağlanmaz!} Arduino'nun dahili pull-up dirençleri yazılımda aktif edildiği için, enkoder pinlerinin doğrudan Arduino'ya ve GND'ye bağlanması yeterlidir.
+    \item \textbf{D4184 MOSFET Modülü:} Sol tarafında tetikleme için \textbf{sadece 2 pinden (PWM+ ve GND)} beslenir. Sağ tarafında kalın güç bağlantıları için iki adet mavi klemens grubu bulunur.
+\end{itemize}
+
+\section{Adım Adım Bağlantı Talimatları}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Güç Kaynağı (Adaptör) Dağıtımı:}
+    \begin{itemize}
+        \item Adaptörün \textbf{Artı (+5V)} kablosunu breadboard'un artı (+) kanalına bağlayın ve bu kanalı Arduino Nano'nun \textbf{5V} pinine köprüleyin.
+        \item Adaptörün \textbf{Eksi (GND)} kablosunu breadboard'un eksi (-) kanalına bağlayın ve bu kanalı Arduino Nano'nun \textbf{GND} pinine köprüleyin.
+    \end{itemize}
+
+    \item \textbf{Çıplak Döner Enkoder (EC11) Bağlantıları:}
+    Enkoderinizde iki ayrı grupta toplam 5 adet pin bulunur:
+    \begin{itemize}
+        \item \textbf{3'lü Yan Pin Grubu (Döner Kısım):}
+        \begin{itemize}
+            \item \textbf{Out A} (Üst Pin) $\rightarrow$ Arduino Nano \textbf{D2} pinine (Kesme 0)
+            \item \textbf{GND} (Orta Pin) $\rightarrow$ Ortak \textbf{GND} hattına
+            \item \textbf{Out B} (Alt Pin) $\rightarrow$ Arduino Nano \textbf{D3} pinine (Kesme 1)
+        \end{itemize}
+        \item \textbf{2'li Ön Pin Grubu (Buton Kısmı):}
+        \begin{itemize}
+            \item \textbf{Switch} (Sol / Üst Pin) $\rightarrow$ Arduino Nano \textbf{D4} pinine
+            \item \textbf{GND} (Sağ / Alt Pin) $\rightarrow$ Ortak \textbf{GND} hattına
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{TM1637 Gösterge Bağlantıları:}
+    \begin{itemize}
+        \item \textbf{CLK} pini $\rightarrow$ Arduino Nano \textbf{D5} pini
+        \item \textbf{DIO} pini $\rightarrow$ Arduino Nano \textbf{D6} pini
+        \item \textbf{VCC} pini $\rightarrow$ Ortak \textbf{+5V} hattı
+        \item \textbf{GND} pini $\rightarrow$ Ortak \textbf{GND} hattı
+    \end{itemize}
+
+    \item \textbf{D4184 MOSFET Sürücü Modülü (Sol Sinyal Girişleri):}
+    \begin{itemize}
+        \item \textbf{(PWM) +} pini $\rightarrow$ Arduino Nano \textbf{D9} pinine (Sinyal tetikleme)
+        \item \textbf{GND} pini $\rightarrow$ Arduino Nano \textbf{GND} pinine (Ortak Şasi)
+    \end{itemize}
+
+    \item \textbf{MOSFET Vidalı Güç Klemensleri ve Hoparlör Bağlantıları:}
+    \begin{itemize}
+        \item \textbf{DC+ (Klemens Alt Sağ Pin)} $\rightarrow$ Doğrudan adaptörün \textbf{+5V} hattına
+        \item \textbf{DC- (Klemens Alt Sol Pin)} $\rightarrow$ Doğrudan adaptörün \textbf{GND} hattına
+        \item \textbf{Çıkış+ (Klemens Üst Sağ Pin)} $\rightarrow$ \textbf{Hoparlörün Artı (+)} kablosuna
+        \item \textbf{Çıkış- (Klemens Üst Sol Pin)} $\rightarrow$ Hazırladığınız \textbf{paralel direnç bloğunun birinci ucuna}
+        \item \textbf{Paralel direnç bloğunun ikinci ucunu} ise $\rightarrow$ \textbf{Hoparlörün Eksi (-)} kablosuna lehimleyin.
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+\section{Donanım Bağlantı Tablosu}
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabular}{llll}
+\toprule
+\textbf{Kaynak Cihaz / Modül} & \textbf{Pin Grubu / Adı} & \textbf{Hedef Pin / Bağlantı} & \textbf{İşlev} \\ \midrule
+EC11 Enkoder & Out A (Üst - 3'lü) & Arduino Nano D2 & Zamanlama Girişi (Kesme 0) \\
+EC11 Enkoder & GND (Orta - 3'lü) & Ortak GND Şasi Rayı & Döner Kısım Ortak Şasi \\
+EC11 Enkoder & Out B (Alt - 3'lü) & Arduino Nano D3 & Yön Algılama (Kesme 1) \\
+EC11 Enkoder & Switch (Sol - 2'li) & Arduino Nano D4 & Buton Girişi (Başlat/Durdur) \\
+EC11 Enkoder & GND (Sağ - 2'li) & Ortak GND Şasi Rayı & Buton Şasisi \\ \midrule
+TM1637 Ekran & CLK & Arduino Nano D5 & Gösterge Saat Sinyali \\
+TM1637 Ekran & DIO & Arduino Nano D6 & Gösterge Veri Hattı \\
+TM1637 Ekran & VCC & Ortak +5V Besleme Rayı & Modül Gücü \\
+TM1637 Ekran & GND & Ortak GND Şasi Rayı & Şasi Ortaklama \\ \midrule
+D4184 MOSFET Sinyal & (PWM) + & Arduino Nano D9 & Ritm/Alarm Ton Tetikleme \\
+D4184 MOSFET Sinyal & GND & Arduino Nano GND & Ortak Şasi Bağlantısı \\ \midrule
+D4184 MOSFET Güç & DC+ (Alt Sağ) & Doğrudan Adaptör +5V Çıkışı & Yüksek Akım Giriş (+) \\
+D4184 MOSFET Güç & DC- (Alt Sol) & Doğrudan Adaptör GND Çıkışı & Yüksek Akım Giriş (-) \\
+D4184 MOSFET Güç & Çıkış+ (Üst Sağ) & Hoparlör (+) Kutbu & Hoparlör Güç Sürücü (+) \\
+D4184 MOSFET Güç & Çıkış- (Üst Sol) & Seri Direnç ile Hoparlör (-) & Hoparlör Güç Sürücü (-) \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

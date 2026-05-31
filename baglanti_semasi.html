@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutfak Geri Sayım Alarmı - Bağlantı Kılavuzu</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --bg-light: #f3f4f6;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-color);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 28px;
+            margin: 0 0 10px 0;
+        }
+
+        .meta {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            font-size: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+
+        .alert {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .alert-title {
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .alert p {
+            margin: 0;
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        ol, ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        strong {
+            color: #000;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            font-weight: 600;
+            padding: 12px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:hover {
+            background-color: #fcfcfc;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        /* YAZDIRMA (PRINT / PDF) OPTİMİZASYONLARI */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+                padding: 0;
+                font-size: 12pt;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            header {
+                border-bottom: 2px solid black;
+            }
+
+            h1 {
+                color: black;
+            }
+
+            h2 {
+                color: black;
+                border-bottom: 1px solid black;
+                page-break-after: avoid;
+            }
+
+            .alert {
+                background-color: #fff;
+                border: 1px solid #000;
+                border-left: 4px solid #000;
+                page-break-inside: avoid;
+            }
+
+            table {
+                page-break-inside: auto;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            th, td {
+                border-bottom: 1px solid #000 !important;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Mutfak Geri Sayım Alarmı</h1>
+        <p class="meta">Arduino Nano Donanım Bağlantı Kılavuzu (EC11 Enkoder ve D4184 MOSFET Uyumlu)</p>
+    </header>
+
+    <div style="text-align: center; margin: 25px 0;">
+        <img src="baglanti_semasi.svg" alt="Mutfak Geri Sayım Alarmı Görsel Şeması" style="width: 100%; max-width: 760px; height: auto; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+    </div>
+
+    <div class="alert">
+        <div class="alert-title">💡 Önemli Güvenlik Uyarısı (Seri Koruma Direnci)</div>
+        <p>4 Ohm 5W gücündeki hoparlörün yüksek anlık akım çekerek Arduino'ya reset attırmasını engellemek amacıyla hoparlör hattına mutlaka seri olarak <strong>10-15 Ohm en az 1W</strong> direnç bağlanmalıdır. Elinizde 1/4W dirençler varsa, <strong>4 adet 47 Ohm 1/4W direnci birbirine paralel bağlayıp lehimleyerek</strong> 11.7 Ohm / 1W gücünde son derece güvenli bir koruma direnci oluşturabilirsiniz.</p>
+    </div>
+
+    <div class="alert" style="background-color: #f0fdf4; border-left-color: #22c55e;">
+        <div class="alert-title" style="color: #15803d;">🔧 D4184 MOSFET Modülü Hakkında</div>
+        <p>Görseldeki çiftli D4184 MOSFET modülü, sol tarafında tetikleme için <strong>sadece 2 pinden (PWM+ ve GND)</strong> beslenir. Sağ tarafında ise kalın güç bağlantıları için iki adet mavi vidalı klemens bulunur. Isınma yapmaz ve son derece kararlıdır.</p>
+    </div>
+
+    <h2>1. Adım: Güç Kaynağı (5V 3A Adaptör) Dağıtımı</h2>
+    <ul>
+        <li>Adaptörün <strong>Artı (+5V)</strong> kablosunu breadboard'un artı (+) kanalına bağlayın ve bu kanalı Arduino Nano'nun <strong>5V</strong> pinine köprüleyin.</li>
+        <li>Adaptörün <strong>Eksi (GND)</strong> kablosunu breadboard'un eksi (-) kanalına bağlayın ve bu kanalı Arduino Nano'nun <strong>GND</strong> pinine köprüleyin.</li>
+    </ul>
+
+    <h2>2. Adım: Çıplak Döner Enkoder (EC11) Bağlantıları</h2>
+    <p>Enkoderinizde iki ayrı grupta toplam 5 adet pin bulunur (Kabloları doğrudan lehimleyebilir veya dişi jumper kablo soketi kullanabilirsiniz):</p>
+    <ul>
+        <li><strong>3'lü Yan Pin Grubu (Döner Kısım):</strong>
+            <ul>
+                <li><strong>Out A (Üst Pin):</strong> Arduino Nano <strong>D2</strong> pinine (Kesme 0)</li>
+                <li><strong>GND (Orta Pin):</strong> Ortak <strong>GND</strong> şasi hattına</li>
+                <li><strong>Out B (Alt Pin):</strong> Arduino Nano <strong>D3</strong> pinine (Kesme 1)</li>
+            </ul>
+        </li>
+        <li><strong>2'li Ön Pin Grubu (Buton Kısmı):</strong>
+            <ul>
+                <li><strong>Switch (Sol / Üst Pin):</strong> Arduino Nano <strong>D4</strong> pinine</li>
+                <li><strong>GND (Sağ / Alt Pin):</strong> Ortak <strong>GND</strong> şasi hattına</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>3. Adım: TM1637 Gösterge Modülü Bağlantıları</h2>
+    <ul>
+        <li><strong>CLK:</strong> Arduino Nano <strong>D5</strong> pinine</li>
+        <li><strong>DIO:</strong> Arduino Nano <strong>D6</strong> pinine</li>
+        <li><strong>VCC:</strong> Ortak <strong>+5V</strong> hattına</li>
+        <li><strong>GND:</strong> Ortak <strong>GND</strong> hattına</li>
+    </ul>
+
+    <h2>4. Adım: D4184 MOSFET Kontrol (Sol Sinyal Girişi) Bağlantıları</h2>
+    <p>Modülün sol tarafındaki küçük pin bağlantıları:</p>
+    <ul>
+        <li><strong>(PWM) + pini:</strong> Arduino Nano <strong>D9</strong> pinine (Tetikleme Sinyali)</li>
+        <li><strong>GND pini:</strong> Arduino Nano <strong>GND</strong> pinine (Ortak Şasi)</li>
+    </ul>
+
+    <h2>5. Adım: MOSFET Güç Klemensleri ve Hoparlör Bağlantıları</h2>
+    <p>Modülün sağ tarafındaki mavi vidalı klemensler:</p>
+    <ul>
+        <li><strong>Alt Vidalı Klemens (Güç Girişi):</strong>
+            <ul>
+                <li><strong>DC+ (Sağ Pin):</strong> Doğrudan 5V 3A adaptörün <strong>+5V</strong> hattına</li>
+                <li><strong>DC- (Sol Pin):</strong> Doğrudan adaptörün <strong>GND</strong> hattına</li>
+            </ul>
+        </li>
+        <li><strong>Üst Vidalı Klemens (Çıkış / Yük):</strong>
+            <ul>
+                <li><strong>Sağ Çıkış Pini (Çıkış+ / Kırmızı Çizgili):</strong> <strong>Hoparlörün Artı (+)</strong> kablosuna</li>
+                <li><strong>Sol Çıkış Pini (Çıkış- / Mavi Çizgili):</strong> Hazırladığınız <strong>4'lü paralel koruma direncinin bir ucuna</strong></li>
+                <li><strong>Direncin diğer ucu:</strong> <strong>Hoparlörün Eksi (-)</strong> kablosuna</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Bağlantı Referans Tablosu</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Kaynak Cihaz / Modül</th>
+                <th>Modül / Cihaz Pini</th>
+                <th>Hedef Arduino / Güç Pini</th>
+                <th>İşlev</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>EC11 Enkoder (3'lü Grup)</td>
+                <td>Out A (Üst)</td>
+                <td>Arduino Nano <strong>D2</strong></td>
+                <td>Zamanlama Girişi (Kesme 0)</td>
+            </tr>
+            <tr>
+                <td>EC11 Enkoder (3'lü Grup)</td>
+                <td>GND (Orta)</td>
+                <td>Ortak <strong>GND</strong> Şasi Rayı</td>
+                <td>Döner Kısım Şasisi</td>
+            </tr>
+            <tr>
+                <td>EC11 Enkoder (3'lü Grup)</td>
+                <td>Out B (Alt)</td>
+                <td>Arduino Nano <strong>D3</strong></td>
+                <td>Yön Algılama (Kesme 1)</td>
+            </tr>
+            <tr>
+                <td>EC11 Enkoder (2'li Grup)</td>
+                <td>Switch (Sol)</td>
+                <td>Arduino Nano <strong>D4</strong></td>
+                <td>Buton Girişi (Başlat/Durdur)</td>
+            </tr>
+            <tr>
+                <td>EC11 Enkoder (2'li Grup)</td>
+                <td>GND (Sağ)</td>
+                <td>Ortak <strong>GND</strong> Şasi Rayı</td>
+                <td>Buton Şasisi</td>
+            </tr>
+            <tr>
+                <td>TM1637 Ekran</td>
+                <td>CLK</td>
+                <td>Arduino Nano <strong>D5</strong></td>
+                <td>Gösterge Saat Sinyali</td>
+            </tr>
+            <tr>
+                <td>TM1637 Ekran</td>
+                <td>DIO</td>
+                <td>Arduino Nano <strong>D6</strong></td>
+                <td>Gösterge Veri Hattı</td>
+            </tr>
+            <tr>
+                <td>TM1637 Ekran</td>
+                <td>VCC</td>
+                <td>Ortak <strong>+5V</strong> Besleme Rayı</td>
+                <td>Modül Gücü</td>
+            </tr>
+            <tr>
+                <td>TM1637 Ekran</td>
+                <td>GND</td>
+                <td>Ortak <strong>GND</strong> Şasi Rayı</td>
+                <td>Şasi Ortaklama</td>
+            </tr>
+            <tr>
+                <td>D4184 MOSFET Sinyal</td>
+                <td>(PWM) +</td>
+                <td>Arduino Nano <strong>D9</strong></td>
+                <td>Melodi/Alarm Sinyal Tetikleyici</td>
+            </tr>
+            <tr>
+                <td>D4184 MOSFET Sinyal</td>
+                <td>GND</td>
+                <td>Arduino Nano <strong>GND</strong></td>
+                <td>Ortak Şasi Bağlantısı</td>
+            </tr>
+            <tr>
+                <td>D4184 MOSFET Güç Giriş</td>
+                <td>DC+ (Klemens Sağ)</td>
+                <td>Doğrudan Adaptör <strong>+5V</strong></td>
+                <td>Adaptör Güç Girişi (+)</td>
+            </tr>
+            <tr>
+                <td>D4184 MOSFET Güç Giriş</td>
+                <td>DC- (Klemens Sol)</td>
+                <td>Doğrudan Adaptör <strong>GND</strong></td>
+                <td>Adaptör Güç Girişi (-)</td>
+            </tr>
+            <tr>
+                <td>D4184 MOSFET Güç Çıkış</td>
+                <td>Çıkış+ (Klemens Sağ)</td>
+                <td>Hoparlör (+) Kutbu</td>
+                <td>Hoparlör Sürücü Gücü (+)</td>
+            </tr>
+            <tr>
+                <td>D4184 MOSFET Güç Çıkış</td>
+                <td>Çıkış- (Klemens Sol)</td>
+                <td>Seri Direnç ile Hoparlör (-)</td>
+                <td>Hoparlör Sürücü Şasi Anahtarı (-)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <p>Mutfak Geri Sayım Zamanlayıcı Projesi - 2026</p>
+    </div>
+</div>
+
+</body>
+</html>
