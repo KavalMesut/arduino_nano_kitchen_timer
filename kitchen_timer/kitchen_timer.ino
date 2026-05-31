@@ -456,10 +456,23 @@ ButtonEvent checkButton() {
 void updateDisplay() {
   unsigned long currentMillis = millis();
   
+  // Ekranın gereksiz yere sürekli yazılmasını önlemek için statik takip değişkenleri
+  static SystemState lastState = (SystemState)-1;
+  static bool lastColonState = false;
+  static bool lastAlarmToggle = false;
+  static int lastVol = -1;
+  static long lastRemSecs = -1;
+  static long lastTarSecs = -1;
+
+  // Durum değişikliğinde ekranı anında temizlemek/güncellemek için tetikleyici
+  bool stateChanged = (currentState != lastState);
+  if (stateChanged) {
+    lastState = currentState;
+    display.clear(); // Durum geçişinde ekranı temizle (kalıntıları önler)
+  }
+
   switch (currentState) {
     case STATE_STANDBY: {
-      // Bekleme Modu: Ekran parlaklığı düşük (1), son ayarlanan süre gösterilir.
-      // Ortadaki iki nokta (colon) yavaşça nefes alma (breathing) animasyonu yapar.
       display.setBrightness(1);
       
       if (currentMillis - lastColonToggle >= 800) {
@@ -469,21 +482,29 @@ void updateDisplay() {
       
       int mins = targetTimeSeconds / 60;
       int secs = targetTimeSeconds % 60;
-      display.showNumberDecEx(mins * 100 + secs, colonState ? 0b01000000 : 0, true);
+      
+      // Sadece değerler, iki nokta durumu veya durum değiştiğinde ekrana yaz
+      if (stateChanged || colonState != lastColonState || targetTimeSeconds != lastTarSecs) {
+        lastColonState = colonState;
+        lastTarSecs = targetTimeSeconds;
+        display.showNumberDecEx(mins * 100 + secs, colonState ? 0b01000000 : 0, true);
+      }
       break;
     }
     
     case STATE_ADJUSTING: {
-      // Süre Ayarlama Modu: Ekran parlaklığı aktif (4), noktalar sabit açık kalır.
       display.setBrightness(4);
       int mins = targetTimeSeconds / 60;
       int secs = targetTimeSeconds % 60;
-      display.showNumberDecEx(mins * 100 + secs, 0b01000000, true);
+      
+      if (stateChanged || targetTimeSeconds != lastTarSecs) {
+        lastTarSecs = targetTimeSeconds;
+        display.showNumberDecEx(mins * 100 + secs, 0b01000000, true);
+      }
       break;
     }
     
     case STATE_COUNTDOWN: {
-      // Geri Sayım Modu: Ekran parlaklığı maksimum (7), noktalar saniyede bir yanıp söner.
       display.setBrightness(7);
       
       if (currentMillis - lastColonToggle >= 500) {
@@ -493,12 +514,16 @@ void updateDisplay() {
       
       int mins = remainingSeconds / 60;
       int secs = remainingSeconds % 60;
-      display.showNumberDecEx(mins * 100 + secs, colonState ? 0b01000000 : 0, true);
+      
+      if (stateChanged || colonState != lastColonState || remainingSeconds != lastRemSecs) {
+        lastColonState = colonState;
+        lastRemSecs = remainingSeconds;
+        display.showNumberDecEx(mins * 100 + secs, colonState ? 0b01000000 : 0, true);
+      }
       break;
     }
     
     case STATE_PAUSED: {
-      // Duraklatma Modu: Ekran ve süre komple yanıp söner (Flaşör efekti)
       display.setBrightness(7);
       
       if (currentMillis - lastColonToggle >= 400) {
@@ -506,18 +531,22 @@ void updateDisplay() {
         colonState = !colonState;
       }
       
-      if (colonState) {
-        int mins = remainingSeconds / 60;
-        int secs = remainingSeconds % 60;
-        display.showNumberDecEx(mins * 100 + secs, 0b01000000, true);
-      } else {
-        display.clear(); // Yanıp sönme efekti için ekranı temizle
+      int mins = remainingSeconds / 60;
+      int secs = remainingSeconds % 60;
+      
+      if (stateChanged || colonState != lastColonState || remainingSeconds != lastRemSecs) {
+        lastColonState = colonState;
+        lastRemSecs = remainingSeconds;
+        if (colonState) {
+          display.showNumberDecEx(mins * 100 + secs, 0b01000000, true);
+        } else {
+          display.clear();
+        }
       }
       break;
     }
     
     case STATE_ALARM: {
-      // Alarm Modu: Ekranda dönüşümlü olarak "00:00" ve "End " ya da "ALrt" yazısı yanıp söner
       display.setBrightness(7);
       
       if (currentMillis - lastAlarmDisplayToggle >= 400) {
@@ -525,32 +554,38 @@ void updateDisplay() {
         alarmDisplayToggleState = !alarmDisplayToggleState;
       }
       
-      if (alarmDisplayToggleState) {
-        display.showNumberDecEx(0, 0b01000000, true); // "00:00"
-      } else {
-        // Dönüşümlü olarak "End" veya "ALrt" gösterimi yapabilirsiniz, burada "End" kullanıyoruz.
-        display.setSegments(SEG_END); 
+      if (stateChanged || alarmDisplayToggleState != lastAlarmToggle) {
+        lastAlarmToggle = alarmDisplayToggleState;
+        if (alarmDisplayToggleState) {
+          display.showNumberDecEx(0, 0b01000000, true); // "00:00"
+        } else {
+          display.setSegments(SEG_END); 
+        }
       }
       break;
     }
     
     case STATE_VOLUME_SETTING: {
-      // Ses Seviyesi Ayarlama Modu: Ekran parlaklığı maksimumdur. Ekranda "U- 5" gibi gösterilir.
       display.setBrightness(7);
-      uint8_t segments[4];
-      segments[0] = 0x3E; // 'U'
-      segments[1] = 0x40; // '-'
-      if (volumeLevel < 10) {
-        segments[2] = 0x00; // Boşluk
-        segments[3] = display.encodeDigit(volumeLevel);
-      } else {
-        segments[2] = display.encodeDigit(1);
-        segments[3] = display.encodeDigit(0);
+      
+      if (stateChanged || volumeLevel != lastVol) {
+        lastVol = volumeLevel;
+        uint8_t segments[4];
+        segments[0] = 0x3E; // 'U'
+        segments[1] = 0x40; // '-'
+        if (volumeLevel < 10) {
+          segments[2] = 0x00; // Boşluk
+          segments[3] = display.encodeDigit(volumeLevel);
+        } else {
+          segments[2] = display.encodeDigit(1);
+          segments[3] = display.encodeDigit(0);
+        }
+        display.setSegments(segments);
       }
-      display.setSegments(segments);
       break;
     }
   }
+}
 }
 
 /**
@@ -687,9 +722,12 @@ void startTonePWM(unsigned int frequency, int volumeLevel) {
   if (ocr == 0 && volumeLevel > 0) ocr = 1; // Ses seviyesi 0'dan büyükse en azından 1 adım tetikleme ver
   OCR1A = ocr;
   
-  // COM1A1: Karşılaştırma eşleştiğinde OC1A pinini (D9) temizle, BOTTOM'da set et (Fast PWM Modu 14)
-  TCCR1A = _BV(COM1A1) | _BV(WGM11);
-  TCCR1B = _BV(WGM13) | _BV(WGM12) | _BV(CS11); // Mod 14, Prescaler = 8
+  // Timer 1 zaten çalışıyorsa kontrol kayıtçılarını (TCCR1A/B) tekrar yazıp PWM'i sıfırlama!
+  // Bu sayede siren ton geçişleri milisaniyelik kesinti (pıtırtı/klik) olmadan tamamen pürüzsüz ve faz-kesintisiz olur.
+  if ((TCCR1A & _BV(COM1A1)) == 0) {
+    TCCR1A = _BV(COM1A1) | _BV(WGM11);
+    TCCR1B = _BV(WGM13) | _BV(WGM12) | _BV(CS11); // Mod 14, Prescaler = 8
+  }
 }
 
 /**
