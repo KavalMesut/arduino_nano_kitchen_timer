@@ -586,7 +586,6 @@ void updateDisplay() {
     }
   }
 }
-}
 
 /**
  * MOSFET üzerinden Hoparlörü Tetikleyen Ritmik Alarm Rutini
