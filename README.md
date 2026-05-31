@@ -1,4 +1,4 @@
-# ⏳ Premium Mutfak Geri Sayım Alarmı (Arduino Nano & MOSFET Sürücülü)
+# ⏳Mutfak Geri Sayım Alarmı (Arduino Nano & MOSFET Sürücülü)
 
 Bu proje, mutfakta çay demleme, yemek pişirme veya zaman gerektiren diğer hassas işler için tasarlanmış, döner enkoder (rotary encoder) kontrollü, TM1637 4 haneli 7 segment göstergeli ve emniyetli MOSFET sürücülü 4 Ohm 5W güçlü hoparlör barındıran üst segment bir mutfak geri sayım alarmıdır.
 
