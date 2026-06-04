@@ -38,7 +38,7 @@
 // Sınır Değerler (Süre dakika cinsinden ayarlandığı için 0-99 dk arası)
 #define MAX_MINUTES 99
 #define MIN_MINUTES 0
-#define DEFAULT_TIME_SECONDS 3 // [GEÇİCİ TEST] Test kolaylığı için ilk başlangıç süresi 3 saniye yapıldı (Normalde 0)
+#define DEFAULT_TIME_SECONDS 0 // Varsayılan başlangıç süresi 0 dakika (0 saniye)
 
 // Sistem Durumları (State Machine)
 enum SystemState {
@@ -188,22 +188,26 @@ void loop() {
           currentState = STATE_ADJUSTING;
         }
 
-        // Dinamik adım boyutu: 30 dk ve altında 1'er dk (60 sn), üstünde 5'er dk (300 sn)
-        long stepSeconds = 60;
+        // Dinamik adım boyutu: ilk adım 30 saniye, sonrasında 30 dk ve altında 1'er dk (60 sn), üstünde 5'er dk (300 sn)
         if (delta > 0) { // Artırma
-          if (targetTimeSeconds >= 30 * 60) {
-            stepSeconds = 300; // 5 dakika
+          if (targetTimeSeconds < 30) {
+            targetTimeSeconds = 30;
+          } else if (targetTimeSeconds < 60) {
+            targetTimeSeconds = 60;
           } else {
-            stepSeconds = 60;  // 1 dakika
+            long stepSeconds = (targetTimeSeconds >= 30 * 60) ? 300 : 60;
+            targetTimeSeconds += stepSeconds;
           }
         } else { // Azaltma
-          if (targetTimeSeconds > 30 * 60) {
-            stepSeconds = 300; // 5 dakika
+          if (targetTimeSeconds <= 30) {
+            targetTimeSeconds = 0;
+          } else if (targetTimeSeconds <= 60) {
+            targetTimeSeconds = 30;
           } else {
-            stepSeconds = 60;  // 1 dakika
+            long stepSeconds = (targetTimeSeconds > 30 * 60) ? 300 : 60;
+            targetTimeSeconds -= stepSeconds;
           }
         }
-        targetTimeSeconds += delta * stepSeconds;
 
         // Sınır kontrolleri (1 dakika ile 99 dakika arası)
         if (targetTimeSeconds > (MAX_MINUTES * 60)) {
@@ -308,8 +312,8 @@ void loop() {
   // 3. Durum Yönetimi ve Zamanlayıcı Mantığı
   switch (currentState) {
     case STATE_ADJUSTING:
-      // Süre ayarlama modunda 5 saniye boyunca işlem yapılmazsa otomatik olarak Standby moduna geç
-      if (currentMillis - lastStateChangeTime > 5000) {
+      // Süre ayarlama modunda 30 saniye boyunca işlem yapılmazsa otomatik olarak Standby moduna geç
+      if (currentMillis - lastStateChangeTime > 30000) {
         currentState = STATE_STANDBY;
       }
       break;
@@ -333,8 +337,8 @@ void loop() {
       break;
 
     case STATE_VOLUME_SETTING:
-      // Ses ayarlama modunda 5 saniye boyunca işlem yapılmazsa otomatik kaydet ve çık
-      if (currentMillis - lastStateChangeTime > 5000) {
+      // Ses ayarlama modunda 30 saniye boyunca işlem yapılmazsa otomatik kaydet ve çık
+      if (currentMillis - lastStateChangeTime > 30000) {
         saveVolumeToEEPROM();
         startTonePWM(3500, volumeLevel);
         delay(150);
@@ -347,8 +351,15 @@ void loop() {
       break;
 
     case STATE_STANDBY:
+      // Bu durumda arka plan sayımı yok
+      break;
+
     case STATE_PAUSED:
-      // Bu durumlarda arka plan sayımı yok
+      // Duraklatma modunda 30 saniye boyunca işlem yapılmazsa otomatik olarak iptal et ve Standby'a dön
+      if (currentMillis - lastStateChangeTime > 30000) {
+        remainingSeconds = targetTimeSeconds;
+        currentState = STATE_STANDBY;
+      }
       break;
 
     case STATE_ALARM:
@@ -653,11 +664,6 @@ void loadTimeFromEEPROM() {
   if (magic == EEPROM_MAGIC_VAL) {
     byte loadedMinutes = EEPROM.read(EEPROM_ADDR_TIME);
     if (loadedMinutes >= MIN_MINUTES && loadedMinutes <= MAX_MINUTES) {
-      // [GEÇİCİ TEST] Eğer kalıcı hafızadaki süre 0 ise hızlı test kolaylığı için 3 saniye yapalım
-      if (loadedMinutes == 0) {
-        targetTimeSeconds = 3;
-        return;
-      }
       targetTimeSeconds = (long)loadedMinutes * 60;
       return;
     }
