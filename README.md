@@ -112,7 +112,7 @@ Yazılım, mutfakta pratik kullanım sunmak amacıyla kararlı bir **durum makin
 * **STANDBY (Bekleme)**: Cihaz aktiftir. Ekran parlaklığı güç tasarrufu ve loş ışıklar için **en düşük seviyededir (1)**. Ortadaki iki nokta (colon) yavaşça nefes alma animasyonu yapar. En son kaydedilen başarılı süre ekranda hazır gelir.
 * **ADJUSTING (Ayar)**: Enkoder döndürüldüğünde bu moda girilir. Parlaklık orta seviyeye (4) gelir. 5 saniye boyunca enkoder çevrilmezse ayar modu sonlanır ve Standby'a dönülür.
 * **COUNTDOWN (Geri Sayım)**: Geri sayım aktiftir. Ekran parlaklığı maksimumdur (7). İki nokta her saniye flaşör gibi yanıp söner.
-* **PAUSED (Duraklama)**: Geri sayım esnasında butona basılırsa ekrandaki süre komple yanıp sönerek sayımın durdurulduğunu belirtir.
+* **PAUSED (Duraklama)**: Kısa basış artık doğrudan duraklatma yapmak yerine sayacı durdurup başa (hedef süreye) sardığı için bu durum doğrudan kullanılmaz. Yalnızca geri sayım sırasında ses ayarına girilip çıkıldığında durumun bozulmaması için arka planda kullanılır.
 * **ALARM (Alarm)**: Süre bittiğinde devreye girer. Ekranda dönüşümlü olarak `00:00` ve `End ` (Son) ibaresi yanıp söner. Çift tonlu ritmik polis sireni çalar.
 * **VOLUME_SETTING (Ses Seviyesi Ayarı)**: 1 ile 10 arasında ses şiddetini ayarlamayı sağlayan premium mod.
 

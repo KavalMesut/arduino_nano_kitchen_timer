@@ -264,8 +264,9 @@ void loop() {
 
       case STATE_COUNTDOWN:
         if (btn == BTN_SHORT) {
-          // Duraklat
-          currentState = STATE_PAUSED;
+          // Duraklatma olmasın, doğrudan durdurup başa (hedef süreye) dönsün
+          remainingSeconds = targetTimeSeconds;
+          currentState = STATE_STANDBY;
         } else if (btn == BTN_LONG) {
           previousState = currentState;
           currentState = STATE_VOLUME_SETTING;
