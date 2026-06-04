@@ -54,12 +54,12 @@ enum SystemState {
 enum ButtonEvent {
   BTN_NONE,
   BTN_SHORT,
-  BTN_LONG,
-  BTN_VERY_LONG // [YENİ]
+  BTN_LONG
 };
 
 // Global Değişkenler
 SystemState currentState = STATE_STANDBY;
+SystemState previousState = STATE_STANDBY; // [GÜNCELLENDİ] Ses ayarından geri dönüş için
 long targetTimeSeconds = DEFAULT_TIME_SECONDS; // Ayarlanan hedef süre (saniye)
 long remainingSeconds = DEFAULT_TIME_SECONDS;  // Kalan süre (saniye)
 
@@ -233,11 +233,7 @@ void loop() {
             lastCountdownTick = currentMillis;
           }
         } else if (btn == BTN_LONG) {
-          // Sıfırla ve hafızayı temizle (00:00 yap)
-          targetTimeSeconds = DEFAULT_TIME_SECONDS;
-          remainingSeconds = targetTimeSeconds;
-          EEPROM.update(EEPROM_ADDR_TIME, 0);
-        } else if (btn == BTN_VERY_LONG) {
+          previousState = currentState;
           currentState = STATE_VOLUME_SETTING;
           startTonePWM(3000, volumeLevel);
           delay(100);
@@ -254,12 +250,7 @@ void loop() {
             lastCountdownTick = currentMillis;
           }
         } else if (btn == BTN_LONG) {
-          // Sıfırla ve hafızayı temizle (00:00 yap)
-          targetTimeSeconds = DEFAULT_TIME_SECONDS;
-          remainingSeconds = targetTimeSeconds;
-          EEPROM.update(EEPROM_ADDR_TIME, 0);
-          currentState = STATE_STANDBY;
-        } else if (btn == BTN_VERY_LONG) {
+          previousState = currentState;
           currentState = STATE_VOLUME_SETTING;
           startTonePWM(3000, volumeLevel);
           delay(100);
@@ -272,9 +263,11 @@ void loop() {
           // Duraklat
           currentState = STATE_PAUSED;
         } else if (btn == BTN_LONG) {
-          // Geri sayımı iptal et, başa dön
-          remainingSeconds = targetTimeSeconds;
-          currentState = STATE_STANDBY;
+          previousState = currentState;
+          currentState = STATE_VOLUME_SETTING;
+          startTonePWM(3000, volumeLevel);
+          delay(100);
+          stopTonePWM();
         }
         break;
 
@@ -284,9 +277,11 @@ void loop() {
           currentState = STATE_COUNTDOWN;
           lastCountdownTick = currentMillis;
         } else if (btn == BTN_LONG) {
-          // Geri sayımı iptal et, sıfırla
-          remainingSeconds = targetTimeSeconds;
-          currentState = STATE_STANDBY;
+          previousState = currentState;
+          currentState = STATE_VOLUME_SETTING;
+          startTonePWM(3000, volumeLevel);
+          delay(100);
+          stopTonePWM();
         }
         break;
 
@@ -302,7 +297,10 @@ void loop() {
         startTonePWM(3500, volumeLevel);
         delay(150);
         stopTonePWM();
-        currentState = STATE_STANDBY;
+        currentState = previousState; // [GÜNCELLENDİ] Kaldığı yerden devam etmesi için
+        if (currentState == STATE_COUNTDOWN) {
+          lastCountdownTick = millis(); // Sayacın kaldığı yerden hassas sayması için
+        }
         break;
     }
   }
@@ -341,7 +339,10 @@ void loop() {
         startTonePWM(3500, volumeLevel);
         delay(150);
         stopTonePWM();
-        currentState = STATE_STANDBY;
+        currentState = previousState;
+        if (currentState == STATE_COUNTDOWN) {
+          lastCountdownTick = millis(); // Sayacın kaldığı yerden hassas sayması için
+        }
       }
       break;
 
@@ -398,7 +399,6 @@ ButtonEvent checkButton() {
   static unsigned long lastDebounceTime = 0;
   static unsigned long buttonPressTime = 0;
   static bool longPressTriggered = false;
-  static bool veryLongPressTriggered = false;
 
   bool rawState = digitalRead(PIN_ENC_SW);
   ButtonEvent event = BTN_NONE;
@@ -418,14 +418,11 @@ ButtonEvent checkButton() {
       if (lastStableState == LOW) {
         buttonPressTime = currentMillis;
         longPressTriggered = false;
-        veryLongPressTriggered = false;
       } 
       else {
         if (!longPressTriggered) {
           unsigned long pressDuration = currentMillis - buttonPressTime;
-          if (pressDuration >= 2000) {
-            event = BTN_VERY_LONG;
-          } else if (pressDuration >= 1000) {
+          if (pressDuration >= 1000) {
             event = BTN_LONG;
           } else {
             event = BTN_SHORT;
@@ -439,12 +436,6 @@ ButtonEvent checkButton() {
   if (lastStableState == LOW && !longPressTriggered && (currentMillis - buttonPressTime >= 1000)) {
     longPressTriggered = true;
     event = BTN_LONG;
-  }
-
-  // Buton hala basılıyken 2 saniye geçtiyse bırakmasını beklemeden VERY_LONG_PRESS tetikle
-  if (lastStableState == LOW && !veryLongPressTriggered && (currentMillis - buttonPressTime >= 2000)) {
-    veryLongPressTriggered = true;
-    event = BTN_VERY_LONG;
   }
 
   return event;

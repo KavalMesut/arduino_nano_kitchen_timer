@@ -132,8 +132,7 @@ Mutfakta uzun süreleri ayarlarken yüzlerce kez enkoder döndürmeyi önlemek a
 * **Enkoder Debounce (30ms)**: Klon enkoderlerde görülen ark gürültülerini en kararlı biçimde süzmek için donanımsal kesme (Interrupt) filtresi **30ms** olarak optimize edilmiştir.
 * **Buton Debounce (50ms)**: Enkoder butonundaki basmama veya çift tıklama hataları 50ms'lik dijital filtre ile giderilmiştir.
 * **Teşhis LED'i (Diagnostic)**: Donanımsal bağlantıyı test etmek için butona basıldığında Arduino üzerindeki dahili **L LED'i** anında yanar.
-* **Uzun Basış Kontrolü (1 saniye)**: Butona 1 saniye basılı tutulursa süre baştaki ayara sıfırlanır; Standby durumundayken 1 saniye basılırsa EEPROM bellek silinerek süre tamamen `00:00` yapılır.
-* **Çok Uzun Basış Kontrolü (2 saniye) [YENİ]**: Standby veya Ayar ekranındayken butona 2 saniye basılı tutulduğunda **Ses Seviyesi Ayar Moduna** girilir. Ekranda **`U- 5`** (seviye 5) veya **`U-10`** (seviye 10) gibi bir ibare belirir. Enkoder sağa/sola çevrilerek ses ayarlanır, her adımda yeni seviyede geri bildirim sesi duyulur. Kısa basıldığında veya 5 saniye boş bırakıldığında değer hafızaya kaydedilip Standby moduna dönülür.
+* **Uzun Basış Kontrolü (1 saniye) [GÜNCELLENDİ]**: Herhangi bir durumdayken (Bekleme, Ayarlama, Geri Sayım veya Duraklama) butona 1 saniye basılı tutulduğunda **Ses Seviyesi Ayar Moduna** girilir. Ekranda **`U- 5`** (seviye 5) veya **`U-10`** (seviye 10) gibi bir ibare belirir. Enkoder sağa/sola çevrilerek ses ayarlanır, her adımda yeni seviyede geri bildirim sesi duyulur. Kısa basıldığında veya 5 saniye boş bırakıldığında değer hafızaya kaydedilip sistem kaldığı yerden (örneğin sayım devam ediyorsa kaldığı saniyeden) aynen devam eder. 2 saniyelik çok uzun basış tamamen kaldırılmıştır.
 
 ---
 
