@@ -526,24 +526,14 @@ void updateDisplay() {
     }
     
     case STATE_PAUSED: {
+      // Duraklatma Modu: Ekran flaşör (yanıp sönme) yapmaz, son kalan süreyi sabit gösterir.
       display.setBrightness(7);
-      
-      if (currentMillis - lastColonToggle >= 400) {
-        lastColonToggle = currentMillis;
-        colonState = !colonState;
-      }
-      
       int mins = remainingSeconds / 60;
       int secs = remainingSeconds % 60;
       
-      if (stateChanged || colonState != lastColonState || remainingSeconds != lastRemSecs) {
-        lastColonState = colonState;
+      if (stateChanged || remainingSeconds != lastRemSecs) {
         lastRemSecs = remainingSeconds;
-        if (colonState) {
-          display.showNumberDecEx(mins * 100 + secs, 0b01000000, true);
-        } else {
-          display.clear();
-        }
+        display.showNumberDecEx(mins * 100 + secs, 0b01000000, true); // İki nokta sabit açık kalır
       }
       break;
     }
