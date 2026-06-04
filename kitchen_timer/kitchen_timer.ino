@@ -30,7 +30,7 @@
 // EEPROM Bellek Adresleri
 #define EEPROM_ADDR_MAGIC        10  // Belleğin daha önce yazılıp yazılmadığını kontrol etmek için sihirli bayt
 #define EEPROM_ADDR_TIME         0   // Sürenin kaydedileceği adres (unsigned long veya int)
-#define EEPROM_MAGIC_VAL         0xA5
+#define EEPROM_MAGIC_VAL         0xA6
 #define EEPROM_ADDR_VOLUME       1   // Ses seviyesinin kaydedileceği adres [YENİ]
 #define EEPROM_ADDR_VOLUME_MAGIC 11  // Ses seviyesi geçerlilik magic adresi [YENİ]
 #define EEPROM_VOLUME_MAGIC_VAL  0x5A
@@ -631,12 +631,12 @@ void handleAlarmSpeaker() {
  * EEPROM ömrünü korumak adına sadece süre değiştiğinde yazma yapar (update kullanır).
  */
 void saveTimeToEEPROM() {
-  // targetTimeSeconds saniye cinsindendir. Dakika cinsine çevirip saklamak EEPROM'da tek bayt (0-255) kaplar.
-  // 1-99 dakika arası saklayacağımız için bu son derece verimlidir.
-  byte minutesToSave = targetTimeSeconds / 60;
+  // targetTimeSeconds saniye cinsindendir. 30 saniyelik adımlara bölüp saklamak EEPROM'da tek bayt (0-255) kaplar.
+  // En fazla 99 dakika (5940 saniye) olabileceği için 5940 / 30 = 198 birim yapar ve 1 bayta rahatça sığar.
+  byte unitsToSave = targetTimeSeconds / 30;
   
-  if (EEPROM.read(EEPROM_ADDR_TIME) != minutesToSave) {
-    EEPROM.update(EEPROM_ADDR_TIME, minutesToSave);
+  if (EEPROM.read(EEPROM_ADDR_TIME) != unitsToSave) {
+    EEPROM.update(EEPROM_ADDR_TIME, unitsToSave);
   }
   
   // Kalıcı hafızanın geçerli olduğunu belirtmek için sihirli baytı yaz
@@ -647,15 +647,16 @@ void saveTimeToEEPROM() {
 
 /**
  * Cihaz açıldığında kalıcı hafızadan (EEPROM) son ayarlanan süreyi yükler.
- * Hafıza boşsa veya bozuksa varsayılan 5 dakikayı yükler.
+ * Hafıza boşsa veya bozuksa varsayılan süreyi yükler.
  */
 void loadTimeFromEEPROM() {
   byte magic = EEPROM.read(EEPROM_ADDR_MAGIC);
   
   if (magic == EEPROM_MAGIC_VAL) {
-    byte loadedMinutes = EEPROM.read(EEPROM_ADDR_TIME);
-    if (loadedMinutes >= MIN_MINUTES && loadedMinutes <= MAX_MINUTES) {
-      targetTimeSeconds = (long)loadedMinutes * 60;
+    byte loadedUnits = EEPROM.read(EEPROM_ADDR_TIME);
+    // Maksimum 99 dakika = 198 birim
+    if (loadedUnits <= 198) {
+      targetTimeSeconds = (long)loadedUnits * 30;
       return;
     }
   }
