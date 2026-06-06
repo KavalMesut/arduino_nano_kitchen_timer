@@ -15,7 +15,7 @@ Tüm sistem, harici **5V 3A DC adaptör** ile paralel beslenerek kararlı çalı
 5. **D4184 Dual MOSFET Anahtar Modülü**: Hoparlörü doğrudan Arduino pininden çekilemeyecek yüksek akımla, 5V hattından güvenle ve yüksek sesle tetiklemek için kullanılan mosfet kartı.
 6. **5V 3A Kaliteli Harici Güç Adaptörü**: Sistemin güç kaynağı.
 7. **Emniyet Direnci Kümesi (Direnç Hilesi)**: Hoparlör bobinini ve MOSFET'i yüksek akımdan korumak için 4 adet 47 Ohm 1/4W direncin birbirine paralel lehimlenmesiyle elde edilen **~11.7 Ohm 1W direnç grubu**.
-8. **Özel Tasarım 3D Kutu**: 80mm x 120mm x 30mm boyutlarında, baklava/diamond desenli hoparlör ızgaralı, Type-C besleme soketli ve M3 pirinç inserts (ısı kovanı) uyumlu gövde.
+8. **Özel Tasarım 3D Kutu**: İçten içe 80mm x 140mm (Dıştan dışa 84mm x 144mm x 30mm) boyutlarında, baklava/diamond desenli hoparlör ızgaralı, Type-C besleme soketli ve M3 pirinç inserts (ısı kovanı) uyumlu gövde.
 
 ---
 
