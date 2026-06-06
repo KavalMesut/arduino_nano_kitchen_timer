@@ -20,8 +20,8 @@ $fn = 180; // Daire kalitesi (Pürüzsüzlük için en üst seviye - Tinkercad "
 secilen_parca = "montaj"; // [govde, kapak, montaj]
 
 // --- KUTU BOYUTLARI ---
-kutu_g = 60.0;   // Dış Genişlik (X ekseni)
-kutu_y = 100.0;  // Dış Yükseklik (Y ekseni)
+kutu_g = 80.0;   // Dış Genişlik (X ekseni)
+kutu_y = 120.0;  // Dış Yükseklik (Y ekseni)
 kutu_d = 30.0;   // Dış Derinlik (Z ekseni)
 duvar = 2.0;     // Kutu et/duvar kalınlığı
 r_kose = 6.0;    // Köşelerin yuvarlatılma yarıçapı
