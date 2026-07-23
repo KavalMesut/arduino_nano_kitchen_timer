@@ -3,12 +3,9 @@
  * Donanım: Arduino Nano, TM1637 Display, Rotary Encoder, MOSFET Sürücü & 4 Ohm 5W Hoparlör,
  *          18650 2200 mAh Li-ion Pil & LX-LCBST (TP4056 + DC-DC 5V Yükseltici Modülü)
  * 
- * ÖNEMLİ ELEKTRİKSEL NOT (1/4W Direnç Birleştirme İpucu):
- * 4 Ohm 5W hoparlörün MOSFET ile 5V'ta güvenli çalışması için ~10-15 Ohm arası en az 1W güçte 
- * bir direnç seri bağlanmalıdır. Elinizde sadece 1/4W direnç varsa, paralel bağlama kuralını kullanarak
- * kendi 1W direncinizi üretebilirsiniz:
- * -> 4 adet 47 Ohm 1/4W direnci birbirine paralel lehimlerseniz: 47 / 4 = ~11.7 Ohm ve 4 * 0.25W = 1W gücünde direnç elde edersiniz!
- * -> Bu direnç kümesini hoparlöre seri bağlayarak hoparlörünüzü ve MOSFET'inizi güvenle koruyabilirsiniz.
+ * ÖNEMLİ ELEKTRİKSEL NOT:
+ * 4 Ohm 5W hoparlörün MOSFET ile 5V'ta güvenli çalışması için ~10 Ohm (1W) 
+ * bir direnç seri bağlanmalıdır. Bu direnç hoparlörünüzü ve MOSFET'inizi güvenle korur.
  * 
  * BATARYA & ŞARJ YÖNETİMİ:
  * - A0 Pini: 18650 Pil (B+) Voltaj Okuma (3.0V - 4.2V -> %0 - %100)

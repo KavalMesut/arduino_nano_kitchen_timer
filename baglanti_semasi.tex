@@ -17,9 +17,7 @@ Bu belge, Arduino Nano tabanli, TM1637 7 segment gostergeli, EC11 doner enkoder 
 Type-C kablosunu veya pili takip bir multimetre (avometre) ile \textbf{VO+} cikis voltajini olcun. Modul uzerindeki minyatur trimpotu cevirerek cikis voltajini \textbf{tam 5.0 Volt'a} ayarlayin! Fabrikasyon olarak 9V/12V ayarli gelebilir; ayarlamadan baglarsaniz Arduino kartiniz ve ekraniniz yanabilir!
 
 \subsection{Hoparlor ve MOSFET Emniyet Direnci}
-4 Ohm 5W gucundeki hoparlorun yuksek anlik akim cekerek Arduino'ya reset attirmasini ve hoparlor bobininin zarar gormesini engellemek amaciyla hoparlor hattina seri olarak \textbf{10--15 Ohm (en az 1W)} koruma direnci baglanmalidir. 
-
-\textbf{Direnc Birlestirme Ipucu:} Elinizde sadece 1/4W gucunde standart direncler varsa, \textbf{4 adet 47 Ohm 1/4W direnci birbirine paralel lehimleyerek} 11.7 Ohm degerinde 1W gucunde son derece guvenli ve isinmayan bir direnc blogu olusturabilirsiniz.
+4 Ohm 5W gucundeki hoparlorun yuksek anlik akim cekerek Arduino'ya reset attirmasini ve hoparlor bobininin zarar gormesini engellemek amaciyla hoparlor hattina seri olarak \textbf{10 Ohm (1W)} koruma direnci baglanmalidir.
 
 \section{Adim Adim Baglanti Talimatlari}
 
@@ -31,6 +29,7 @@ Type-C kablosunu veya pili takip bir multimetre (avometre) ile \textbf{VO+} ciki
         \item \textbf{VO+} $\rightarrow$ Surgulu Guc Anahtarinin (ON/OFF) bacak 1'ine. Anahtarin bacak 2'si ortak \textbf{+5V} rayina baglanir.
         \item \textbf{VO-} $\rightarrow$ Ortak \textbf{GND} sasi rayina.
         \item \textbf{IN+} (Type-C Girisi) $\rightarrow$ 10k koruma direnci uzerinden Arduino Nano \textbf{A1} pinine (Sarj algilama).
+        \item \textbf{IN-} (Type-C Sasi) $\rightarrow$ Ortak \textbf{GND} sasi rayina.
     \end{itemize}
 
     \item \textbf{Ciplak Doner Enkoder (EC11) Baglantilari:}
@@ -57,8 +56,8 @@ Type-C kablosunu veya pili takip bir multimetre (avometre) ile \textbf{VO+} ciki
         \item \textbf{DC+ (Klemens Alt Sag)} $\rightarrow$ Ortak \textbf{+5V}
         \item \textbf{DC- (Klemens Alt Sol)} $\rightarrow$ Ortak \textbf{GND}
         \item \textbf{Cikis+ (Klemens Ust Sag)} $\rightarrow$ Hoparlor (+)
-        \item \textbf{Cikis- (Klemens Ust Sol)} $\rightarrow$ Paralel Direnc Bloğu ucu 1
-        \item Paralel Direnc Bloğu ucu 2 $\rightarrow$ Hoparlor (-)
+        \item \textbf{Cikis- (Klemens Ust Sol)} $\rightarrow$ 10 Ohm 1W Direnc ucu 1
+        \item 10 Ohm 1W Direnc ucu 2 $\rightarrow$ Hoparlor (-)
     \end{itemize}
 \end{enumerate}
 
@@ -74,7 +73,8 @@ Type-C kablosunu veya pili takip bir multimetre (avometre) ile \textbf{VO+} ciki
 18650 Li-ion Pil & Eksi (-) / B- & LX-LCBST B- & Batarya Sasi Baglantisi \\
 LX-LCBST Modulu & VO+ (5V Cikis) & ON/OFF Anahtari $\rightarrow$ Ortak +5V & Ana Sistem Guc Cikisi \\
 LX-LCBST Modulu & VO- (GND Cikis) & Ortak GND Sasi Rayi & Sistem Sasi Baglantisi \\
-LX-LCBST Modulu & IN+ (Sarj Girisi) & 10k Direnc $\rightarrow$ Arduino A1 & Sarj Kablosu Algilama \\ \hline
+LX-LCBST Modulu & IN+ (Sarj Girisi) & 10k Direnc $\rightarrow$ Arduino A1 & Sarj Kablosu Algilama \\
+LX-LCBST Modulu & IN- (Sarj Sasi) & Ortak GND Sasi Rayi & Sarj Girisi Sasisi \\ \hline
 EC11 Enkoder & Out A (Ust - 3'lu) & Arduino Nano D2 & Zamanlama Girisi (Kesme 0) \\
 EC11 Enkoder & GND (Orta - 3'lu) & Ortak GND & Enkoder Sasi \\
 EC11 Enkoder & Out B (Alt - 3'lu) & Arduino Nano D3 & Yon Algilama (Kesme 1) \\
@@ -88,7 +88,7 @@ D4184 MOSFET & (PWM) + Sinyal & Arduino Nano D9 & Sinyal Tetikleme (Timer 1) \\
 D4184 MOSFET & Sinyal GND & Ortak GND & Ortak Sasi \\
 D4184 MOSFET & DC+ (Alt Sag) & Ortak +5V Rayi & Hoparlor Guc Beslemesi \\
 D4184 MOSFET & DC- (Alt Sol) & Ortak GND Rayi & Hoparlor Guc Sasisi \\
-D4184 MOSFET & Cikis+ / Cikis- & Seri Direnc ile Hoparlor & 5W Hoparlor Surucusu \\ \hline
+D4184 MOSFET & Cikis+ / Cikis- & 10 Ohm 1W Direnc ile Hoparlor & 5W Hoparlor Surucusu \\ \hline
 \end{tabular}
 \end{table}
 
