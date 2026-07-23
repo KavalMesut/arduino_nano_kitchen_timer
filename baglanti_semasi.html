@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mutfak Geri Sayım Alarmı - Bağlantı Kılavuzu</title>
+    <title>Mutfak Geri Sayım Alarmı - Şarjlı Donanım Bağlantı Kılavuzu</title>
     <style>
         :root {
             --primary: #2563eb;
@@ -12,6 +12,8 @@
             --text-muted: #4b5563;
             --bg-light: #f3f4f6;
             --border-color: #e5e7eb;
+            --warning-bg: #fffbebf8;
+            --warning-border: #f59e0b;
         }
 
         body {
@@ -24,7 +26,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             background: white;
             padding: 40px;
@@ -68,16 +70,29 @@
             margin: 20px 0;
         }
 
+        .alert-warning {
+            background-color: #fef3c7;
+            border-left: 4px solid #d97706;
+        }
+
         .alert-title {
             font-weight: bold;
             color: var(--primary-dark);
             margin-bottom: 5px;
         }
 
+        .alert-warning .alert-title {
+            color: #92400e;
+        }
+
         .alert p {
             margin: 0;
             font-size: 15px;
             color: var(--text-muted);
+        }
+
+        .alert-warning p {
+            color: #78350f;
         }
 
         ol, ul {
@@ -126,7 +141,6 @@
             padding-top: 20px;
         }
 
-        /* YAZDIRMA (PRINT / PDF) OPTİMİZASYONLARI */
         @media print {
             body {
                 background-color: white;
@@ -175,10 +189,6 @@
             th, td {
                 border-bottom: 1px solid #000 !important;
             }
-
-            .no-print {
-                display: none;
-            }
         }
     </style>
 </head>
@@ -186,92 +196,113 @@
 
 <div class="container">
     <header>
-        <h1>Mutfak Geri Sayım Alarmı</h1>
-        <p class="meta">Arduino Nano Donanım Bağlantı Kılavuzu (EC11 Enkoder ve D4184 MOSFET Uyumlu)</p>
+        <h1>⏳ Mutfak Geri Sayım Alarmı</h1>
+        <p class="meta">18650 Li-ion Şarjlı Sürüm — Donanım & Bağlantı Kılavuzu</p>
     </header>
 
-    <div style="text-align: center; margin: 25px 0;">
-        <img src="baglanti_semasi.svg" alt="Mutfak Geri Sayım Alarmı Görsel Şeması" style="width: 100%; max-width: 760px; height: auto; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+    <div class="alert alert-warning">
+        <div class="alert-title">⚠️ KRİTİK TRİMPOT KALİBRASYON UYARISI (ÇOK ÖNEMLİ!)</div>
+        <p><strong>LX-LCBST modülünün VO+ / VO- çıkışlarını Arduino veya diğer devrelere BAĞLAMADAN ÖNCE;</strong><br>
+        Type-C kablosunu veya pili takıp bir multimetre (avometre) ile <strong>VO+</strong> çıkış voltajını ölçün. Modül üzerindeki minyatür trimpotu çevirerek çıkış voltajını <strong>tam 5.0 Volt'a</strong> ayarlayın! Fabrikasyon olarak 9V/12V ayarlı gelebilir; ayarlamadan bağlarsanız Arduino kartınız ve ekranınız yanabilir.</p>
     </div>
 
     <div class="alert">
-        <div class="alert-title">💡 Önemli Güvenlik Uyarısı (Seri Koruma Direnci)</div>
-        <p>4 Ohm 5W gücündeki hoparlörün yüksek anlık akım çekerek Arduino'ya reset attırmasını engellemek amacıyla hoparlör hattına mutlaka seri olarak <strong>10-15 Ohm en az 1W</strong> direnç bağlanmalıdır. Elinizde 1/4W dirençler varsa, <strong>4 adet 47 Ohm 1/4W direnci birbirine paralel bağlayıp lehimleyerek</strong> 11.7 Ohm / 1W gücünde son derece güvenli bir koruma direnci oluşturabilirsiniz.</p>
+        <div class="alert-title">💡 Hoparlör & MOSFET Emniyet Direnci</div>
+        <p>4 Ohm 5W gücündeki hoparlörün yüksek anlık akım çekmesini önlemek amacıyla hoparlör hattına seri olarak <strong>10-15 Ohm en az 1W</strong> direnç bağlanmalıdır. Elinizde 1/4W dirençler varsa, <strong>4 adet 47 Ohm 1/4W direnci birbirine paralel bağlayıp lehimleyerek</strong> 11.7 Ohm / 1W gücünde son derece güvenli bir koruma direnci oluşturabilirsiniz.</p>
     </div>
 
-    <div class="alert" style="background-color: #f0fdf4; border-left-color: #22c55e;">
-        <div class="alert-title" style="color: #15803d;">🔧 D4184 MOSFET Modülü Hakkında</div>
-        <p>Görseldeki çiftli D4184 MOSFET modülü, sol tarafında tetikleme için <strong>sadece 2 pinden (PWM+ ve GND)</strong> beslenir. Sağ tarafında ise kalın güç bağlantıları için iki adet mavi vidalı klemens bulunur. Isınma yapmaz ve son derece kararlıdır.</p>
-    </div>
-
-    <h2>1. Adım: Güç Kaynağı (5V 3A Adaptör) Dağıtımı</h2>
+    <h2>1. Adım: Şarj & Güç Katı Bağlantıları (18650 Pil + LX-LCBST Modülü)</h2>
     <ul>
-        <li>Adaptörün <strong>Artı (+5V)</strong> kablosunu breadboard'un artı (+) kanalına bağlayın ve bu kanalı Arduino Nano'nun <strong>5V</strong> pinine köprüleyin.</li>
-        <li>Adaptörün <strong>Eksi (GND)</strong> kablosunu breadboard'un eksi (-) kanalına bağlayın ve bu kanalı Arduino Nano'nun <strong>GND</strong> pinine köprüleyin.</li>
+        <li><strong>B+:</strong> 18650 Pilin Artı (+) kutbuna ve aynı zamanda Arduino Nano'nun <strong>A0</strong> analog girişine (Batarya seviyesi okuma).</li>
+        <li><strong>B-:</strong> 18650 Pilin Eksi (-) kutbuna.</li>
+        <li><strong>VO+ (5V Yükseltici Çıkışı):</strong> Sürgülü Güç Anahtarının (ON/OFF) 1. bacağına. Anahtarın 2. bacağı ortak <strong>+5V</strong> besleme rayına bağlanır.</li>
+        <li><strong>VO- (GND Çıkışı):</strong> Ortak <strong>GND</strong> şasi rayına.</li>
+        <li><strong>IN+ (Type-C 5V Girişi):</strong> 10k koruma direnci üzerinden Arduino Nano'nun <strong>A1</strong> pinine (Şarj kablosu algılama).</li>
     </ul>
 
-    <h2>2. Adım: Çıplak Döner Enkoder (EC11) Bağlantıları</h2>
-    <p>Enkoderinizde iki ayrı grupta toplam 5 adet pin bulunur (Kabloları doğrudan lehimleyebilir veya dişi jumper kablo soketi kullanabilirsiniz):</p>
+    <h2>2. Adım: Döner Enkoder (EC11) Bağlantıları</h2>
     <ul>
         <li><strong>3'lü Yan Pin Grubu (Döner Kısım):</strong>
             <ul>
-                <li><strong>Out A (Üst Pin):</strong> Arduino Nano <strong>D2</strong> pinine (Kesme 0)</li>
-                <li><strong>GND (Orta Pin):</strong> Ortak <strong>GND</strong> şasi hattına</li>
-                <li><strong>Out B (Alt Pin):</strong> Arduino Nano <strong>D3</strong> pinine (Kesme 1)</li>
+                <li><strong>Out A (Üst Pin):</strong> Arduino Nano <strong>D2</strong> pini (Kesme 0)</li>
+                <li><strong>GND (Orta Pin):</strong> Ortak <strong>GND</strong> şasi hattı</li>
+                <li><strong>Out B (Alt Pin):</strong> Arduino Nano <strong>D3</strong> pini (Kesme 1)</li>
             </ul>
         </li>
         <li><strong>2'li Ön Pin Grubu (Buton Kısmı):</strong>
             <ul>
-                <li><strong>Switch (Sol / Üst Pin):</strong> Arduino Nano <strong>D4</strong> pinine</li>
-                <li><strong>GND (Sağ / Alt Pin):</strong> Ortak <strong>GND</strong> şasi hattına</li>
+                <li><strong>Switch (Sol Pin):</strong> Arduino Nano <strong>D4</strong> pini</li>
+                <li><strong>GND (Sağ Pin):</strong> Ortak <strong>GND</strong> şasi hattı</li>
             </ul>
         </li>
     </ul>
 
     <h2>3. Adım: TM1637 Gösterge Modülü Bağlantıları</h2>
     <ul>
-        <li><strong>CLK:</strong> Arduino Nano <strong>D5</strong> pinine</li>
-        <li><strong>DIO:</strong> Arduino Nano <strong>D6</strong> pinine</li>
-        <li><strong>VCC:</strong> Ortak <strong>+5V</strong> hattına</li>
-        <li><strong>GND:</strong> Ortak <strong>GND</strong> hattına</li>
+        <li><strong>CLK:</strong> Arduino Nano <strong>D5</strong> pini</li>
+        <li><strong>DIO:</strong> Arduino Nano <strong>D6</strong> pini</li>
+        <li><strong>VCC:</strong> Ortak <strong>+5V</strong> besleme hattı</li>
+        <li><strong>GND:</strong> Ortak <strong>GND</strong> şasi hattı</li>
     </ul>
 
-    <h2>4. Adım: D4184 MOSFET Kontrol (Sol Sinyal Girişi) Bağlantıları</h2>
-    <p>Modülün sol tarafındaki küçük pin bağlantıları:</p>
+    <h2>4. Adım: D4184 MOSFET Sürücü ve Hoparlör Bağlantıları</h2>
     <ul>
-        <li><strong>(PWM) + pini:</strong> Arduino Nano <strong>D9</strong> pinine (Tetikleme Sinyali)</li>
-        <li><strong>GND pini:</strong> Arduino Nano <strong>GND</strong> pinine (Ortak Şasi)</li>
+        <li><strong>(PWM) + Sinyal Pini:</strong> Arduino Nano <strong>D9</strong> pini (Timer 1Donanımsal PWM)</li>
+        <li><strong>Sinyal GND Pini:</strong> Ortak <strong>GND</strong> şasi hattı</li>
+        <li><strong>DC+ (Klemens Alt Sağ):</strong> Ortak <strong>+5V</strong> besleme hattına</li>
+        <li><strong>DC- (Klemens Alt Sol):</strong> Ortak <strong>GND</strong> şasi hattına</li>
+        <li><strong>Çıkış+ (Klemens Üst Sağ):</strong> Hoparlörün <strong>Artı (+)</strong> kablosuna</li>
+        <li><strong>Çıkış- (Klemens Üst Sol):</strong> 4'lü paralel koruma direncinin bir ucuna; direncin diğer ucu Hoparlörün <strong>Eksi (-)</strong> kablosuna.</li>
     </ul>
 
-    <h2>5. Adım: MOSFET Güç Klemensleri ve Hoparlör Bağlantıları</h2>
-    <p>Modülün sağ tarafındaki mavi vidalı klemensler:</p>
+    <h2>🔋 TM1637 Batarya & Şarj Özellikleri</h2>
     <ul>
-        <li><strong>Alt Vidalı Klemens (Güç Girişi):</strong>
-            <ul>
-                <li><strong>DC+ (Sağ Pin):</strong> Doğrudan 5V 3A adaptörün <strong>+5V</strong> hattına</li>
-                <li><strong>DC- (Sol Pin):</strong> Doğrudan adaptörün <strong>GND</strong> hattına</li>
-            </ul>
-        </li>
-        <li><strong>Üst Vidalı Klemens (Çıkış / Yük):</strong>
-            <ul>
-                <li><strong>Sağ Çıkış Pini (Çıkış+ / Kırmızı Çizgili):</strong> <strong>Hoparlörün Artı (+)</strong> kablosuna</li>
-                <li><strong>Sol Çıkış Pini (Çıkış- / Mavi Çizgili):</strong> Hazırladığınız <strong>4'lü paralel koruma direncinin bir ucuna</strong></li>
-                <li><strong>Direncin diğer ucu:</strong> <strong>Hoparlörün Eksi (-)</strong> kablosuna</li>
-            </ul>
-        </li>
+        <li><strong>2 Saniye Basılı Tutma:</strong> Butona 2 saniye basıldığında ekranda <strong>1 saniye boyunca</strong> anlık pil yüzdesi gösterilir (Örn: <code>b-85</code> = %85 pil).</li>
+        <li><strong>Düşük Batarya Uyarısı (%10 Altı):</strong> Pil %10'un altına indiğinde her zaman ayarlama girişiminde ekranda <code>Lo</code> yazısı yanıp söner ve uyarı bip sesi verilir.</li>
+        <li><strong>1 Saniye Basılı Tutma:</strong> Ses seviyesi ayarına girer (<code>U- 5</code> ... <code>U-10</code>).</li>
     </ul>
 
-    <h2>Bağlantı Referans Tablosu</h2>
+    <h2>Donanım Bağlantı Referans Tablosu</h2>
     <table>
         <thead>
             <tr>
-                <th>Kaynak Cihaz / Modül</th>
-                <th>Modül / Cihaz Pini</th>
+                <th>Kaynak Modül</th>
+                <th>Pin Adı</th>
                 <th>Hedef Arduino / Güç Pini</th>
                 <th>İşlev</th>
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>18650 Li-ion Pil</td>
+                <td>Artı (+) / B+</td>
+                <td>LX-LCBST B+ / Arduino <strong>A0</strong></td>
+                <td>Batarya Güç Girişi & Voltaj Okuma (%0-%100)</td>
+            </tr>
+            <tr>
+                <td>18650 Li-ion Pil</td>
+                <td>Eksi (-) / B-</td>
+                <td>LX-LCBST B-</td>
+                <td>Batarya Şasisi</td>
+            </tr>
+            <tr>
+                <td>LX-LCBST Modülü</td>
+                <td>VO+ (5V Yükseltici)</td>
+                <td>ON/OFF Anahtarı &rarr; Ortak <strong>+5V</strong></td>
+                <td>5.0V Sabit Sistem Güç Çıkışı</td>
+            </tr>
+            <tr>
+                <td>LX-LCBST Modülü</td>
+                <td>VO- (GND)</td>
+                <td>Ortak <strong>GND</strong> Rayı</td>
+                <td>Sistem Ortak Şasisi</td>
+            </tr>
+            <tr>
+                <td>LX-LCBST Modülü</td>
+                <td>IN+ (Type-C 5V)</td>
+                <td>10k Direnç &rarr; Arduino <strong>A1</strong></td>
+                <td>Şarj Kablosu Takıldı Algılama</td>
+            </tr>
             <tr>
                 <td>EC11 Enkoder (3'lü Grup)</td>
                 <td>Out A (Üst)</td>
@@ -281,8 +312,8 @@
             <tr>
                 <td>EC11 Enkoder (3'lü Grup)</td>
                 <td>GND (Orta)</td>
-                <td>Ortak <strong>GND</strong> Şasi Rayı</td>
-                <td>Döner Kısım Şasisi</td>
+                <td>Ortak <strong>GND</strong> Rayı</td>
+                <td>Enkoder Şasisi</td>
             </tr>
             <tr>
                 <td>EC11 Enkoder (3'lü Grup)</td>
@@ -294,79 +325,49 @@
                 <td>EC11 Enkoder (2'li Grup)</td>
                 <td>Switch (Sol)</td>
                 <td>Arduino Nano <strong>D4</strong></td>
-                <td>Buton Girişi (Başlat/Durdur)</td>
+                <td>Buton Girişi (Başlat / Başa Dön)</td>
             </tr>
             <tr>
                 <td>EC11 Enkoder (2'li Grup)</td>
                 <td>GND (Sağ)</td>
-                <td>Ortak <strong>GND</strong> Şasi Rayı</td>
+                <td>Ortak <strong>GND</strong> Rayı</td>
                 <td>Buton Şasisi</td>
             </tr>
             <tr>
                 <td>TM1637 Ekran</td>
-                <td>CLK</td>
-                <td>Arduino Nano <strong>D5</strong></td>
-                <td>Gösterge Saat Sinyali</td>
+                <td>CLK / DIO</td>
+                <td>Arduino Nano <strong>D5 / D6</strong></td>
+                <td>Gösterge Saat & Veri Hattı</td>
             </tr>
             <tr>
                 <td>TM1637 Ekran</td>
-                <td>DIO</td>
-                <td>Arduino Nano <strong>D6</strong></td>
-                <td>Gösterge Veri Hattı</td>
+                <td>VCC / GND</td>
+                <td>Ortak <strong>+5V / GND</strong></td>
+                <td>Gösterge Beslemesi</td>
             </tr>
             <tr>
-                <td>TM1637 Ekran</td>
-                <td>VCC</td>
-                <td>Ortak <strong>+5V</strong> Besleme Rayı</td>
-                <td>Modül Gücü</td>
-            </tr>
-            <tr>
-                <td>TM1637 Ekran</td>
-                <td>GND</td>
-                <td>Ortak <strong>GND</strong> Şasi Rayı</td>
-                <td>Şasi Ortaklama</td>
-            </tr>
-            <tr>
-                <td>D4184 MOSFET Sinyal</td>
-                <td>(PWM) +</td>
+                <td>D4184 MOSFET</td>
+                <td>(PWM) + Sinyal</td>
                 <td>Arduino Nano <strong>D9</strong></td>
-                <td>Melodi/Alarm Sinyal Tetikleyici</td>
+                <td>Donanımsal PWM Ses Tetikleme (Timer 1)</td>
             </tr>
             <tr>
-                <td>D4184 MOSFET Sinyal</td>
-                <td>GND</td>
-                <td>Arduino Nano <strong>GND</strong></td>
-                <td>Ortak Şasi Bağlantısı</td>
+                <td>D4184 MOSFET</td>
+                <td>DC+ / DC-</td>
+                <td>Ortak <strong>+5V / GND</strong></td>
+                <td>Hoparlör Güç Girişi</td>
             </tr>
             <tr>
-                <td>D4184 MOSFET Güç Giriş</td>
-                <td>DC+ (Klemens Sağ)</td>
-                <td>Doğrudan Adaptör <strong>+5V</strong></td>
-                <td>Adaptör Güç Girişi (+)</td>
-            </tr>
-            <tr>
-                <td>D4184 MOSFET Güç Giriş</td>
-                <td>DC- (Klemens Sol)</td>
-                <td>Doğrudan Adaptör <strong>GND</strong></td>
-                <td>Adaptör Güç Girişi (-)</td>
-            </tr>
-            <tr>
-                <td>D4184 MOSFET Güç Çıkış</td>
-                <td>Çıkış+ (Klemens Sağ)</td>
-                <td>Hoparlör (+) Kutbu</td>
-                <td>Hoparlör Sürücü Gücü (+)</td>
-            </tr>
-            <tr>
-                <td>D4184 MOSFET Güç Çıkış</td>
-                <td>Çıkış- (Klemens Sol)</td>
-                <td>Seri Direnç ile Hoparlör (-)</td>
-                <td>Hoparlör Sürücü Şasi Anahtarı (-)</td>
+                <td>D4184 MOSFET</td>
+                <td>Çıkış+ / Çıkış-</td>
+                <td>Seri Direnç ile Hoparlör</td>
+                <td>4 Ohm 5W Hoparlör Sürücüsü</td>
             </tr>
         </tbody>
     </table>
 
     <div class="footer">
-        <p>Mutfak Geri Sayım Zamanlayıcı Projesi - 2026</p>
+        <p>Mutfak Geri Sayım Zamanlayıcı Projesi (Şarjlı Sürüm) - 2026</p>
     </div>
 </div>
 
