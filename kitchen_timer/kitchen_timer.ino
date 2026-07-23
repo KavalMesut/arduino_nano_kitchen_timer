@@ -4,8 +4,9 @@
  *          18650 2200 mAh Li-ion Pil & LX-LCBST (TP4056 + DC-DC 5V Yükseltici Modülü)
  * 
  * ÖNEMLİ ELEKTRİKSEL NOT:
- * 4 Ohm 5W hoparlörün MOSFET ile 5V'ta güvenli çalışması için ~10 Ohm (1W) 
- * bir direnç seri bağlanmalıdır. Bu direnç hoparlörünüzü ve MOSFET'inizi güvenle korur.
+ * 4 Ohm 5W hoparlörün MOSFET ile 5V'ta yüksek sesli ve güvenli çalışması için 
+ * 2 adet 10 Ohm 1W direnç birbirine PARALEL bağlanmalıdır (5 Ohm / 2W eşdeğer). 
+ * Bu paralel direnç bloğu hem sesi yükseltir hem de hoparlörünüzü ve MOSFET'inizi korur.
  * 
  * BATARYA & ŞARJ YÖNETİMİ:
  * - A0 Pini: 18650 Pil (B+) Voltaj Okuma (3.0V - 4.2V -> %0 - %100)

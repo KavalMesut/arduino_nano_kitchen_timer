@@ -453,17 +453,31 @@
             <text x="95" y="138" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">4 Ohm 5W HOPARLÖR</text>
           </g>
 
-          <!-- 10. TEK DİRENÇ (10 Ohm 2W) -->
-          <g id="resistors" transform="translate(760, 220)" filter="url(#shadow)">
-            <rect width="140" height="45" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-            <line x1="0" y1="22.5" x2="25" y2="22.5" stroke="#64748b" stroke-width="2.5" />
-            <line x1="115" y1="22.5" x2="140" y2="22.5" stroke="#64748b" stroke-width="2.5" />
-            <rect x="25" y="14" width="90" height="17" rx="4" fill="#d97706" stroke="#b45309" />
-            <rect x="42" y="14" width="5" height="17" fill="#78350f" />
-            <rect x="54" y="14" width="5" height="17" fill="#000000" />
-            <rect x="66" y="14" width="5" height="17" fill="#000000" />
-            <rect x="95" y="14" width="5" height="17" fill="#f59e0b" />
-            <text x="70" y="-5" font-family="Segoe UI, Arial" font-size="11" fill="#1e293b" font-weight="bold" text-anchor="middle">10Ω 2W KORUMA DİRENCİ</text>
+          <!-- 10. İKİ ADET 10 OHM 1W PARALEL DİRENÇ GRUBU [5 OHM / 2W EŞDEĞER] -->
+          <g id="resistors-parallel" transform="translate(760, 210)" filter="url(#shadow)">
+            <rect width="150" height="65" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+            <line x1="20" y1="18" x2="20" y2="48" stroke="#3b82f6" stroke-width="3" />
+            <line x1="130" y1="18" x2="130" y2="48" stroke="#3b82f6" stroke-width="3" />
+            <line x1="0" y1="33" x2="20" y2="33" stroke="#3b82f6" stroke-width="3" />
+            <line x1="130" y1="33" x2="150" y2="33" stroke="#3b82f6" stroke-width="3" />
+
+            <line x1="20" y1="18" x2="30" y2="18" stroke="#64748b" stroke-width="2" />
+            <line x1="120" y1="18" x2="130" y2="18" stroke="#64748b" stroke-width="2" />
+            <rect x="30" y="11" width="90" height="14" rx="3" fill="#d97706" stroke="#b45309" />
+            <rect x="45" y="11" width="4" height="14" fill="#78350f" />
+            <rect x="55" y="11" width="4" height="14" fill="#000000" />
+            <rect x="65" y="11" width="4" height="14" fill="#000000" />
+            <rect x="95" y="11" width="4" height="14" fill="#f59e0b" />
+
+            <line x1="20" y1="48" x2="30" y2="48" stroke="#64748b" stroke-width="2" />
+            <line x1="120" y1="48" x2="130" y2="48" stroke="#64748b" stroke-width="2" />
+            <rect x="30" y="41" width="90" height="14" rx="3" fill="#d97706" stroke="#b45309" />
+            <rect x="45" y="41" width="4" height="14" fill="#78350f" />
+            <rect x="55" y="41" width="4" height="14" fill="#000000" />
+            <rect x="65" y="41" width="4" height="14" fill="#000000" />
+            <rect x="95" y="41" width="4" height="14" fill="#f59e0b" />
+
+            <text x="75" y="-5" font-family="Segoe UI, Arial" font-size="11" fill="#1e293b" font-weight="bold" text-anchor="middle">2x 10Ω 1W PARALEL (5Ω / 2W)</text>
           </g>
 
           <!-- BAĞLANTI YOLLARI (KABLOLAR) -->
@@ -518,9 +532,9 @@
             <path d="M 980,375 L 1030,375 L 1030,160 L 815,160 L 815,180" fill="none" stroke="#ef4444" stroke-width="3" />
             <circle cx="815" cy="180" r="4" fill="#ef4444" />
             
-            <path d="M 980,345 L 980,242.5 L 900,242.5" fill="none" stroke="#3b82f6" stroke-width="3" />
+            <path d="M 980,345 L 980,243 L 910,243" fill="none" stroke="#3b82f6" stroke-width="3" />
             
-            <path d="M 760,242.5 L 785,242.5 L 785,180" fill="none" stroke="#3b82f6" stroke-width="3" />
+            <path d="M 760,243 L 785,243 L 785,180" fill="none" stroke="#3b82f6" stroke-width="3" />
             <circle cx="785" cy="180" r="4" fill="#3b82f6" />
           </g>
         </svg>
@@ -605,7 +619,7 @@
         <li><strong>DC+ (Klemens Alt Sağ):</strong> Ortak <strong>+5V</strong> besleme hattına</li>
         <li><strong>DC- (Klemens Alt Sol):</strong> Ortak <strong>GND</strong> şasi hattına</li>
         <li><strong>Çıkış+ (Klemens Üst Sağ):</strong> Hoparlörün <strong>Artı (+)</strong> kablosuna (Kırmızı hat)</li>
-        <li><strong>Çıkış- (Klemens Üst Sol):</strong> Tek 10 Ohm 2W koruma direncinin bir ucuna; direncin diğer ucu Hoparlörün <strong>Eksi (-)</strong> kablosuna (Mavi hat).</li>
+        <li><strong>Çıkış- (Klemens Üst Sol):</strong> Birbirine paralel bağlanmış <strong>İki Adet 10 Ohm 1W Koruma Direncinin (5Ω / 2W eşdeğer)</strong> bir ucuna; direnç grubunun diğer ucu Hoparlörün <strong>Eksi (-)</strong> kablosuna (Mavi hat).</li>
     </ul>
 
     <h2>🔋 TM1637 Batarya & Şarj Özellikleri</h2>
@@ -719,8 +733,8 @@
             <tr>
                 <td>D4184 MOSFET</td>
                 <td>Çıkış+ / Çıkış-</td>
-                <td>Tek 10Ω 2W Direnç ile Hoparlör</td>
-                <td>4 Ohm 5W Hoparlör Sürücüsü</td>
+                <td>İki Adet 10Ω 1W Paralel Direnç (5Ω/2W) ile Hoparlör</td>
+                <td>4 Ohm 5W Hoparlör Sürücüsü (Yüksek Ses &amp; Güvenli)</td>
             </tr>
         </tbody>
     </table>
