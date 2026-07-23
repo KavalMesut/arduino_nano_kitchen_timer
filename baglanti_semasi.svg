@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 820" width="100%" height="100%">
   <defs>
     <!-- Filtreler -->
     <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
@@ -42,8 +42,8 @@
       <stop offset="100%" stop-color="#0f172a" />
     </linearGradient>
     <linearGradient id="switch-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#475569" />
-      <stop offset="100%" stop-color="#1e293b" />
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
     </linearGradient>
     
     <!-- Izgara Deseni -->
@@ -65,7 +65,7 @@
   <!-- ==================== CİHAZ VE MODÜL KARTLARI ==================== -->
 
   <!-- 1. TM1637 EKRAN -->
-  <g id="tm1637" transform="translate(60, 80)" filter="url(#shadow)">
+  <g id="tm1637" transform="translate(50, 70)" filter="url(#shadow)">
     <rect width="210" height="150" rx="8" fill="url(#display-grad)" />
     <rect x="25" y="20" width="160" height="60" rx="4" fill="#020617" stroke="#1e293b" stroke-width="2" />
     <text x="105" y="60" font-family="Courier New, monospace" font-size="36" font-weight="bold" fill="#ef4444" text-anchor="middle" letter-spacing="4">b-85</text>
@@ -85,7 +85,7 @@
   </g>
 
   <!-- 2. ARDUINO NANO KARTI -->
-  <g id="arduino-nano" transform="translate(370, 80)" filter="url(#shadow)">
+  <g id="arduino-nano" transform="translate(340, 70)" filter="url(#shadow)">
     <rect width="180" height="370" rx="8" fill="url(#arduino-grad)" />
     <rect x="65" y="-10" width="50" height="30" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
     <text x="90" y="10" font-family="Segoe UI, Arial" font-size="10" fill="#475569" text-anchor="middle" font-weight="bold">USB</text>
@@ -135,7 +135,7 @@
   </g>
 
   <!-- 3. EC11 BARE ENCODER -->
-  <g id="encoder" transform="translate(60, 420)" filter="url(#shadow)">
+  <g id="encoder" transform="translate(50, 420)" filter="url(#shadow)">
     <rect width="210" height="230" rx="8" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
     <rect x="20" y="20" width="170" height="130" rx="6" fill="#1e3a8a" />
     
@@ -198,25 +198,68 @@
     <text x="120" y="165" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">LX-LCBST ŞARJ &amp; STEP-UP</text>
   </g>
 
-  <!-- 5. SÜRGÜLÜ GÜÇ ANAHTARI (ON/OFF SWITCH) [EKLENDİ] -->
-  <g id="power-switch" transform="translate(470, 420)" filter="url(#shadow)">
-    <rect width="70" height="35" rx="4" fill="url(#switch-grad)" stroke="#94a3b8" stroke-width="1.5" />
-    <!-- Anahtar Düğmesi -->
-    <rect x="35" y="5" width="28" height="25" rx="3" fill="#e2e8f0" stroke="#64748b" />
-    <circle cx="15" cy="17.5" r="4" fill="#ef4444" /> <!-- Giriş Ucu -->
-    <circle cx="55" cy="17.5" r="4" fill="#ef4444" /> <!-- Çıkış Ucu -->
-    <text x="35" y="-6" font-family="Segoe UI, Arial" font-size="10" fill="#1e293b" font-weight="bold" text-anchor="middle">ON/OFF ANAHTAR</text>
+  <!-- 5. REALİSTİK SÜRGÜLÜ GÜÇ ANAHTARI (ON/OFF SWITCH) [BOŞ VE BAĞIMSIZ ALANA TAŞINDI] -->
+  <g id="power-switch" transform="translate(610, 600)" filter="url(#shadow)">
+    <rect width="120" height="60" rx="8" fill="url(#switch-grad)" stroke="#64748b" stroke-width="2" />
+    <!-- Metal Sürgü Kolu -->
+    <rect x="55" y="12" width="50" height="36" rx="4" fill="#cbd5e1" stroke="#475569" stroke-width="2" />
+    <rect x="65" y="16" width="30" height="28" rx="2" fill="#94a3b8" />
+    <line x1="75" y1="20" x2="75" y2="40" stroke="#475569" stroke-width="2" />
+    <line x1="85" y1="20" x2="85" y2="40" stroke="#475569" stroke-width="2" />
+    
+    <!-- Lehim Bacakları -->
+    <circle cx="15" cy="30" r="6" fill="#ef4444" stroke="#dc2626" stroke-width="1.5" />
+    <circle cx="105" cy="30" r="6" fill="#ef4444" stroke="#dc2626" stroke-width="1.5" />
+    
+    <text x="15" y="52" font-family="Segoe UI, Arial" font-size="9" fill="#f87171" font-weight="bold" text-anchor="middle">1. Bacak</text>
+    <text x="105" y="52" font-family="Segoe UI, Arial" font-size="9" fill="#f87171" font-weight="bold" text-anchor="middle">2. Bacak</text>
+    
+    <text x="35" y="24" font-family="Segoe UI, Arial" font-size="10" fill="#22c55e" font-weight="bold">ON</text>
+    <text x="35" y="42" font-family="Segoe UI, Arial" font-size="10" fill="#64748b" font-weight="bold">OFF</text>
+
+    <text x="60" y="-8" font-family="Segoe UI, Arial" font-size="11" fill="#1e293b" font-weight="bold" text-anchor="middle">ON/OFF GÜÇ ANAHTARI</text>
   </g>
 
   <!-- 6. 18650 PİL -->
-  <g id="battery" transform="translate(340, 680)" filter="url(#shadow)">
+  <g id="battery" transform="translate(340, 690)" filter="url(#shadow)">
     <rect width="240" height="60" rx="8" fill="url(#battery-grad)" />
     <rect x="235" y="18" width="15" height="24" rx="3" fill="#cbd5e1" />
     <text x="120" y="37" font-family="Segoe UI, Arial" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">18650 Lİ-İON PİL (3.7V 2200mAh)</text>
   </g>
 
-  <!-- 7. D4184 MOSFET -->
-  <g id="mosfet" transform="translate(640, 310)" filter="url(#shadow)">
+  <!-- 7. SİNYAL KORUMA DİRENÇLERİ (10kΩ) [NET, OKUNAKLI VE BAĞIMSIZ FERAH ALANDA] -->
+  <g id="resistor-a0" transform="translate(610, 450)" filter="url(#shadow)">
+    <rect width="120" height="34" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" />
+    <!-- Bacaklar -->
+    <line x1="0" y1="17" x2="20" y2="17" stroke="#64748b" stroke-width="2" />
+    <line x1="100" y1="17" x2="120" y2="17" stroke="#64748b" stroke-width="2" />
+    <!-- Gövde -->
+    <rect x="20" y="8" width="80" height="18" rx="4" fill="#bae6fd" stroke="#0284c7" stroke-width="1" />
+    <!-- Renk Bantları (10k: Kahve, Siyah, Turuncu, Altın) -->
+    <rect x="35" y="8" width="4" height="18" fill="#78350f" />
+    <rect x="45" y="8" width="4" height="18" fill="#000000" />
+    <rect x="55" y="8" width="4" height="18" fill="#ea580c" />
+    <rect x="80" y="8" width="4" height="18" fill="#eab308" />
+    <text x="60" y="-5" font-family="Segoe UI, Arial" font-size="10" fill="#0369a1" font-weight="bold" text-anchor="middle">10kΩ (Pil A0 Sensör)</text>
+  </g>
+
+  <g id="resistor-a1" transform="translate(610, 515)" filter="url(#shadow)">
+    <rect width="120" height="34" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" />
+    <!-- Bacaklar -->
+    <line x1="0" y1="17" x2="20" y2="17" stroke="#64748b" stroke-width="2" />
+    <line x1="100" y1="17" x2="120" y2="17" stroke="#64748b" stroke-width="2" />
+    <!-- Gövde -->
+    <rect x="20" y="8" width="80" height="18" rx="4" fill="#a7f3d0" stroke="#059669" stroke-width="1" />
+    <!-- Renk Bantları (10k: Kahve, Siyah, Turuncu, Altın) -->
+    <rect x="35" y="8" width="4" height="18" fill="#78350f" />
+    <rect x="45" y="8" width="4" height="18" fill="#000000" />
+    <rect x="55" y="8" width="4" height="18" fill="#ea580c" />
+    <rect x="80" y="8" width="4" height="18" fill="#eab308" />
+    <text x="60" y="-5" font-family="Segoe UI, Arial" font-size="10" fill="#047857" font-weight="bold" text-anchor="middle">10kΩ (Şarj A1 Sensör)</text>
+  </g>
+
+  <!-- 8. D4184 MOSFET -->
+  <g id="mosfet" transform="translate(770, 310)" filter="url(#shadow)">
     <rect width="250" height="240" rx="8" fill="url(#mosfet-grad)" />
     <rect x="80" y="80" width="50" height="40" fill="#1e293b" stroke="#334155" stroke-width="2" />
     <rect x="80" y="130" width="50" height="40" fill="#1e293b" stroke="#334155" stroke-width="2" />
@@ -249,104 +292,106 @@
     <text x="20" y="220" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold">D4184 MOSFET MODÜLÜ</text>
   </g>
 
-  <!-- 8. HOPARLÖR -->
-  <g id="speaker" transform="translate(760, 60)" filter="url(#shadow)">
-    <rect width="180" height="150" rx="8" fill="url(#speaker-grad)" />
-    <circle cx="90" cy="70" r="45" fill="#111827" stroke="#374151" stroke-width="3" />
-    <circle cx="90" cy="70" r="20" fill="#374151" />
-    <circle cx="90" cy="70" r="10" fill="#e2e8f0" />
-    <g transform="translate(10, 110)">
+  <!-- 9. HOPARLÖR -->
+  <g id="speaker" transform="translate(760, 50)" filter="url(#shadow)">
+    <rect width="190" height="150" rx="8" fill="url(#speaker-grad)" />
+    <circle cx="95" cy="70" r="45" fill="#111827" stroke="#374151" stroke-width="3" />
+    <circle cx="95" cy="70" r="20" fill="#374151" />
+    <circle cx="95" cy="70" r="10" fill="#e2e8f0" />
+    <g transform="translate(15, 110)">
       <circle cx="10" cy="20" r="5" fill="#3b82f6" />
       <circle cx="40" cy="20" r="5" fill="#ef4444" />
       <text x="10" y="10" font-family="Segoe UI, Arial" font-size="10" fill="#3b82f6" text-anchor="middle" font-weight="bold">IN (-)</text>
       <text x="40" y="10" font-family="Segoe UI, Arial" font-size="10" fill="#ef4444" text-anchor="middle" font-weight="bold">IN (+)</text>
     </g>
-    <text x="90" y="138" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">4 Ohm 5W HOPARLÖR</text>
+    <text x="95" y="138" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">4 Ohm 5W HOPARLÖR</text>
   </g>
 
-  <!-- 9. TEK DİRENÇ (10 Ohm 2W) [GÜNCELLENDİ: 2W] -->
-  <g id="resistors" transform="translate(735, 230)" filter="url(#shadow)">
-    <rect width="130" height="40" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-    <rect x="25" y="14" width="80" height="12" rx="4" fill="#d97706" stroke="#b45309" />
-    <rect x="40" y="14" width="4" height="12" fill="#78350f" />
-    <rect x="50" y="14" width="4" height="12" fill="#000000" />
-    <rect x="60" y="14" width="4" height="12" fill="#000000" />
-    <rect x="85" y="14" width="4" height="12" fill="#f59e0b" />
-    <text x="65" y="-6" font-family="Segoe UI, Arial" font-size="11" fill="#1e293b" font-weight="bold" text-anchor="middle">10Ω 2W KORUMA DİRENCİ</text>
-  </g>
-
-  <!-- 10. A0 BATARYA OKUMA KORUMA DİRENCİ (10k) [EKLENDİ] -->
-  <g id="res-a0" transform="translate(565, 500)" filter="url(#shadow)">
-    <rect width="50" height="24" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" />
-    <rect x="10" y="7" width="30" height="10" rx="2" fill="#3b82f6" />
-    <text x="25" y="-4" font-family="Segoe UI, Arial" font-size="9" fill="#1e293b" font-weight="bold" text-anchor="middle">10k Ω</text>
-  </g>
-
-  <!-- 11. A1 ŞARJ ALGILAMA KORUMA DİRENCİ (10k) [EKLENDİ] -->
-  <g id="res-a1" transform="translate(565, 545)" filter="url(#shadow)">
-    <rect width="50" height="24" rx="4" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" />
-    <rect x="10" y="7" width="30" height="10" rx="2" fill="#10b981" />
-    <text x="25" y="-4" font-family="Segoe UI, Arial" font-size="9" fill="#1e293b" font-weight="bold" text-anchor="middle">10k Ω</text>
+  <!-- 10. TEK DİRENÇ (10 Ohm 2W) -->
+  <g id="resistors" transform="translate(760, 220)" filter="url(#shadow)">
+    <rect width="140" height="45" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+    <!-- Bacaklar -->
+    <line x1="0" y1="22.5" x2="25" y2="22.5" stroke="#64748b" stroke-width="2.5" />
+    <line x1="115" y1="22.5" x2="140" y2="22.5" stroke="#64748b" stroke-width="2.5" />
+    <!-- Gövde -->
+    <rect x="25" y="14" width="90" height="17" rx="4" fill="#d97706" stroke="#b45309" />
+    <rect x="42" y="14" width="5" height="17" fill="#78350f" />
+    <rect x="54" y="14" width="5" height="17" fill="#000000" />
+    <rect x="66" y="14" width="5" height="17" fill="#000000" />
+    <rect x="95" y="14" width="5" height="17" fill="#f59e0b" />
+    <text x="70" y="-5" font-family="Segoe UI, Arial" font-size="11" fill="#1e293b" font-weight="bold" text-anchor="middle">10Ω 2W KORUMA DİRENCİ</text>
   </g>
 
   <!-- BAĞLANTI YOLLARI (KABLOLAR) -->
   <g id="wires" stroke-linecap="round" stroke-linejoin="round" filter="url(#wire-glow)">
     <!-- 5V GÜÇ BARA SİSTEMİ (Kırmızı #ef4444) -->
-    <!-- LX-LCBST VO+ (500, 635) -> Sürgülü Anahtar Girişi (485, 437.5) -->
-    <path d="M 500,635 L 500,437.5 L 485,437.5" fill="none" stroke="#ef4444" stroke-width="3" />
-    <!-- Sürgülü Anahtar Çıkışı (525, 437.5) -> Ortak 5V Rayı (320, 437.5) -->
-    <path d="M 525,437.5 L 320,437.5 L 320,150" fill="none" stroke="#ef4444" stroke-width="3" />
-    <path d="M 270,150 L 320,150" fill="none" stroke="#ef4444" stroke-width="3" />
-    <path d="M 370,250 L 320,250" fill="none" stroke="#ef4444" stroke-width="3" />
-    <path d="M 870,495 L 890,495 L 890,437.5 L 525,437.5" fill="none" stroke="#ef4444" stroke-width="3" />
+    <!-- LX-LCBST VO+ (500, 635) -> Sürgülü Anahtar 1. Bacak (625, 630) -->
+    <path d="M 500,635 L 500,650 L 625,650 L 625,630" fill="none" stroke="#ef4444" stroke-width="3" />
+    <!-- Sürgülü Anahtar 2. Bacak (715, 630) -> Ortak 5V Rayı (740, 630) -->
+    <path d="M 715,630 L 740,630 L 740,150 L 300,150" fill="none" stroke="#ef4444" stroke-width="3" />
+    <path d="M 260,150 L 300,150" fill="none" stroke="#ef4444" stroke-width="3" />
+    <path d="M 340,250 L 300,250" fill="none" stroke="#ef4444" stroke-width="3" />
+    <path d="M 980,495 L 1040,495 L 1040,630 L 740,630" fill="none" stroke="#ef4444" stroke-width="3" />
 
     <!-- GND ŞASİ BARA SİSTEMİ (Koyu Gri #374151) -->
-    <path d="M 300,65 L 300,630" fill="none" stroke="#374151" stroke-width="3.5" />
-    <path d="M 300,65 L 550,65 L 550,110" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 270,170 L 300,170" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 270,490 L 300,490" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 270,600 L 300,600" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 285,65 L 285,640" fill="none" stroke="#374151" stroke-width="3.5" />
+    <path d="M 285,65 L 520,65 L 520,100" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 260,170 L 285,170" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 260,490 L 285,490" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 260,600 L 285,600" fill="none" stroke="#374151" stroke-width="3" />
     
-    <!-- LX-LCBST IN- -> Ortak GND Rayı -->
-    <path d="M 355,610 L 300,610" fill="none" stroke="#374151" stroke-width="3" />
-    <circle cx="300" cy="610" r="5" fill="#374151" />
+    <!-- LX-LCBST IN- (355, 610) -> Ortak GND Rayı (285, 610) -->
+    <path d="M 355,610 L 285,610" fill="none" stroke="#374151" stroke-width="3" />
+    <circle cx="285" cy="610" r="5" fill="#374151" />
     <circle cx="355" cy="610" r="4" fill="#374151" />
 
     <!-- LX-LCBST VO- -> Ortak GND Rayı -->
-    <path d="M 540,635 L 540,470 L 300,470" fill="none" stroke="#374151" stroke-width="3" />
-    <circle cx="300" cy="470" r="5" fill="#374151" />
+    <path d="M 540,635 L 540,470 L 285,470" fill="none" stroke="#374151" stroke-width="3" />
+    <circle cx="285" cy="470" r="5" fill="#374151" />
 
-    <path d="M 640,390 L 570,390 L 570,470 L 300,470" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 870,465 L 910,465 L 910,470 L 540,470" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 770,390 L 570,390 L 570,470 L 285,470" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 980,465 L 1050,465 L 1050,655 L 540,655 L 540,635" fill="none" stroke="#374151" stroke-width="3" />
 
     <!-- SİNYAL KABLOLARI -->
-    <path d="M 270,460 L 290,460 L 290,280 L 370,280" fill="none" stroke="#3b82f6" stroke-width="2.5" />
-    <path d="M 270,520 L 280,520 L 280,295 L 370,295" fill="none" stroke="#10b981" stroke-width="2.5" />
-    <path d="M 270,570 L 275,570 L 275,310 L 370,310" fill="none" stroke="#f59e0b" stroke-width="2.5" />
+    <!-- EC11 Out A -> Arduino D2 -->
+    <path d="M 260,460 L 275,460 L 275,280 L 340,280" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+    <!-- EC11 Out B -> Arduino D3 -->
+    <path d="M 260,520 L 270,520 L 270,295 L 340,295" fill="none" stroke="#10b981" stroke-width="2.5" />
+    <!-- EC11 Switch -> Arduino D4 -->
+    <path d="M 260,570 L 265,570 L 265,310 L 340,310" fill="none" stroke="#f59e0b" stroke-width="2.5" />
     
-    <path d="M 270,110 L 340,110 L 340,325 L 370,325" fill="none" stroke="#8b5cf6" stroke-width="2.5" />
-    <path d="M 270,130 L 350,130 L 350,340 L 370,340" fill="none" stroke="#ec4899" stroke-width="2.5" />
+    <!-- TM1637 CLK -> Arduino D5 -->
+    <path d="M 260,110 L 320,110 L 320,325 L 340,325" fill="none" stroke="#8b5cf6" stroke-width="2.5" />
+    <!-- TM1637 DIO -> Arduino D6 -->
+    <path d="M 260,130 L 330,130 L 330,340 L 340,340" fill="none" stroke="#ec4899" stroke-width="2.5" />
     
-    <path d="M 640,360 L 580,360 L 580,440 L 350,440 L 350,385 L 370,385" fill="none" stroke="#06b6d4" stroke-width="2.5" />
+    <!-- MOSFET SIG -> Arduino D9 -->
+    <path d="M 770,360 L 580,360 L 580,440 L 325,440 L 325,385 L 340,385" fill="none" stroke="#06b6d4" stroke-width="2.5" />
 
     <!-- PIL & BATARYA OKUMA KABLOLARI -->
-    <path d="M 390,680 L 390,635" fill="none" stroke="#16a34a" stroke-width="3" />
-    <path d="M 430,680 L 430,635" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 390,690 L 390,635" fill="none" stroke="#16a34a" stroke-width="3" />
+    <path d="M 430,690 L 430,635" fill="none" stroke="#374151" stroke-width="3" />
     
-    <!-- LX-LCBST B+ -> 10k Direnç -> Arduino A0 (Pil Voltaj Okuma - Mavi #3b82f6) -->
-    <path d="M 390,635 L 390,665 L 590,665 L 590,524" fill="none" stroke="#3b82f6" stroke-width="2.5" />
-    <path d="M 590,500 L 590,374 L 535,374" fill="none" stroke="#3b82f6" stroke-width="2.5" />
-    <circle cx="535" cy="374" r="4" fill="#3b82f6" />
+    <!-- LX-LCBST B+ -> 10k Direnç (R_A0) -> Arduino A0 (Pil Voltaj Okuma - Mavi #3b82f6) -->
+    <path d="M 390,635 L 390,675 L 590,675 L 590,467 L 610,467" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+    <path d="M 730,467 L 755,467 L 755,360 L 505,360" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+    <circle cx="505" cy="360" r="4" fill="#3b82f6" />
 
-    <!-- LX-LCBST IN+ (Type-C 5V) -> 10k Direnç -> Arduino A1 (Şarj Algılama - Yeşil #10b981) -->
-    <path d="M 355,520 L 315,520 L 315,675 L 615,675 L 615,569" fill="none" stroke="#10b981" stroke-width="2.5" />
-    <path d="M 615,545 L 615,389 L 535,389" fill="none" stroke="#10b981" stroke-width="2.5" />
-    <circle cx="535" cy="389" r="4" fill="#10b981" />
+    <!-- LX-LCBST IN+ (Type-C 5V) -> 10k Direnç (R_A1) -> Arduino A1 (Şarj Algılama - Yeşil #10b981) -->
+    <path d="M 355,520 L 310,520 L 310,685 L 600,685 L 600,532 L 610,532" fill="none" stroke="#10b981" stroke-width="2.5" />
+    <path d="M 730,532 L 765,532 L 765,375 L 505,375" fill="none" stroke="#10b981" stroke-width="2.5" />
+    <circle cx="505" cy="375" r="4" fill="#10b981" />
 
     <!-- HOPARLÖR GÜÇ HATLARI -->
-    <path d="M 870,375 L 930,375 L 930,170 L 800,170 L 800,190" fill="none" stroke="#ef4444" stroke-width="3" />
-    <path d="M 870,345 L 870,300 L 735,300 L 735,250" fill="none" stroke="#3b82f6" stroke-width="3" />
-    <path d="M 865,250 L 865,210 L 770,210 L 770,190" fill="none" stroke="#3b82f6" stroke-width="3" />
-    <circle cx="770" cy="190" r="4" fill="#3b82f6" />
+    <!-- MOSFET Çıkış+ -> Hoparlör IN (+) (Kırmızı #ef4444) -->
+    <path d="M 980,375 L 1030,375 L 1030,160 L 815,160 L 815,180" fill="none" stroke="#ef4444" stroke-width="3" />
+    <circle cx="815" cy="180" r="4" fill="#ef4444" />
+    
+    <!-- MOSFET Çıkış- -> 10 Ohm 2W Direnç Sağ Bacak (Mavi #3b82f6) -->
+    <path d="M 980,345 L 980,242.5 L 900,242.5" fill="none" stroke="#3b82f6" stroke-width="3" />
+    
+    <!-- 10 Ohm 2W Direnç Sol Bacak -> Hoparlör IN (-) Girişi (MAVİ #3b82f6) -->
+    <path d="M 760,242.5 L 785,242.5 L 785,180" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <circle cx="785" cy="180" r="4" fill="#3b82f6" />
   </g>
 </svg>
