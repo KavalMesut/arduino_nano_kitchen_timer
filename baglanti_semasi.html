@@ -12,8 +12,6 @@
             --text-muted: #4b5563;
             --bg-light: #f3f4f6;
             --border-color: #e5e7eb;
-            --warning-bg: #fffbebf8;
-            --warning-border: #f59e0b;
         }
 
         body {
@@ -26,7 +24,7 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             padding: 40px;
@@ -60,6 +58,45 @@
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 8px;
             margin-top: 30px;
+        }
+
+        .svg-container {
+            width: 100%;
+            margin: 25px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            background: #f8fafc;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .gallery-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+
+        .gallery-card img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .gallery-card h4 {
+            margin: 10px 0 5px 0;
+            font-size: 14px;
+            color: var(--primary-dark);
         }
 
         .alert {
@@ -140,56 +177,6 @@
             border-top: 1px solid var(--border-color);
             padding-top: 20px;
         }
-
-        @media print {
-            body {
-                background-color: white;
-                color: black;
-                padding: 0;
-                font-size: 12pt;
-            }
-
-            .container {
-                box-shadow: none;
-                border: none;
-                padding: 0;
-                max-width: 100%;
-            }
-
-            header {
-                border-bottom: 2px solid black;
-            }
-
-            h1 {
-                color: black;
-            }
-
-            h2 {
-                color: black;
-                border-bottom: 1px solid black;
-                page-break-after: avoid;
-            }
-
-            .alert {
-                background-color: #fff;
-                border: 1px solid #000;
-                border-left: 4px solid #000;
-                page-break-inside: avoid;
-            }
-
-            table {
-                page-break-inside: auto;
-            }
-
-            tr {
-                page-break-inside: avoid;
-                page-break-after: auto;
-            }
-
-            th, td {
-                border-bottom: 1px solid #000 !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -197,18 +184,299 @@
 <div class="container">
     <header>
         <h1>⏳ Mutfak Geri Sayım Alarmı</h1>
-        <p class="meta">18650 Li-ion Şarjlı Sürüm — Donanım & Bağlantı Kılavuzu</p>
+        <p class="meta">18650 Li-ion Şarjlı Sürüm — Donanım & Görsel Bağlantı Kılavuzu</p>
     </header>
+
+    <!-- İNLİNE GÖRSEL DEVRE ŞEMASI (SVG) -->
+    <h2>📐 Görsel Donanım Devre Şeması</h2>
+    <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" width="100%" height="100%">
+          <defs>
+            <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+              <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.1" />
+            </filter>
+            <filter id="wire-glow" x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="1" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            
+            <linearGradient id="arduino-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00878F" />
+              <stop offset="100%" stop-color="#005A60" />
+            </linearGradient>
+            <linearGradient id="display-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1e293b" />
+              <stop offset="100%" stop-color="#0f172a" />
+            </linearGradient>
+            <linearGradient id="encoder-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3b82f6" />
+              <stop offset="100%" stop-color="#1d4ed8" />
+            </linearGradient>
+            <linearGradient id="mosfet-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#065f46" />
+              <stop offset="100%" stop-color="#064e3b" />
+            </linearGradient>
+            <linearGradient id="speaker-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4b5563" />
+              <stop offset="100%" stop-color="#1f2937" />
+            </linearGradient>
+            <linearGradient id="battery-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#16a34a" />
+              <stop offset="100%" stop-color="#15803d" />
+            </linearGradient>
+            <linearGradient id="lxlcbst-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#1e293b" />
+              <stop offset="100%" stop-color="#0f172a" />
+            </linearGradient>
+            
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="0.5" />
+            </pattern>
+          </defs>
+
+          <rect width="100%" height="100%" fill="#f8fafc" />
+          <rect width="100%" height="100%" fill="url(#grid)" />
+
+          <g transform="translate(40, 26)">
+            <text x="0" y="0" font-family="Segoe UI, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#1e293b">MUTFAK GERİ SAYIM ALARMI (18650 ŞARJLI SÜRÜM)</text>
+            <text x="0" y="18" font-family="Segoe UI, Helvetica, sans-serif" font-size="13" fill="#64748b">Arduino Nano, 18650 Pil, LX-LCBST Şarj Yükseltici, EC11 Enkoder &amp; D4184 MOSFET Şeması</text>
+          </g>
+
+          <!-- 1. TM1637 EKRAN -->
+          <g id="tm1637" transform="translate(60, 80)" filter="url(#shadow)">
+            <rect width="210" height="150" rx="8" fill="url(#display-grad)" />
+            <rect x="25" y="20" width="160" height="60" rx="4" fill="#020617" stroke="#1e293b" stroke-width="2" />
+            <text x="105" y="60" font-family="Courier New, monospace" font-size="36" font-weight="bold" fill="#ef4444" text-anchor="middle" letter-spacing="4">b-85</text>
+            <g transform="translate(180, 10)">
+              <circle cx="30" cy="20" r="5" fill="#facc15" />
+              <circle cx="30" cy="40" r="5" fill="#facc15" />
+              <circle cx="30" cy="60" r="5" fill="#facc15" />
+              <circle cx="30" cy="80" r="5" fill="#facc15" />
+              <text x="18" y="24" font-family="Segoe UI, Arial" font-size="11" fill="#94a3b8" text-anchor="end">CLK</text>
+              <text x="18" y="44" font-family="Segoe UI, Arial" font-size="11" fill="#94a3b8" text-anchor="end">DIO</text>
+              <text x="18" y="64" font-family="Segoe UI, Arial" font-size="11" fill="#ef4444" text-anchor="end" font-weight="bold">VCC</text>
+              <text x="18" y="84" font-family="Segoe UI, Arial" font-size="11" fill="#64748b" text-anchor="end" font-weight="bold">GND</text>
+            </g>
+            <text x="15" y="135" font-family="Segoe UI, Arial" font-size="12" fill="#64748b" font-weight="bold">TM1637 GÖSTERGE</text>
+          </g>
+
+          <!-- 2. ARDUINO NANO -->
+          <g id="arduino-nano" transform="translate(370, 80)" filter="url(#shadow)">
+            <rect width="180" height="370" rx="8" fill="url(#arduino-grad)" />
+            <rect x="65" y="-10" width="50" height="30" rx="3" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
+            <text x="90" y="10" font-family="Segoe UI, Arial" font-size="10" fill="#475569" text-anchor="middle" font-weight="bold">USB</text>
+            <rect x="75" y="60" width="30" height="30" rx="4" fill="#1e293b" />
+            <circle cx="90" cy="75" r="7" fill="#ef4444" />
+            <rect x="55" y="140" width="70" height="70" rx="4" fill="#1e293b" />
+            <text x="90" y="180" font-family="Segoe UI, Arial" font-size="10" fill="#94a3b8" text-anchor="middle">ATmega328P</text>
+            <g transform="translate(0, 30)">
+              <rect x="0" y="140" width="15" height="8" fill="#facc15" />
+              <text x="22" y="147" font-family="Segoe UI, Arial" font-size="11" fill="#ef4444" font-weight="bold">5V</text>
+              <rect x="0" y="170" width="15" height="8" fill="#facc15" />
+              <text x="22" y="177" font-family="Segoe UI, Arial" font-size="11" fill="#fff">D2 (CLK)</text>
+              <rect x="0" y="185" width="15" height="8" fill="#facc15" />
+              <text x="22" y="192" font-family="Segoe UI, Arial" font-size="11" fill="#fff">D3 (DT)</text>
+              <rect x="0" y="200" width="15" height="8" fill="#facc15" />
+              <text x="22" y="207" font-family="Segoe UI, Arial" font-size="11" fill="#fff">D4 (SW)</text>
+              <rect x="0" y="215" width="15" height="8" fill="#facc15" />
+              <text x="22" y="222" font-family="Segoe UI, Arial" font-size="11" fill="#fff">D5 (CLK)</text>
+              <rect x="0" y="230" width="15" height="8" fill="#facc15" />
+              <text x="22" y="237" font-family="Segoe UI, Arial" font-size="11" fill="#fff">D6 (DIO)</text>
+              <rect x="0" y="275" width="15" height="8" fill="#facc15" />
+              <text x="22" y="282" font-family="Segoe UI, Arial" font-size="11" fill="#fff">D9 (PWM)</text>
+            </g>
+            <g transform="translate(165, 30)">
+              <rect x="0" y="0" width="15" height="8" fill="#facc15" />
+              <text x="-8" y="8" font-family="Segoe UI, Arial" font-size="11" fill="#64748b" font-weight="bold" text-anchor="end">GND</text>
+              <rect x="0" y="260" width="15" height="8" fill="#facc15" />
+              <text x="-8" y="267" font-family="Segoe UI, Arial" font-size="11" fill="#3b82f6" font-weight="bold" text-anchor="end">A0 (Pil V)</text>
+              <rect x="0" y="275" width="15" height="8" fill="#facc15" />
+              <text x="-8" y="282" font-family="Segoe UI, Arial" font-size="11" fill="#10b981" font-weight="bold" text-anchor="end">A1 (Şarj)</text>
+            </g>
+            <text x="90" y="350" font-family="Segoe UI, Arial" font-size="14" fill="#fff" font-weight="bold" text-anchor="middle">ARDUINO NANO</text>
+          </g>
+
+          <!-- 3. EC11 ENKODER -->
+          <g id="encoder" transform="translate(60, 420)" filter="url(#shadow)">
+            <rect width="210" height="230" rx="8" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
+            <rect x="20" y="20" width="170" height="130" rx="6" fill="#1e3a8a" />
+            <circle cx="105" cy="85" r="30" fill="#94a3b8" stroke="#64748b" stroke-width="4" />
+            <circle cx="105" cy="85" r="10" fill="#475569" />
+            <rect x="100" y="55" width="10" height="25" fill="#475569" />
+            <g transform="translate(190, 20)">
+              <line x1="0" y1="20" x2="20" y2="20" stroke="#475569" stroke-width="4" />
+              <line x1="0" y1="50" x2="20" y2="50" stroke="#475569" stroke-width="4" />
+              <line x1="0" y1="80" x2="20" y2="80" stroke="#475569" stroke-width="4" />
+              <text x="-8" y="24" font-family="Segoe UI, Arial" font-size="11" fill="#fff" font-weight="bold" text-anchor="end">Out A (Üst)</text>
+              <text x="-8" y="54" font-family="Segoe UI, Arial" font-size="11" fill="#f87171" font-weight="bold" text-anchor="end">GND (Orta)</text>
+              <text x="-8" y="84" font-family="Segoe UI, Arial" font-size="11" fill="#fff" font-weight="bold" text-anchor="end">Out B (Alt)</text>
+            </g>
+            <g transform="translate(190, 130)">
+              <line x1="0" y1="20" x2="20" y2="20" stroke="#475569" stroke-width="4" />
+              <line x1="0" y1="50" x2="20" y2="50" stroke="#475569" stroke-width="4" />
+              <text x="-8" y="24" font-family="Segoe UI, Arial" font-size="11" fill="#fff" font-weight="bold" text-anchor="end">Switch (Sol)</text>
+              <text x="-8" y="54" font-family="Segoe UI, Arial" font-size="11" fill="#f87171" font-weight="bold" text-anchor="end">GND (Sağ)</text>
+            </g>
+            <text x="15" y="215" font-family="Segoe UI, Arial" font-size="12" fill="#1e293b" font-weight="bold">EC11 BARE ENCODER</text>
+          </g>
+
+          <!-- 4. LX-LCBST ŞARJ MODÜLÜ -->
+          <g id="lxlcbst" transform="translate(340, 480)" filter="url(#shadow)">
+            <rect width="240" height="170" rx="8" fill="url(#lxlcbst-grad)" />
+            <rect x="-10" y="65" width="20" height="40" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
+            <text x="25" y="88" font-family="Segoe UI, Arial" font-size="10" fill="#94a3b8" font-weight="bold">Type-C 5V</text>
+            <rect x="90" y="30" width="40" height="40" rx="4" fill="#334155" />
+            <text x="110" y="55" font-family="Arial" font-size="9" fill="#cbd5e1" text-anchor="middle">H2R0</text>
+            <circle cx="160" cy="50" r="10" fill="#2563eb" />
+            <line x1="154" y1="50" x2="166" y2="50" stroke="#fff" stroke-width="2" />
+            <circle cx="50" cy="155" r="5" fill="#16a34a" />
+            <circle cx="90" cy="155" r="5" fill="#16a34a" />
+            <text x="50" y="145" font-family="Segoe UI, Arial" font-size="10" fill="#16a34a" text-anchor="middle" font-weight="bold">B+</text>
+            <text x="90" y="145" font-family="Segoe UI, Arial" font-size="10" fill="#16a34a" text-anchor="middle" font-weight="bold">B-</text>
+            <circle cx="160" cy="155" r="5" fill="#ef4444" />
+            <circle cx="200" cy="155" r="5" fill="#64748b" />
+            <text x="160" y="145" font-family="Segoe UI, Arial" font-size="10" fill="#ef4444" text-anchor="middle" font-weight="bold">VO+ (5V)</text>
+            <text x="200" y="145" font-family="Segoe UI, Arial" font-size="10" fill="#64748b" text-anchor="middle" font-weight="bold">VO- (GND)</text>
+            <text x="120" y="165" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">LX-LCBST ŞARJ &amp; STEP-UP</text>
+          </g>
+
+          <!-- 5. 18650 PİL -->
+          <g id="battery" transform="translate(340, 680)" filter="url(#shadow)">
+            <rect width="240" height="60" rx="8" fill="url(#battery-grad)" />
+            <rect x="235" y="18" width="15" height="24" rx="3" fill="#cbd5e1" />
+            <text x="120" y="37" font-family="Segoe UI, Arial" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">18650 Lİ-İON PİL (3.7V 2200mAh)</text>
+          </g>
+
+          <!-- 6. D4184 MOSFET -->
+          <g id="mosfet" transform="translate(640, 310)" filter="url(#shadow)">
+            <rect width="250" height="240" rx="8" fill="url(#mosfet-grad)" />
+            <rect x="80" y="80" width="50" height="40" fill="#1e293b" stroke="#334155" stroke-width="2" />
+            <rect x="80" y="130" width="50" height="40" fill="#1e293b" stroke="#334155" stroke-width="2" />
+            <text x="105" y="105" font-family="Arial" font-size="9" fill="#94a3b8" text-anchor="middle">D4184</text>
+            <text x="105" y="155" font-family="Arial" font-size="9" fill="#94a3b8" text-anchor="middle">D4184</text>
+            <g transform="translate(0, 30)">
+              <circle cx="0" cy="20" r="6" fill="#facc15" />
+              <circle cx="0" cy="50" r="6" fill="#facc15" />
+              <text x="12" y="24" font-family="Segoe UI, Arial" font-size="11" fill="#fff" font-weight="bold">PWM +</text>
+              <text x="12" y="54" font-family="Segoe UI, Arial" font-size="11" fill="#94a3b8" font-weight="bold">GND</text>
+            </g>
+            <g transform="translate(210, 20)">
+              <rect width="40" height="60" rx="4" fill="#2563eb" />
+              <circle cx="20" cy="15" r="8" fill="#475569" stroke="#cbd5e1" stroke-width="2" />
+              <circle cx="20" cy="45" r="8" fill="#475569" stroke="#cbd5e1" stroke-width="2" />
+              <line x1="12" y1="15" x2="28" y2="15" stroke="#cbd5e1" stroke-width="2" />
+              <line x1="12" y1="45" x2="28" y2="45" stroke="#cbd5e1" stroke-width="2" />
+              <text x="-10" y="20" font-family="Segoe UI, Arial" font-size="11" fill="#fff" text-anchor="end" font-weight="bold">Çıkış- (Sol)</text>
+              <text x="-10" y="50" font-family="Segoe UI, Arial" font-size="11" fill="#ef4444" text-anchor="end" font-weight="bold">Çıkış+ (Sağ)</text>
+            </g>
+            <g transform="translate(210, 140)">
+              <rect width="40" height="60" rx="4" fill="#2563eb" />
+              <circle cx="20" cy="15" r="8" fill="#475569" stroke="#cbd5e1" stroke-width="2" />
+              <circle cx="20" cy="45" r="8" fill="#475569" stroke="#cbd5e1" stroke-width="2" />
+              <line x1="12" y1="15" x2="28" y2="15" stroke="#cbd5e1" stroke-width="2" />
+              <line x1="12" y1="45" x2="28" y2="45" stroke="#cbd5e1" stroke-width="2" />
+              <text x="-10" y="20" font-family="Segoe UI, Arial" font-size="11" fill="#fff" text-anchor="end" font-weight="bold">DC- (Sol)</text>
+              <text x="-10" y="50" font-family="Segoe UI, Arial" font-size="11" fill="#ef4444" text-anchor="end" font-weight="bold">DC+ (Sağ)</text>
+            </g>
+            <text x="20" y="220" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold">D4184 MOSFET MODÜLÜ</text>
+          </g>
+
+          <!-- 7. HOPARLÖR -->
+          <g id="speaker" transform="translate(760, 60)" filter="url(#shadow)">
+            <rect width="180" height="150" rx="8" fill="url(#speaker-grad)" />
+            <circle cx="90" cy="70" r="45" fill="#111827" stroke="#374151" stroke-width="3" />
+            <circle cx="90" cy="70" r="20" fill="#374151" />
+            <circle cx="90" cy="70" r="10" fill="#e2e8f0" />
+            <g transform="translate(10, 110)">
+              <circle cx="10" cy="20" r="5" fill="#facc15" />
+              <circle cx="40" cy="20" r="5" fill="#ef4444" />
+              <text x="10" y="10" font-family="Segoe UI, Arial" font-size="10" fill="#94a3b8" text-anchor="middle">GND (-)</text>
+              <text x="40" y="10" font-family="Segoe UI, Arial" font-size="10" fill="#ef4444" text-anchor="middle" font-weight="bold">IN (+)</text>
+            </g>
+            <text x="90" y="138" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">4 Ohm 5W HOPARLÖR</text>
+          </g>
+
+          <!-- 8. DİRENÇ BLOĞU -->
+          <g id="resistors" transform="translate(735, 230)" filter="url(#shadow)">
+            <rect width="130" height="50" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+            <rect x="15" y="8" width="100" height="6" rx="2" fill="#cbd5e1" stroke="#64748b" />
+            <rect x="15" y="18" width="100" height="6" rx="2" fill="#cbd5e1" stroke="#64748b" />
+            <rect x="15" y="28" width="100" height="6" rx="2" fill="#cbd5e1" stroke="#64748b" />
+            <rect x="15" y="38" width="100" height="6" rx="2" fill="#cbd5e1" stroke="#64748b" />
+            <rect x="35" y="8" width="4" height="36" fill="#eab308" />
+            <rect x="45" y="8" width="4" height="36" fill="#a855f7" />
+            <rect x="55" y="8" width="4" height="36" fill="#000" />
+            <rect x="85" y="8" width="4" height="36" fill="#d97706" />
+            <text x="65" y="-6" font-family="Segoe UI, Arial" font-size="10" fill="#475569" font-weight="bold" text-anchor="middle">4x 47Ω PARALEL (1W)</text>
+          </g>
+
+          <!-- KABLOLAR -->
+          <g id="wires" stroke-linecap="round" stroke-linejoin="round" filter="url(#wire-glow)">
+            <path d="M 500,635 L 500,450 L 320,450 L 320,150" fill="none" stroke="#ef4444" stroke-width="3" />
+            <path d="M 270,150 L 320,150" fill="none" stroke="#ef4444" stroke-width="3" />
+            <path d="M 370,250 L 320,250" fill="none" stroke="#ef4444" stroke-width="3" />
+            <path d="M 870,495 L 890,495 L 890,450 L 500,450" fill="none" stroke="#ef4444" stroke-width="3" />
+
+            <path d="M 540,635 L 540,470 L 300,470" fill="none" stroke="#374151" stroke-width="3" />
+            <path d="M 300,600 L 300,65 L 550,65 L 550,110" fill="none" stroke="#374151" stroke-width="3" />
+            <path d="M 270,170 L 300,170" fill="none" stroke="#374151" stroke-width="3" />
+            <path d="M 270,490 L 300,490" fill="none" stroke="#374151" stroke-width="3" />
+            <path d="M 270,600 L 300,600" fill="none" stroke="#374151" stroke-width="3" />
+            <path d="M 640,390 L 570,390 L 570,470 L 300,470" fill="none" stroke="#374151" stroke-width="3" />
+            <path d="M 870,465 L 910,465 L 910,470 L 540,470" fill="none" stroke="#374151" stroke-width="3" />
+
+            <path d="M 270,460 L 290,460 L 290,280 L 370,280" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+            <path d="M 270,520 L 280,520 L 280,295 L 370,295" fill="none" stroke="#10b981" stroke-width="2.5" />
+            <path d="M 270,570 L 275,570 L 275,310 L 370,310" fill="none" stroke="#f59e0b" stroke-width="2.5" />
+            
+            <path d="M 270,110 L 340,110 L 340,325 L 370,325" fill="none" stroke="#8b5cf6" stroke-width="2.5" />
+            <path d="M 270,130 L 350,130 L 350,340 L 370,340" fill="none" stroke="#ec4899" stroke-width="2.5" />
+            
+            <path d="M 640,360 L 580,360 L 580,440 L 350,440 L 350,385 L 370,385" fill="none" stroke="#06b6d4" stroke-width="2.5" />
+
+            <path d="M 390,680 L 390,635" fill="none" stroke="#16a34a" stroke-width="3" />
+            <path d="M 430,680 L 430,635" fill="none" stroke="#374151" stroke-width="3" />
+            <path d="M 390,635 L 390,660 L 600,660 L 600,290 L 545,290" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+
+            <path d="M 870,375 L 930,375 L 930,170 L 800,170 L 800,190" fill="none" stroke="#ef4444" stroke-width="3" />
+            <path d="M 870,345 L 870,300 L 735,300 L 735,255" fill="none" stroke="#3b82f6" stroke-width="3" />
+            <path d="M 865,255 L 865,210 L 770,210 L 770,190" fill="none" stroke="#374151" stroke-width="3" />
+          </g>
+        </svg>
+    </div>
+
+    <!-- BİLEŞENLER GERÇEK FOTOĞRAF GALERİSİ -->
+    <h2>📷 Kullanılan Bileşenler ve Gerçek Görseller</h2>
+    <div class="gallery">
+        <div class="gallery-card">
+            <img src="TP4056_dc_dc_voltaj_ayarli.png" alt="LX-LCBST Modülü Ön Yüzü">
+            <h4>LX-LCBST Şarj Modülü (Ön Yüz)</h4>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 0;">Trimpot, Type-C soket ve boyutlar</p>
+        </div>
+        <div class="gallery-card">
+            <img src="TP4056_dc_dc_voltaj_ayarli_arka_yuz.png" alt="LX-LCBST Modülü Arka Yüzü">
+            <h4>LX-LCBST Şarj Modülü (Arka Yüz)</h4>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 0;">B+, B-, VO+, VO-, IN+ pinleri</p>
+        </div>
+        <div class="gallery-card">
+            <img src="encoder.png" alt="EC11 Enkoder">
+            <h4>EC11 Döner Enkoder</h4>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 0;">3'lü döner ve 2'li buton pin yapısı</p>
+        </div>
+        <div class="gallery-card">
+            <img src="mosfet.jpg" alt="D4184 MOSFET Sürücü">
+            <h4>D4184 MOSFET Sürücü</h4>
+            <p style="font-size: 12px; color: var(--text-muted); margin: 0;">PWM sinyal girişi &amp; vidalı klemensler</p>
+        </div>
+    </div>
 
     <div class="alert alert-warning">
         <div class="alert-title">⚠️ KRİTİK TRİMPOT KALİBRASYON UYARISI (ÇOK ÖNEMLİ!)</div>
         <p><strong>LX-LCBST modülünün VO+ / VO- çıkışlarını Arduino veya diğer devrelere BAĞLAMADAN ÖNCE;</strong><br>
-        Type-C kablosunu veya pili takıp bir multimetre (avometre) ile <strong>VO+</strong> çıkış voltajını ölçün. Modül üzerindeki minyatür trimpotu çevirerek çıkış voltajını <strong>tam 5.0 Volt'a</strong> ayarlayın! Fabrikasyon olarak 9V/12V ayarlı gelebilir; ayarlamadan bağlarsanız Arduino kartınız ve ekranınız yanabilir.</p>
-    </div>
-
-    <div class="alert">
-        <div class="alert-title">💡 Hoparlör & MOSFET Emniyet Direnci</div>
-        <p>4 Ohm 5W gücündeki hoparlörün yüksek anlık akım çekmesini önlemek amacıyla hoparlör hattına seri olarak <strong>10-15 Ohm en az 1W</strong> direnç bağlanmalıdır. Elinizde 1/4W dirençler varsa, <strong>4 adet 47 Ohm 1/4W direnci birbirine paralel bağlayıp lehimleyerek</strong> 11.7 Ohm / 1W gücünde son derece güvenli bir koruma direnci oluşturabilirsiniz.</p>
+        Type-C kablosunu veya pili takıp bir multimetre (avometre) ile <strong>VO+</strong> çıkış voltajını ölçün. Modül üzerindeki minyatür trimpotu çevirerek çıkış voltajını <strong>tam 5.0 Volt'a</strong> ayarlayın! Fabrikasyon olarak 9V/12V ayarlı gelebilir; ayarlamadan bağlarsaniz Arduino kartınız ve ekranınız yanabilir.</p>
     </div>
 
     <h2>1. Adım: Şarj & Güç Katı Bağlantıları (18650 Pil + LX-LCBST Modülü)</h2>
@@ -247,7 +515,7 @@
 
     <h2>4. Adım: D4184 MOSFET Sürücü ve Hoparlör Bağlantıları</h2>
     <ul>
-        <li><strong>(PWM) + Sinyal Pini:</strong> Arduino Nano <strong>D9</strong> pini (Timer 1Donanımsal PWM)</li>
+        <li><strong>(PWM) + Sinyal Pini:</strong> Arduino Nano <strong>D9</strong> pini (Timer 1 Donanımsal PWM)</li>
         <li><strong>Sinyal GND Pini:</strong> Ortak <strong>GND</strong> şasi hattı</li>
         <li><strong>DC+ (Klemens Alt Sağ):</strong> Ortak <strong>+5V</strong> besleme hattına</li>
         <li><strong>DC- (Klemens Alt Sol):</strong> Ortak <strong>GND</strong> şasi hattına</li>
@@ -277,7 +545,7 @@
                 <td>18650 Li-ion Pil</td>
                 <td>Artı (+) / B+</td>
                 <td>LX-LCBST B+ / Arduino <strong>A0</strong></td>
-                <td>Batarya Güç Girişi & Voltaj Okuma (%0-%100)</td>
+                <td>Batarya Güç Girişi &amp; Voltaj Okuma (%0-%100)</td>
             </tr>
             <tr>
                 <td>18650 Li-ion Pil</td>
@@ -337,7 +605,7 @@
                 <td>TM1637 Ekran</td>
                 <td>CLK / DIO</td>
                 <td>Arduino Nano <strong>D5 / D6</strong></td>
-                <td>Gösterge Saat & Veri Hattı</td>
+                <td>Gösterge Saat &amp; Veri Hattı</td>
             </tr>
             <tr>
                 <td>TM1637 Ekran</td>
