@@ -15,8 +15,9 @@ Tüm sistem, taşınabilir şarjlı yapısı ve donanımsal/yazılımsal emniyet
 5. **D4184 Dual MOSFET Anahtar Modülü**: Hoparlörü doğrudan Arduino pininden çekilemeyecek yüksek akımla, 5V hattından güvenle ve yüksek sesle tetiklemek için kullanılan mosfet kartı.
 6. **18650 2200 mAh Li-ion Pil**: Şarj edilebilir ana güç kaynağı.
 7. **LX-LCBST (TP4056 + DC-DC 5V Step-Up Yükseltici Modülü)**: Type-C şarj girişli, korumalı ve voltajı 5.0V'a yükseltilmiş şarj devresi.
-8. **Sürgülü Güç Anahtarı (ON/OFF Switch)**: Cihazı tamamen açıp kapatan anahtar.
-9. **Emniyet Direnci**: Hoparlör bobinini ve MOSFET'i yüksek akımdan korumak için kullanılan **10 Ohm 1W metal film koruma direnci**.
+8. **Sürgülü Güç Anahtarı (ON/OFF Switch)**: Cihazı tamamen açıp kapatan anahtar (LX-LCBST VO+ çıkışına seri bağlı).
+9. **Emniyet Direnci**: Hoparlör bobinini ve MOSFET'i yüksek akımdan korumak için kullanılan **10 Ohm 2W metal film koruma direnci**.
+10. **A0 & A1 Koruma Dirençleri**: A0 (pil okuma) ve A1 (şarj algılama) pinleri öncesinde parazit beslemeyi ve pin hasarını önleyen **10kΩ seri koruma dirençleri**.
 10. **Özel Tasarım 3D Kutu**: İçten içe 80mm x 140mm (Dıştan dışa 84mm x 144mm x 30mm) boyutlarında, baklava/diamond desenli hoparlör ızgaralı, Type-C şarj soketli ve M3 pirinç inserts (ısı kovanı) uyumlu gövde.
 
 ---
