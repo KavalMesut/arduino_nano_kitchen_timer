@@ -253,7 +253,7 @@
   </g>
 
   <!-- 8. D4184 MOSFET -->
-  <g id="mosfet" transform="translate(770, 310)" filter="url(#shadow)">
+  <g id="mosfet" transform="translate(770, 320)" filter="url(#shadow)">
     <rect width="250" height="240" rx="8" fill="url(#mosfet-grad)" />
     <rect x="80" y="80" width="50" height="40" fill="#1e293b" stroke="#334155" stroke-width="2" />
     <rect x="80" y="130" width="50" height="40" fill="#1e293b" stroke="#334155" stroke-width="2" />
@@ -288,30 +288,27 @@
 
   <!-- 9. HOPARLÖR -->
   <g id="speaker" transform="translate(760, 50)" filter="url(#shadow)">
-    <rect width="190" height="150" rx="8" fill="url(#speaker-grad)" />
-    <circle cx="95" cy="70" r="45" fill="#111827" stroke="#374151" stroke-width="3" />
-    <circle cx="95" cy="70" r="20" fill="#374151" />
-    <circle cx="95" cy="70" r="10" fill="#e2e8f0" />
-    <g transform="translate(15, 110)">
-      <circle cx="10" cy="20" r="5" fill="#3b82f6" />
-      <circle cx="40" cy="20" r="5" fill="#ef4444" />
-      <text x="10" y="10" font-family="Segoe UI, Arial" font-size="10" fill="#3b82f6" text-anchor="middle" font-weight="bold">IN (-)</text>
-      <text x="40" y="10" font-family="Segoe UI, Arial" font-size="10" fill="#ef4444" text-anchor="middle" font-weight="bold">IN (+)</text>
+    <rect width="190" height="140" rx="8" fill="url(#speaker-grad)" />
+    <circle cx="95" cy="65" r="42" fill="#111827" stroke="#374151" stroke-width="3" />
+    <circle cx="95" cy="65" r="18" fill="#374151" />
+    <circle cx="95" cy="65" r="9" fill="#e2e8f0" />
+    <g transform="translate(15, 102)">
+      <circle cx="10" cy="18" r="5" fill="#3b82f6" />
+      <circle cx="40" cy="18" r="5" fill="#ef4444" />
+      <text x="10" y="8" font-family="Segoe UI, Arial" font-size="10" fill="#3b82f6" text-anchor="middle" font-weight="bold">IN (-)</text>
+      <text x="40" y="8" font-family="Segoe UI, Arial" font-size="10" fill="#ef4444" text-anchor="middle" font-weight="bold">IN (+)</text>
     </g>
-    <text x="95" y="138" font-family="Segoe UI, Arial" font-size="12" fill="#fff" font-weight="bold" text-anchor="middle">4 Ohm 5W HOPARLÖR</text>
+    <text x="95" y="130" font-family="Segoe UI, Arial" font-size="11" fill="#fff" font-weight="bold" text-anchor="middle">4 Ohm 5W HOPARLÖR</text>
   </g>
 
-  <!-- 10. İKİ ADET 10 OHM 1W PARALEL DİRENÇ GRUBU [5 OHM / 2W EŞDEĞER] -->
-  <g id="resistors-parallel" transform="translate(760, 210)" filter="url(#shadow)">
+  <!-- 10. İKİ ADET 10 OHM 1W PARALEL DİRENÇ GRUBU [5 OHM / 2W EŞDEĞER - FERAH ALANDA YERLEŞTİRİLDİ] -->
+  <g id="resistors-parallel" transform="translate(760, 235)" filter="url(#shadow)">
     <rect width="150" height="65" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-    
-    <!-- Paralel Köprü Teli (Sol ve Sağ Bağlantı Rayı) -->
     <line x1="20" y1="18" x2="20" y2="48" stroke="#3b82f6" stroke-width="3" />
     <line x1="130" y1="18" x2="130" y2="48" stroke="#3b82f6" stroke-width="3" />
     <line x1="0" y1="33" x2="20" y2="33" stroke="#3b82f6" stroke-width="3" />
     <line x1="130" y1="33" x2="150" y2="33" stroke="#3b82f6" stroke-width="3" />
 
-    <!-- 1. Direnç (Üst 10 Ohm 1W) -->
     <line x1="20" y1="18" x2="30" y2="18" stroke="#64748b" stroke-width="2" />
     <line x1="120" y1="18" x2="130" y2="18" stroke="#64748b" stroke-width="2" />
     <rect x="30" y="11" width="90" height="14" rx="3" fill="#d97706" stroke="#b45309" />
@@ -320,7 +317,6 @@
     <rect x="65" y="11" width="4" height="14" fill="#000000" />
     <rect x="95" y="11" width="4" height="14" fill="#f59e0b" />
 
-    <!-- 2. Direnç (Alt 10 Ohm 1W) -->
     <line x1="20" y1="48" x2="30" y2="48" stroke="#64748b" stroke-width="2" />
     <line x1="120" y1="48" x2="130" y2="48" stroke="#64748b" stroke-width="2" />
     <rect x="30" y="41" width="90" height="14" rx="3" fill="#d97706" stroke="#b45309" />
@@ -329,7 +325,8 @@
     <rect x="65" y="41" width="4" height="14" fill="#000000" />
     <rect x="95" y="41" width="4" height="14" fill="#f59e0b" />
 
-    <text x="75" y="-5" font-family="Segoe UI, Arial" font-size="11" fill="#1e293b" font-weight="bold" text-anchor="middle">2x 10Ω 1W PARALEL (5Ω / 2W)</text>
+    <!-- ETİKET YAZISI: FERAH BEYAZ ARKA PLANDA HİÇBİR YERLE ÇAKIŞMAZ -->
+    <text x="75" y="-10" font-family="Segoe UI, Arial" font-size="11" fill="#1e293b" font-weight="bold" text-anchor="middle">2x 10Ω 1W PARALEL (5Ω / 2W)</text>
   </g>
 
   <!-- BAĞLANTI YOLLARI (KABLOLAR) -->
@@ -339,7 +336,7 @@
     <path d="M 715,630 L 740,630 L 740,150 L 300,150" fill="none" stroke="#ef4444" stroke-width="3" />
     <path d="M 260,150 L 300,150" fill="none" stroke="#ef4444" stroke-width="3" />
     <path d="M 340,250 L 300,250" fill="none" stroke="#ef4444" stroke-width="3" />
-    <path d="M 980,495 L 1040,495 L 1040,630 L 740,630" fill="none" stroke="#ef4444" stroke-width="3" />
+    <path d="M 980,505 L 1040,505 L 1040,630 L 740,630" fill="none" stroke="#ef4444" stroke-width="3" />
 
     <!-- GND ŞASİ BARA SİSTEMİ (Koyu Gri #374151) -->
     <path d="M 285,65 L 285,640" fill="none" stroke="#374151" stroke-width="3.5" />
@@ -355,8 +352,8 @@
     <path d="M 540,635 L 540,470 L 285,470" fill="none" stroke="#374151" stroke-width="3" />
     <circle cx="285" cy="470" r="5" fill="#374151" />
 
-    <path d="M 770,390 L 570,390 L 570,470 L 285,470" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 980,465 L 1050,465 L 1050,655 L 540,655 L 540,635" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 770,400 L 570,400 L 570,470 L 285,470" fill="none" stroke="#374151" stroke-width="3" />
+    <path d="M 980,475 L 1050,475 L 1050,655 L 540,655 L 540,635" fill="none" stroke="#374151" stroke-width="3" />
 
     <!-- SİNYAL KABLOLARI -->
     <path d="M 260,460 L 275,460 L 275,280 L 340,280" fill="none" stroke="#3b82f6" stroke-width="2.5" />
@@ -366,7 +363,7 @@
     <path d="M 260,110 L 320,110 L 320,325 L 340,325" fill="none" stroke="#8b5cf6" stroke-width="2.5" />
     <path d="M 260,130 L 330,130 L 330,340 L 340,340" fill="none" stroke="#ec4899" stroke-width="2.5" />
     
-    <path d="M 770,360 L 580,360 L 580,440 L 325,440 L 325,385 L 340,385" fill="none" stroke="#06b6d4" stroke-width="2.5" />
+    <path d="M 770,370 L 580,370 L 580,440 L 325,440 L 325,385 L 340,385" fill="none" stroke="#06b6d4" stroke-width="2.5" />
 
     <!-- PIL & BATARYA OKUMA KABLOLARI -->
     <path d="M 390,690 L 390,635" fill="none" stroke="#16a34a" stroke-width="3" />
@@ -382,14 +379,14 @@
 
     <!-- HOPARLÖR GÜÇ HATLARI -->
     <!-- MOSFET Çıkış+ -> Hoparlör IN (+) (Kırmızı #ef4444) -->
-    <path d="M 980,375 L 1030,375 L 1030,160 L 815,160 L 815,180" fill="none" stroke="#ef4444" stroke-width="3" />
-    <circle cx="815" cy="180" r="4" fill="#ef4444" />
+    <path d="M 980,385 L 1030,385 L 1030,152 L 815,152 L 815,170" fill="none" stroke="#ef4444" stroke-width="3" />
+    <circle cx="815" cy="170" r="4" fill="#ef4444" />
     
     <!-- MOSFET Çıkış- -> 2x 10 Ohm 1W Paralel Direnç Bloğu Sağ Taraf (Mavi #3b82f6) -->
-    <path d="M 980,345 L 980,243 L 910,243" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <path d="M 980,355 L 980,268 L 910,268" fill="none" stroke="#3b82f6" stroke-width="3" />
     
     <!-- 2x 10 Ohm 1W Paralel Direnç Bloğu Sol Taraf -> Hoparlör IN (-) Girişi (MAVİ #3b82f6) -->
-    <path d="M 760,243 L 785,243 L 785,180" fill="none" stroke="#3b82f6" stroke-width="3" />
-    <circle cx="785" cy="180" r="4" fill="#3b82f6" />
+    <path d="M 760,268 L 785,268 L 785,170" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <circle cx="785" cy="170" r="4" fill="#3b82f6" />
   </g>
 </svg>
