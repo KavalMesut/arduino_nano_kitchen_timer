@@ -166,9 +166,9 @@
     <!-- Type-C Soketi -->
     <rect x="-10" y="65" width="20" height="40" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
     
-    <!-- Giriş Lehim Padleri (IN+ ve IN-) [DÜZELTİLDİ] -->
+    <!-- Giriş Lehim Padleri (IN+ ve IN-) -->
     <circle cx="15" cy="40" r="5" fill="#10b981" />
-    <circle cx="15" cy="130" r="5" fill="#64748b" />
+    <circle cx="15" cy="130" r="5" fill="#374151" />
     <text x="25" y="44" font-family="Segoe UI, Arial" font-size="10" fill="#10b981" font-weight="bold">IN+ (5V Şarj)</text>
     <text x="25" y="134" font-family="Segoe UI, Arial" font-size="10" fill="#94a3b8" font-weight="bold">IN- (GND)</text>
 
@@ -273,14 +273,24 @@
     <path d="M 870,495 L 890,495 L 890,450 L 500,450" fill="none" stroke="#ef4444" stroke-width="3" />
 
     <!-- GND ŞASİ BARA SİSTEMİ (Koyu Gri #374151) -->
+    <!-- Dikey Ana GND Rayı: (300, 65) -> (300, 630) -->
+    <path d="M 300,65 L 300,630" fill="none" stroke="#374151" stroke-width="3.5" />
+    <path d="M 300,65 L 550,65 L 550,110" fill="none" stroke="#374151" stroke-width="3" /> <!-- Arduino GND -->
+    <path d="M 270,170 L 300,170" fill="none" stroke="#374151" stroke-width="3" /> <!-- TM1637 GND -->
+    <path d="M 270,490 L 300,490" fill="none" stroke="#374151" stroke-width="3" /> <!-- EC11 GND 1 -->
+    <path d="M 270,600 L 300,600" fill="none" stroke="#374151" stroke-width="3" /> <!-- EC11 GND 2 -->
+    
+    <!-- LX-LCBST IN- (355, 610) -> Ortak GND Rayı (300, 610) [TAM BAĞLANDI VE BAĞLANTI NOKTASI EKLENDİ] -->
+    <path d="M 355,610 L 300,610" fill="none" stroke="#374151" stroke-width="3" />
+    <circle cx="300" cy="610" r="5" fill="#374151" />
+    <circle cx="355" cy="610" r="4" fill="#374151" />
+
+    <!-- LX-LCBST VO- (540, 635) -> Ortak GND Rayı -->
     <path d="M 540,635 L 540,470 L 300,470" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 355,610 L 300,610" fill="none" stroke="#374151" stroke-width="2.5" /> <!-- LX-LCBST IN- (GND) -> Ortak GND Rayı -->
-    <path d="M 300,600 L 300,65 L 550,65 L 550,110" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 270,170 L 300,170" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 270,490 L 300,490" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 270,600 L 300,600" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 640,390 L 570,390 L 570,470 L 300,470" fill="none" stroke="#374151" stroke-width="3" />
-    <path d="M 870,465 L 910,465 L 910,470 L 540,470" fill="none" stroke="#374151" stroke-width="3" />
+    <circle cx="300" cy="470" r="5" fill="#374151" />
+
+    <path d="M 640,390 L 570,390 L 570,470 L 300,470" fill="none" stroke="#374151" stroke-width="3" /> <!-- MOSFET GND -->
+    <path d="M 870,465 L 910,465 L 910,470 L 540,470" fill="none" stroke="#374151" stroke-width="3" /> <!-- MOSFET DC- -->
 
     <!-- SİNYAL KABLOLARI -->
     <!-- EC11 Out A -> Arduino D2 -->
