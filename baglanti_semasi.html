@@ -291,9 +291,9 @@
             <g transform="translate(165, 30)">
               <rect x="0" y="0" width="15" height="8" fill="#facc15" />
               <text x="-8" y="8" font-family="Segoe UI, Arial" font-size="11" fill="#64748b" font-weight="bold" text-anchor="end">GND</text>
-              <rect x="0" y="260" width="15" height="8" fill="#facc15" />
+              <rect x="0" y="260" width="15" height="8" fill="#3b82f6" />
               <text x="-8" y="267" font-family="Segoe UI, Arial" font-size="11" fill="#3b82f6" font-weight="bold" text-anchor="end">A0 (Pil V)</text>
-              <rect x="0" y="275" width="15" height="8" fill="#facc15" />
+              <rect x="0" y="275" width="15" height="8" fill="#10b981" />
               <text x="-8" y="282" font-family="Segoe UI, Arial" font-size="11" fill="#10b981" font-weight="bold" text-anchor="end">A1 (Şarj)</text>
             </g>
             <text x="90" y="350" font-family="Segoe UI, Arial" font-size="14" fill="#fff" font-weight="bold" text-anchor="middle">ARDUINO NANO</text>
@@ -327,7 +327,8 @@
           <g id="lxlcbst" transform="translate(340, 480)" filter="url(#shadow)">
             <rect width="240" height="170" rx="8" fill="url(#lxlcbst-grad)" />
             <rect x="-10" y="65" width="20" height="40" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2" />
-            <text x="25" y="88" font-family="Segoe UI, Arial" font-size="10" fill="#94a3b8" font-weight="bold">Type-C 5V</text>
+            <text x="25" y="88" font-family="Segoe UI, Arial" font-size="10" fill="#10b981" font-weight="bold">IN+ (Type-C 5V)</text>
+            
             <rect x="90" y="30" width="40" height="40" rx="4" fill="#334155" />
             <text x="110" y="55" font-family="Arial" font-size="9" fill="#cbd5e1" text-anchor="middle">H2R0</text>
             <circle cx="160" cy="50" r="10" fill="#2563eb" />
@@ -439,7 +440,14 @@
 
             <path d="M 390,680 L 390,635" fill="none" stroke="#16a34a" stroke-width="3" />
             <path d="M 430,680 L 430,635" fill="none" stroke="#374151" stroke-width="3" />
-            <path d="M 390,635 L 390,660 L 600,660 L 600,290 L 545,290" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+            
+            <!-- LX-LCBST B+ -> Arduino A0 (Pil Voltaj Okuma - Mavi #3b82f6) TAM BAĞLANTI -->
+            <path d="M 390,635 L 390,665 L 600,665 L 600,374 L 535,374" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+            <circle cx="535" cy="374" r="4" fill="#3b82f6" />
+
+            <!-- LX-LCBST IN+ (Type-C 5V) -> 10k Direnç -> Arduino A1 (Şarj Algılama - Yeşil #10b981) TAM BAĞLANTI -->
+            <path d="M 330,568 L 315,568 L 315,675 L 615,675 L 615,389 L 535,389" fill="none" stroke="#10b981" stroke-width="2.5" />
+            <circle cx="535" cy="389" r="4" fill="#10b981" />
 
             <path d="M 870,375 L 930,375 L 930,170 L 800,170 L 800,190" fill="none" stroke="#ef4444" stroke-width="3" />
             <path d="M 870,345 L 870,300 L 735,300 L 735,255" fill="none" stroke="#3b82f6" stroke-width="3" />
@@ -476,16 +484,16 @@
     <div class="alert alert-warning">
         <div class="alert-title">⚠️ KRİTİK TRİMPOT KALİBRASYON UYARISI (ÇOK ÖNEMLİ!)</div>
         <p><strong>LX-LCBST modülünün VO+ / VO- çıkışlarını Arduino veya diğer devrelere BAĞLAMADAN ÖNCE;</strong><br>
-        Type-C kablosunu veya pili takıp bir multimetre (avometre) ile <strong>VO+</strong> çıkış voltajını ölçün. Modül üzerindeki minyatür trimpotu çevirerek çıkış voltajını <strong>tam 5.0 Volt'a</strong> ayarlayın! Fabrikasyon olarak 9V/12V ayarlı gelebilir; ayarlamadan bağlarsaniz Arduino kartınız ve ekranınız yanabilir.</p>
+        Type-C kablosunu veya pili takıp bir multimetre (avometre) ile <strong>VO+</strong> çıkış voltajını ölçün. Modül üzerindeki minyatür trimpotu çevirerek çıkış voltajını <strong>tam 5.0 Volt'a</strong> ayarlayın! Fabrikasyon olarak 9V/12V ayarlı gelebilir; ayarlamadan bağlarsanız Arduino kartınız ve ekranınız yanabilir.</p>
     </div>
 
     <h2>1. Adım: Şarj & Güç Katı Bağlantıları (18650 Pil + LX-LCBST Modülü)</h2>
     <ul>
-        <li><strong>B+:</strong> 18650 Pilin Artı (+) kutbuna ve aynı zamanda Arduino Nano'nun <strong>A0</strong> analog girişine (Batarya seviyesi okuma).</li>
+        <li><strong>B+:</strong> 18650 Pilin Artı (+) kutbuna ve aynı zamanda Arduino Nano'nun <strong>A0</strong> analog girişine (Mavi hat - Batarya seviyesi okuma).</li>
         <li><strong>B-:</strong> 18650 Pilin Eksi (-) kutbuna.</li>
         <li><strong>VO+ (5V Yükseltici Çıkışı):</strong> Sürgülü Güç Anahtarının (ON/OFF) 1. bacağına. Anahtarın 2. bacağı ortak <strong>+5V</strong> besleme rayına bağlanır.</li>
         <li><strong>VO- (GND Çıkışı):</strong> Ortak <strong>GND</strong> şasi rayına.</li>
-        <li><strong>IN+ (Type-C 5V Girişi):</strong> 10k koruma direnci üzerinden Arduino Nano'nun <strong>A1</strong> pinine (Şarj kablosu algılama).</li>
+        <li><strong>IN+ (Type-C 5V Girişi):</strong> 10k koruma direnci üzerinden Arduino Nano'nun <strong>A1</strong> pinine (Yeşil hat - Şarj kablosu algılama).</li>
     </ul>
 
     <h2>2. Adım: Döner Enkoder (EC11) Bağlantıları</h2>
