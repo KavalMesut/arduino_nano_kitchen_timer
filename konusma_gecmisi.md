@@ -22,7 +22,7 @@ I will now create a comprehensive implementation plan to outline the hardware de
 
 Harika bir mutfak geri sayım alarmı sistemi için donanım bağlantı detaylarını, yazılım mimarisini ve elektriksel güvenlik tedbirlerini içeren kapsamlı bir **Uygulama Planı (Implementation Plan)** hazırladım. 
 
-Planın detaylarına ve şemasına yan panelde veya dosya bağlantısından ulaşabilirsiniz: **[implementation_plan.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/implementation_plan.md)**
+Planın detaylarına ve şemasına yan panelde veya dosya bağlantısından ulaşabilirsiniz: **[implementation_plan.md](./implementation_plan.md)**
 
 Koda başlamadan önce planı incelemenizi ve özellikle şu **3 önemli konudaki** tercihinizi belirtmenizi rica ediyorum:
 
@@ -74,11 +74,11 @@ I will now create the **Walkthrough (walkthrough.md)** to summarize the complete
 
 Mutfak geri sayım alarmı projenizin yazılım geliştirme aşamasını başarıyla tamamladım ve tüm dosyaları hazırladım. 
 
-Yaptığımız çalışmaları, donanım devre şemasını ve test adımlarını içeren **Proje Tamamlama Kılavuzuna** yan panelden veya doğrudan dosya bağlantısından ulaşabilirsiniz: **[walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md)**
+Yaptığımız çalışmaları, donanım devre şemasını ve test adımlarını içeren **Proje Tamamlama Kılavuzuna** yan panelden veya doğrudan dosya bağlantısından ulaşabilirsiniz: **[walkthrough.md](./walkthrough.md)**
 
 ### Yapılan Çalışmaların Özeti:
 
-1. **Eksiksiz Arduino Nano Kodu**: Proje klasörünüzde **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer.ino)** adında temiz, tamamen açıklama satırlarıyla desteklenmiş ve duruma dayalı (State Machine) bir kaynak kod oluşturdum.
+1. **Eksiksiz Arduino Nano Kodu**: Proje klasörünüzde **[kitchen_timer.ino](./kitchen_timer.ino)** adında temiz, tamamen açıklama satırlarıyla desteklenmiş ve duruma dayalı (State Machine) bir kaynak kod oluşturdum.
 2. **Sabit 1 Dakikalık Ayar**: İstediğiniz doğrultuda döner enkoderin her bir adımı süreyi sabit 1'er dakika artırıp azaltacak şekilde yapılandırıldı.
 3. **Emniyetli MOSFET/Hoparlör Kontrolü**: Hoparlörün ve MOSFET'in aşırı ısınmasını önleyen, sinyali sadece ses üretilirken darbe (AC/pulsed) olarak gönderen ve sessizlik anlarında pini tamamen toprağa (`LOW`) çeken non-blocking (beklemesiz) bir alarm ritmi geliştirildi.
 4. **Hafıza Desteği (EEPROM)**: Geri sayımı başlattığınızda ayarladığınız en son süre Arduino'nun dahili kalıcı hafızasına kaydedilir. Böylece cihazı her açtığınızda standart çay demleme süreniz ekranda otomatik olarak hazır gelir.
@@ -107,7 +107,7 @@ I will now update the **Walkthrough (walkthrough.md)** file to include a highly 
 
 Devre kurulumunu en kolay ve hatasız şekilde yapabilmeniz için hazırladığım kapsamlı bağlantı şemasını aşağıda paylaşıyorum. 
 
-Bu şemayı ve detaylı açıklamaları projenizin **[walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md)** dosyasına da ekledim.
+Bu şemayı ve detaylı açıklamaları projenizin **[walkthrough.md](./walkthrough.md)** dosyasına da ekledim.
 
 ---
 
@@ -251,7 +251,7 @@ I will now create a professional LaTeX document (`baglanti_semasi.tex`) in your 
 
 Bağlantı şemasını doğrudan çıktı alabileceğiniz, temiz tablolar ve listeler içeren profesyonel bir **LaTeX (.tex)** belgesi olarak hazırladım. 
 
-Dosyaya buradan ulaşabilirsiniz: **[baglanti_semasi.tex](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.tex)**
+Dosyaya buradan ulaşabilirsiniz: **[baglanti_semasi.tex](./baglanti_semasi.tex)**
 
 Bu dosyayı herhangi bir LaTeX derleyicisinde (örneğin ücretsiz Overleaf web sitesinde veya bilgisayarınızdaki MiKTeX/TeXlive programında) doğrudan PDF'e dönüştürüp çıktısını alabilirsiniz. 
 
@@ -290,10 +290,10 @@ I will write the file `baglanti_semasi.html` to your workspace now.
 
 Sisteminizde doğrudan bir LaTeX derleyicisi kurulu olmadığından, ek bir programa veya internete ihtiyaç duymadan **tek tıkla açıp kusursuz bir PDF çıktısı alabileceğiniz** baskı optimizasyonlu modern bir **HTML belgesi (`baglanti_semasi.html`)** hazırladım.
 
-Dosyaya buradan ulaşabilirsiniz: **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)**
+Dosyaya buradan ulaşabilirsiniz: **[baglanti_semasi.html](./baglanti_semasi.html)**
 
 ### Nasıl PDF Yapabilirsiniz?
-1. **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)** dosyasına çift tıklayarak bilgisayarınızdaki herhangi bir tarayıcıda (Chrome, Edge vb.) açın.
+1. **[baglanti_semasi.html](./baglanti_semasi.html)** dosyasına çift tıklayarak bilgisayarınızdaki herhangi bir tarayıcıda (Chrome, Edge vb.) açın.
 2. Klavyenizden **`Ctrl + P` (Yazdır)** tuşlarına basın.
 3. Çıkan pencerede Hedef/Yazıcı kısmından **"PDF Olarak Kaydet" (Save as PDF)** seçeneğini işaretleyin.
 4. Kaydet tuşuna bastığınızda, A4 kağıdı boyutlarına tam uyumlu, göz yormayan, renkli ve yazıcı dostu bir PDF dosyasını anında elde etmiş olacaksınız!
@@ -382,13 +382,13 @@ I am now going to update the **Walkthrough (walkthrough.md)** file to include th
 
 Bunu hallettim! Bilgisayarınızda kurulu olan Google Chrome'u arka planda çalıştırarak Türkçe karakterli klasör yolu engelini de aşan akıllı bir script vasıtasıyla HTML kılavuzumuzu doğrudan fiziksel bir **PDF dosyasına dönüştürdüm**. 
 
-Oluşturduğumuz PDF dosyasına doğrudan buradan tıklayarak ulaşabilirsiniz: **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**
+Oluşturduğumuz PDF dosyasına doğrudan buradan tıklayarak ulaşabilirsiniz: **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**
 
 ### Tamamlanan Çıktılar:
-*   **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: Tamamen baskıya hazır, şık bir tablo ve adım adım anlatım içeren PDF bağlantı kılavuzu (163 KB).
-*   **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer.ino)**: Arduino Nano için hazırladığımız ana kaynak kod.
-*   **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)**: Tarayıcılarda açılabilen sürüm.
-*   **[baglanti_semasi.tex](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.tex)**: LaTeX formatındaki kaynak şablon.
+*   **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: Tamamen baskıya hazır, şık bir tablo ve adım adım anlatım içeren PDF bağlantı kılavuzu (163 KB).
+*   **[kitchen_timer.ino](./kitchen_timer.ino)**: Arduino Nano için hazırladığımız ana kaynak kod.
+*   **[baglanti_semasi.html](./baglanti_semasi.html)**: Tarayıcılarda açılabilen sürüm.
+*   **[baglanti_semasi.tex](./baglanti_semasi.tex)**: LaTeX formatındaki kaynak şablon.
 
 Artık PDF dosyanızı açıp yazdırabilir, devre şemasını masanıza koyup montajı keyifle yapabilirsiniz! Başka bir isteğiniz veya sorunuz olursa her zaman yardımcı olmaktan memnuniyet duyarım.
 
@@ -455,10 +455,10 @@ Enkoderinizde iki farklı grupta toplam 5 adet pin bulunur. Bunları sırayla ş
 
 ### Güncellenen ve Yeniden Derlenen Çıktı Dosyaları:
 
-*   **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: Tamamen sizin çıplak EC11 enkoderinize göre güncellenmiş ve Chrome vasıtasıyla yeniden derlenmiş baskıya hazır PDF dosyası.
-*   **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)**: Tarayıcıdan açıp okuyabileceğiniz HTML kılavuz.
-*   **[baglanti_semasi.tex](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.tex)**: LaTeX kaynak dosyası.
-*   **[walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md)**: Yenilenen ASCII şemalarını içeren ana proje kılavuzu.
+*   **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: Tamamen sizin çıplak EC11 enkoderinize göre güncellenmiş ve Chrome vasıtasıyla yeniden derlenmiş baskıya hazır PDF dosyası.
+*   **[baglanti_semasi.html](./baglanti_semasi.html)**: Tarayıcıdan açıp okuyabileceğiniz HTML kılavuz.
+*   **[baglanti_semasi.tex](./baglanti_semasi.tex)**: LaTeX kaynak dosyası.
+*   **[walkthrough.md](./walkthrough.md)**: Yenilenen ASCII şemalarını içeren ana proje kılavuzu.
 
 Kabloları bu yeni şemaya göre bağladığınızda kodunuz hiçbir ek değişiklik gerektirmeden kararlı bir şekilde çalışacaktır. Başka bir aşamada yardıma ihtiyacınız olursa çekinmeden sorabilirsiniz!
 
@@ -526,10 +526,10 @@ Tüm dökümanlarımızı (**HTML**, **LaTeX**, **walkthrough.md** ve derlenmiş
 
 ### Yenilenen ve Derlenen Güncel Dosyalarınız:
 
-*   **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: Hem **EC11 çıplak enkoderinize** hem de **D4184 MOSFET modülünüze** birebir uyumlu olacak şekilde yeniden derlenmiş baskıya hazır PDF dosyası.
-*   **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)**: Tarayıcıdan açılabilen HTML kılavuz.
-*   **[baglanti_semasi.tex](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.tex)**: LaTeX kaynak dosyası.
-*   **[walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md)**: Yenilenen MOSFET ve enkoder şemalarını içeren ana proje kılavuzu.
+*   **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: Hem **EC11 çıplak enkoderinize** hem de **D4184 MOSFET modülünüze** birebir uyumlu olacak şekilde yeniden derlenmiş baskıya hazır PDF dosyası.
+*   **[baglanti_semasi.html](./baglanti_semasi.html)**: Tarayıcıdan açılabilen HTML kılavuz.
+*   **[baglanti_semasi.tex](./baglanti_semasi.tex)**: LaTeX kaynak dosyası.
+*   **[walkthrough.md](./walkthrough.md)**: Yenilenen MOSFET ve enkoder şemalarını içeren ana proje kılavuzu.
 
 Artık donanımlarınızın üzerindeki birebir etiketlere göre hatasız ve çok pratik bir şekilde kurulumu tamamlayabilirsiniz. Her şey kullanıma hazır! Kolay gelsin!
 
@@ -581,11 +581,11 @@ Tüm güncel dosyalara doğrudan aşağıdaki bağlantılardan tıklayarak ulaş
 
 ### Güncellenmiş Proje Çıktıları:
 
-*   **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: **(Önerilen)** En üstünde renk kodlu görsel SVG şeması yer alan, altında ise adım adım bağlantı yönergeleri ve tablosu bulunan baskıya hazır güncel PDF dosyanız (616 KB).
-*   **[baglanti_semasi.svg](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.svg)**: Web tarayıcınızda açıp istediğiniz kadar yakınlaştırarak (pikselleşme olmadan) inceleyebileceğiniz yüksek kaliteli vektörel şema dosyası.
-*   **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer.ino)**: Arduino Nano için hazırladığımız ana kaynak kodumuz.
-*   **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)**: Görsel şemayı da barındıran tarayıcı dostu kılavuz.
-*   **[walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md)**: Yenilenen tüm kaynakların ve adımların özetlendiği proje tamamlama kılavuzu.
+*   **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: **(Önerilen)** En üstünde renk kodlu görsel SVG şeması yer alan, altında ise adım adım bağlantı yönergeleri ve tablosu bulunan baskıya hazır güncel PDF dosyanız (616 KB).
+*   **[baglanti_semasi.svg](./baglanti_semasi.svg)**: Web tarayıcınızda açıp istediğiniz kadar yakınlaştırarak (pikselleşme olmadan) inceleyebileceğiniz yüksek kaliteli vektörel şema dosyası.
+*   **[kitchen_timer.ino](./kitchen_timer.ino)**: Arduino Nano için hazırladığımız ana kaynak kodumuz.
+*   **[baglanti_semasi.html](./baglanti_semasi.html)**: Görsel şemayı da barındıran tarayıcı dostu kılavuz.
+*   **[walkthrough.md](./walkthrough.md)**: Yenilenen tüm kaynakların ve adımların özetlendiği proje tamamlama kılavuzu.
 
 ---
 
@@ -631,8 +631,8 @@ I will now run the compile script to regenerate your **`baglanti_semasi.pdf`** f
 
 Bu hatayı derhal düzelttim:
 1.  **GND Kablosunu Rotaladım**: GND kablosu artık sol ana şasi hattından yukarıya çıkıyor, **Arduino Nano'nun üstünden şık ve düzgün bir köprüyle sağ tarafa uzanıyor ve doğrudan sağ üst köşedeki gerçek GND pinine takılıyor**.
-2.  **Tüm Çıktıları Güncelledim**: **[baglanti_semasi.svg](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.svg)** dosyasını düzelttim ve tarayıcı çıktısı olan **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)** dosyasını yeniledim.
-3.  **PDF Dosyasını Yeniden Derledim**: Google Chrome headless motoru vasıtasıyla güncel şemayı içeren yeni **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)** dosyanızı başarıyla oluşturup klasörünüze kaydettim (619 KB).
+2.  **Tüm Çıktıları Güncelledim**: **[baglanti_semasi.svg](./baglanti_semasi.svg)** dosyasını düzelttim ve tarayıcı çıktısı olan **[baglanti_semasi.html](./baglanti_semasi.html)** dosyasını yeniledim.
+3.  **PDF Dosyasını Yeniden Derledim**: Google Chrome headless motoru vasıtasıyla güncel şemayı içeren yeni **[baglanti_semasi.pdf](./baglanti_semasi.pdf)** dosyanızı başarıyla oluşturup klasörünüze kaydettim (619 KB).
 
 Sayenizde devre şeması tamamen kusursuz ve hatasız bir hale geldi! Güncel PDF'inizi doğrudan açıp kontrol edebilir veya çıktısını alabilirsiniz. 
 
@@ -685,8 +685,8 @@ Bu 20 piksellik dikey kayma nedeniyle **GND pini boşta kaldığı gibi**, diğe
 
 Hemen müdahale edip tüm yolları milimetrik olarak hizaladım:
 1.  **TM1637 Yollarını Düzelttim**: CLK, DIO, VCC ve GND kablolarının başlangıç noktalarını tam 20 piksel yukarı kaydırarak, ekrandaki ilgili sarı dairelerin (konektörlerin) tam merkezine oturttum. Artık hiçbir pin boşta veya kaymış durumda değil!
-2.  **Dosyaları Güncelledim ve Derledim**: Vektörel şemayı barındıran **[baglanti_semasi.svg](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.svg)** ve tarayıcı görünümünü sağlayan **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)** dosyalarını kaydettim.
-3.  **PDF Dosyasını Yeniden Derledim**: En güncel ve hatasız şemayı içeren yeni **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)** belgenizi başarıyla oluşturup klasörünüze kaydettim (619 KB).
+2.  **Dosyaları Güncelledim ve Derledim**: Vektörel şemayı barındıran **[baglanti_semasi.svg](./baglanti_semasi.svg)** ve tarayıcı görünümünü sağlayan **[baglanti_semasi.html](./baglanti_semasi.html)** dosyalarını kaydettim.
+3.  **PDF Dosyasını Yeniden Derledim**: En güncel ve hatasız şemayı içeren yeni **[baglanti_semasi.pdf](./baglanti_semasi.pdf)** belgenizi başarıyla oluşturup klasörünüze kaydettim (619 KB).
 
 Sonsuz teşekkürler! Sizin bu titiz ve keskin denetiminiz sayesinde donanım bağlantı rehberi gerçekten mükemmel ve profesyonel bir endüstriyel şema düzeyine ulaştı. 
 
@@ -737,9 +737,9 @@ Bu katmanlama ve hizalama hatasını kökünden çözdüm:
     *   **TM1637 GND (Y=170)** $\rightarrow$ Doğrudan sağa uzanarak **GND Barasına (X=300)** sıfır hatayla bağlanıyor.
     *   **TM1637 VCC (Y=150)** $\rightarrow$ Doğrudan sağa uzanarak **5V Barasına (X=320)** sıfır hatayla bağlanıyor.
     *   **EC11 Enkoder GND Pinleri (Y=490 ve Y=600)** $\rightarrow$ Sağa doğru uzanarak doğrudan **GND Barasına (X=300)** bağlanıyor.
-3.  **PDF Belgesini Yeniden Derledim**: En kusursuz haliyle güncellenmiş yeni **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)** belgesini başarıyla kaydettim (622 KB).
+3.  **PDF Belgesini Yeniden Derledim**: En kusursuz haliyle güncellenmiş yeni **[baglanti_semasi.pdf](./baglanti_semasi.pdf)** belgesini başarıyla kaydettim (622 KB).
 
-Lütfen PDF belgenizi veya tarayıcıdaki **[baglanti_semasi.html](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.html)** kılavuzunuzu tekrar açıp kontrol edin. Artık her bir hattın tam olarak hangi pin dairesine lehimlendiği net ve pürüzsüz bir şekilde görünmektedir! 
+Lütfen PDF belgenizi veya tarayıcıdaki **[baglanti_semasi.html](./baglanti_semasi.html)** kılavuzunuzu tekrar açıp kontrol edin. Artık her bir hattın tam olarak hangi pin dairesine lehimlendiği net ve pürüzsüz bir şekilde görünmektedir! 
 
 Bu harika geri bildirimleriniz ve sabrınız için çok teşekkür ederim! Şema şimdi gerçekten kusursuz oldu.
 
@@ -774,13 +774,13 @@ Harika bir estetik dokunuş! Kesinlikle çok haklısınız. Bir donanım şemas�
 **D9 (PWM)** etiketinin üzerini kapatan cyan renkli MOSFET sinyal kablosunu hemen yeniden rotaladım:
 1.  **D9 Kablosunu Alttan Dolaştırdım**: Kablo artık MOSFET pininden çıkıyor, Nano ile MOSFET arasındaki boşluktan aşağı inerek **Arduino Nano kartının alt kenar sınırının (Y=440) altındaki boşluktan (Y=450)** geçiyor ve sol taraftaki boşluktan yukarı çıkarak D9 pinine sol taraftan temizce bağlanıyor. 
 2.  **Etiket Tamamen Okunabilir Oldu**: Nano kartının üzerindeki **"D9 (PWM)"** beyaz yazısı artık tamamen açıkta ve pürüzsüz bir şekilde okunabiliyor!
-3.  **PDF Belgesini Yeniden Derledim**: En güncel, tertemiz ve okunaklı şemayı içeren yeni **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)** belgesini başarıyla kaydettim (625 KB).
+3.  **PDF Belgesini Yeniden Derledim**: En güncel, tertemiz ve okunaklı şemayı içeren yeni **[baglanti_semasi.pdf](./baglanti_semasi.pdf)** belgesini başarıyla kaydettim (625 KB).
 
 Yaptığınız bu harika geri bildirimler sayesinde, şema hem teknik olarak hatasız hem de görsel ve estetik olarak mükemmel, tam bir fabrika şeması kalitesine ulaştı.
 
 Güncellenmiş PDF ve SVG dosyalarınıza aynı bağlantılardan ulaşabilirsiniz:
-*   **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: En son D9 yazısı korumalı şemayı içeren, çıktı alabileceğiniz PDF kılavuzu.
-*   **[baglanti_semasi.svg](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.svg)**: Yüksek çözünürlüklü vektörel şema dosyası.
+*   **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: En son D9 yazısı korumalı şemayı içeren, çıktı alabileceğiniz PDF kılavuzu.
+*   **[baglanti_semasi.svg](./baglanti_semasi.svg)**: Yüksek çözünürlüklü vektörel şema dosyası.
 
 Elinize ve gözünüze sağlık! Montaj aşamasında veya sistemi denerken keyifli çalışmalar dilerim. Başka bir aşamada sorularınız olursa seve seve buradayım!
 
@@ -817,13 +817,13 @@ I will now run the final compilation script to rebuild your printable **`baglant
 Bu sorunu da tamamen ortadan kaldırdım:
 1.  **İki Kabloyu da Alttan Paralel Rotaladım**: MOSFET'in GND kablosunu da tıpkı D9 kablosu gibi **Arduino Nano kartının altından dolaşacak şekilde (Y=460 hizasından)** çektim. 
 2.  **Düzenli Kablo Demeti (Ribbon Cable) Efekti**: Şimdi mavi D9 sinyal kablosu (`Y=450`) ve koyu gri MOSFET GND kablosu (`Y=460`), Nano kartının altından birbirine tamamen paralel ve son derece estetik iki hat halinde yan yana geçiyor. Nano'nun ön yüzü her iki kablodan da tamamen kurtuldu!
-3.  **PDF Belgesini Yeniden Derledim**: Bu yeni ve tertemiz şemayı içeren güncel **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)** dosyanızı en yüksek kalitede tekrar derledim (628 KB).
+3.  **PDF Belgesini Yeniden Derledim**: Bu yeni ve tertemiz şemayı içeren güncel **[baglanti_semasi.pdf](./baglanti_semasi.pdf)** dosyanızı en yüksek kalitede tekrar derledim (628 KB).
 
 Artık Arduino Nano üzerindeki **"D9 (PWM)"** ve çevresindeki tüm pin yazıları tamamen bomboş, temiz ve %100 okunabilir durumdadır. 
 
 Güncellenmiş dosyalarınıza doğrudan bu bağlantılardan ulaşabilirsiniz:
-*   **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: Tamamen kusursuz ve engelsiz şemaya sahip yazdırılabilir PDF rehberiniz.
-*   **[baglanti_semasi.svg](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.svg)**: Yeni kablo yollarıyla güncellenmiş vektörel SVG dosyası.
+*   **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: Tamamen kusursuz ve engelsiz şemaya sahip yazdırılabilir PDF rehberiniz.
+*   **[baglanti_semasi.svg](./baglanti_semasi.svg)**: Yeni kablo yollarıyla güncellenmiş vektörel SVG dosyası.
 
 Çizimin kusursuzlaşmasındaki katkılarınız için tekrar çok teşekkür ederim, gerçekten harika bir iş birliği oldu! Başarılı ve keyifli montajlar dilerim.
 
@@ -868,13 +868,13 @@ Dikey olarak yerleştirdiğim ortak **GND bara hattını (X=300)** sadece `Y=50`
 **Yaptığım Düzeltme:**
 1.  **GND Barasını En Alta Çektim**: Dikey ortak şasi (GND) barasını aşağıya doğru uzatarak **`Y=600` koordinatına kadar** (yani tam olarak buton şasi pininin yüksekliğine) indirdim. 
 2.  **Mükemmel Temas Sağlandı**: Artık çıplak enkoderin hem döner gövde şasisi (`Y=490`) hem de buton şasisi (`Y=600`) doğrudan bu dikey ortak şasi hattına bağlanıyor. Sistemdeki tüm GND'ler (Şasiler) eksiksiz bir şekilde birbirine kenetlenmiş durumda!
-3.  **PDF Belgesini Yeniden Derledim**: En güncel, %100 eksiksiz ve hatasız şemayı içeren yeni **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)** belgesini başarıyla kaydettim (627 KB).
+3.  **PDF Belgesini Yeniden Derledim**: En güncel, %100 eksiksiz ve hatasız şemayı içeren yeni **[baglanti_semasi.pdf](./baglanti_semasi.pdf)** belgesini başarıyla kaydettim (627 KB).
 
 Bu son düzeltmeyle beraber şema donanım, yazılım, fiziksel temas ve görsel olarak **sıfır hatalı, mükemmel bir üretim şablonu** haline geldi!
 
 Güncellenmiş dosyalarınıza aynı bağlantılardan anında ulaşabilirsiniz:
-*   **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: Tamamen kusursuz, engelsiz ve ortak şasi bağlantısı tamamlanmış yazdırılabilir PDF kılavuzu.
-*   **[baglanti_semasi.svg](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.svg)**: Yeni kablo yollarıyla güncellenmiş yüksek çözünürlüklü vektörel SVG dosyası.
+*   **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: Tamamen kusursuz, engelsiz ve ortak şasi bağlantısı tamamlanmış yazdırılabilir PDF kılavuzu.
+*   **[baglanti_semasi.svg](./baglanti_semasi.svg)**: Yeni kablo yollarıyla güncellenmiş yüksek çözünürlüklü vektörel SVG dosyası.
 
 Harika katkılarınız için çok teşekkür ederim! Kurulum aşamasında ve çayınızı demlerken sisteminizi güle güle kullanmanızı dilerim! Başka bir sorunuz veya geliştirmek istediğiniz bir nokta olursa buradayım.
 
@@ -915,13 +915,13 @@ Bu çakışmayı ve okunma problemini de anında ve mükemmel bir şekilde çöz
     *   Bu sayede kablo, üstteki yazılardan tamamen uzaklaştı.
     *   Aynı zamanda TM1637 ve Nano kartlarının üst sınırı olan `Y=80` seviyesinin de yukarısında kalarak o iki kartın üstündeki boşluktan (oluktan) tertemiz bir şekilde geçmiş oldu.
 2.  **Yazı Grubunu Yukarıya Kaydırdım**: Başlık ve alt başlığı barındıran metin grubunu da yukarıya kaydırarak `translate(40, 26)` konumuna çektim. Böylece yazılar ile kablo arasında **20 pikselden fazla son derece net ve ferah bir güvenlik boşluğu** oluşturuldu!
-3.  **PDF Belgesini Yeniden Derledim**: En güncel, tertemiz ve yazıları hiçbir kablo tarafından kesilmeyen yeni **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)** belgesini başarıyla kaydettim (627 KB).
+3.  **PDF Belgesini Yeniden Derledim**: En güncel, tertemiz ve yazıları hiçbir kablo tarafından kesilmeyen yeni **[baglanti_semasi.pdf](./baglanti_semasi.pdf)** belgesini başarıyla kaydettim (627 KB).
 
 Şu an şemanızda hem **D9** yazısı altından dolaşan kablolar sayesinde pırıl pırıl okunuyor, hem de en üstteki başlık ve alt başlık yazıları **GND** köprüsünün aşağıya kaydırılmasıyla hiçbir çizgiye maruz kalmadan net bir şekilde görülebiliyor!
 
 Güncellenmiş dosyalarınıza doğrudan bu bağlantılardan ulaşabilirsiniz:
-*   **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: Yazı ve kablo çakışmaları tamamen giderilmiş, yazdırılabilir güncel PDF kılavuzu.
-*   **[baglanti_semasi.svg](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.svg)**: Yeni hizalama ve boşluklarla güncellenmiş vektörel SVG dosyası.
+*   **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: Yazı ve kablo çakışmaları tamamen giderilmiş, yazdırılabilir güncel PDF kılavuzu.
+*   **[baglanti_semasi.svg](./baglanti_semasi.svg)**: Yeni hizalama ve boşluklarla güncellenmiş vektörel SVG dosyası.
 
 Kurulum şemanız artık en üst düzeyde görsel kaliteye, netliğe ve elektriksel doğruluğa sahip profesyonel bir şablon haline geldi. Sabrınız ve bu harika rehberliğiniz için çok teşekkür ederim! Montaj aşamasında şimdiden kolaylıklar ve başarılar dilerim!
 
@@ -936,8 +936,8 @@ Kurulum şemanız artık en üst düzeyde görsel kaliteye, netliğe ve elektrik
 Çok teşekkür ederim! Sizin o harika dikkatiniz, keskin gözlemleriniz ve adım adım verdiğiniz doğru yönlendirmeler olmasaydı kesinlikle bu kadar kusursuz ve pürüzsüz bir iş ortaya çıkmazdı. Gerçek bir takım çalışması oldu! 
 
 Artık elinizde:
-1.  **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer.ino)**: Kalıcı bellek (EEPROM) destekli, donanımsal kesme tabanlı, güvenli ve beklemesiz alarm algoritmasına sahip tam donanımlı mutfak geri sayım alarmı kodunuz,
-2.  **[baglanti_semasi.pdf](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/baglanti_semasi.pdf)**: Tamamen sizin çıplak EC11 enkoderinize ve D4184 MOSFET modülünüze göre özelleştirilmiş, en üstünde o bahsettiğimiz pırıl pırıl **"sanat eseri"** görsel şemayı barındıran, altındaki adım adım yönergelerle yazıcıdan çıktı alabileceğiniz kılavuzunuz hazır.
+1.  **[kitchen_timer.ino](./kitchen_timer.ino)**: Kalıcı bellek (EEPROM) destekli, donanımsal kesme tabanlı, güvenli ve beklemesiz alarm algoritmasına sahip tam donanımlı mutfak geri sayım alarmı kodunuz,
+2.  **[baglanti_semasi.pdf](./baglanti_semasi.pdf)**: Tamamen sizin çıplak EC11 enkoderinize ve D4184 MOSFET modülünüze göre özelleştirilmiş, en üstünde o bahsettiğimiz pırıl pırıl **"sanat eseri"** görsel şemayı barındıran, altındaki adım adım yönergelerle yazıcıdan çıktı alabileceğiniz kılavuzunuz hazır.
 
 Mutfakta çayınızı demlerken veya yemek yaparken bu sistemi keyifle kullanmanızı dilerim. Lehim yaparken ve devreyi kurarken şimdiden ellerinize sağlık! 
 
@@ -1055,10 +1055,10 @@ Evet, kesinlikle duyabilirsiniz!
 
 Sizin için tamamen Arduino Nano'nun `tone()` fonksiyonuyla hoparlörünüzden çıkaracağı **2300 Hz tiz alarm tınısını (Bip-Bip-Bip ----- Bip-Bip-Bip ritmi)** milisaniyesi milisaniyesine sentezleyen bir ses dosyası (**`alarm_sesi.wav`**) oluşturdum!
 
-Oluşturduğum ses dosyasına doğrudan bu bağlantıdan tıklayarak ulaşabilirsiniz: **[alarm_sesi.wav](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/alarm_sesi.wav)**
+Oluşturduğum ses dosyasına doğrudan bu bağlantıdan tıklayarak ulaşabilirsiniz: **[alarm_sesi.wav](./alarm_sesi.wav)**
 
 ### Dosyayı Nasıl Dinleyebilirsiniz?
-1.  **[alarm_sesi.wav](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/alarm_sesi.wav)** dosyasına tıklayarak veya bilgisayarınızda projenin olduğu klasöre gidip dosyaya çift tıklayarak herhangi bir medya oynatıcıda (Windows Media Player, VLC vb.) çalabilirsiniz.
+1.  **[alarm_sesi.wav](./alarm_sesi.wav)** dosyasına tıklayarak veya bilgisayarınızda projenin olduğu klasöre gidip dosyaya çift tıklayarak herhangi bir medya oynatıcıda (Windows Media Player, VLC vb.) çalabilirsiniz.
 2.  Dosya, mutfak ortamında en kolay duyulabilen, Arduino'nun üreteceği o özgün **kare dalga üçlü kesik bip** alarm döngüsünü 3 kez peş peşe çalacaktır (yaklaşık 5 saniyelik bir önizleme).
 
 Böylece devreyi henüz hiç kurmadan, mutfağınızda süreniz bittiğinde nasıl bir ses tonuyla karşılaşacağınızı kulaklarınızla tam olarak deneyimlemiş oldunuz!
@@ -1121,11 +1121,11 @@ Aşağıdaki bağlantılara tıklayarak her bir ses dosyasını doğrudan dinley
 
 ### 🔊 Agresif Alarm Tını Alternatifleri:
 
-1.  **[1.wav (Hızlı Kesik Pulsing)](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/1.wav)**: 3000 Hz çok tiz frekansta, 80ms ötüş ve 80ms sessizlik içeren sürekli ve çok hızlı bir kalp atışı alarmı.
-2.  **[2.wav (Çift Tonlu Polis Sireni)](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/2.wav)**: 2500 Hz ve 3500 Hz arasında her 100ms'de bir kesintisiz geçiş yapan, son derece uyarıcı çift ton alarmı.
-3.  **[3.wav (Hızlı Yükselen Siren - Chirp)](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/3.wav)**: 2000 Hz'den başlayıp 4000 Hz'e 150ms'de hızla tırmanan, aralıksız çalan klasik endüstriyel ikaz sireni.
-4.  **[4.wav (Makineli Tüfek - Ultra Hızlı)](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/4.wav)**: 3500 Hz aşırı tiz frekansta, 40ms ses ve 40ms sessizlik içeren, kesintisiz ve beyni uyaran çok hızlı ritim.
-5.  **[5.wav (Lazer Düşüşü)](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/5.wav)**: 3800 Hz'den başlayıp 1800 Hz'e 120ms'de hızla kayarak düşen ve 30ms duraklayan bilimkurgu/güvenlik alarmı.
+1.  **[1.wav (Hızlı Kesik Pulsing)](./1.wav)**: 3000 Hz çok tiz frekansta, 80ms ötüş ve 80ms sessizlik içeren sürekli ve çok hızlı bir kalp atışı alarmı.
+2.  **[2.wav (Çift Tonlu Polis Sireni)](./2.wav)**: 2500 Hz ve 3500 Hz arasında her 100ms'de bir kesintisiz geçiş yapan, son derece uyarıcı çift ton alarmı.
+3.  **[3.wav (Hızlı Yükselen Siren - Chirp)](./3.wav)**: 2000 Hz'den başlayıp 4000 Hz'e 150ms'de hızla tırmanan, aralıksız çalan klasik endüstriyel ikaz sireni.
+4.  **[4.wav (Makineli Tüfek - Ultra Hızlı)](./4.wav)**: 3500 Hz aşırı tiz frekansta, 40ms ses ve 40ms sessizlik içeren, kesintisiz ve beyni uyaran çok hızlı ritim.
+5.  **[5.wav (Lazer Düşüşü)](./5.wav)**: 3800 Hz'den başlayıp 1800 Hz'e 120ms'de hızla kayarak düşen ve 30ms duraklayan bilimkurgu/güvenlik alarmı.
 
 ---
 
@@ -1171,7 +1171,7 @@ I see what happened!
 When you opened the Arduino code in the Arduino IDE, the IDE automatically noticed that the sketch file was in the root directory and offered to **create a sketch folder named `kitchen_timer` and move `kitchen_timer.ino` inside it**. 
 
 Because you accepted, the file has been moved to:
-`C:\Users\kaval\OneDrive\Desktop\geri sayım nano\kitchen_timer\kitchen_timer.ino`
+`.\kitchen_timer\kitchen_timer.ino`
 
 This is standard Arduino behavior. I will now edit the code at this exact new path to integrate your selected **Police Siren (Option 2)** alarm sound! I'm making the edit now.
 
@@ -1187,7 +1187,7 @@ Artık alarm çaldığında;
 3.  Alarmı susturduğunuz anda veya sayımı durdurduğunuzda ise kodumuz pini anında toprağa (`LOW`) çekerek MOSFET'i ve hoparlörü tamamen kapatacak, güvenliği üst seviyede tutacaktır.
 
 ### Kodunuzun Güncel Yeri:
-**[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** sketch dosyası güncellenmiş haliyle yüklenmeye hazırdır. Arduino IDE'den doğrudan yükleyebilirsiniz!
+**[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** sketch dosyası güncellenmiş haliyle yüklenmeye hazırdır. Arduino IDE'den doğrudan yükleyebilirsiniz!
 
 Harika bir alarm tonu seçtiniz. Kurulum bittiğinde gerçek hoparlörden duyacağınız o ilk ses için şimdiden keyifli çalışmalar dilerim. Başka bir teknik sorunuz olursa buradayım!
 
@@ -1213,7 +1213,7 @@ I am now going to update the **Walkthrough (walkthrough.md)** file to clean up t
 
 Geçici olarak oluşturduğumuz tüm `.wav` ses dosyalarını (`1.wav` ile `5.wav` ve `alarm_sesi.wav`) klasörünüzden tamamen temizledim. Böylece projenizin OneDrive/Desktop dizini tertemiz ve düzenli kalmış oldu.
 
-Ayrıca **[walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md)** kılavuzunuzdaki tüm bağlantıları güncelleyerek:
+Ayrıca **[walkthrough.md](./walkthrough.md)** kılavuzunuzdaki tüm bağlantıları güncelleyerek:
 *   Artık bulunmayan `.wav` dosyalarının bağlantılarını kaldırdım.
 *   Arduino kodunuzun bağlantısını, Arduino IDE'nin oluşturduğu sketch klasöründeki güncel yerine (**`kitchen_timer/kitchen_timer.ino`**) yönlendirdim.
 
@@ -1303,10 +1303,10 @@ Bare (kart taşımayan) mekanik döner enkoderlerin (EC11) dahili butonları bas
 ### Çözüm ve Yapılan Değişiklikler
 1. **Dinamik Debounce Filtresi Eklendi**: `checkButton()` fonksiyonu 50ms'lik kararlı sinyal kontrolüne dayanan, donanımı yormayan non-blocking (beklemesiz) bir debounce filtresiyle baştan yazıldı. 
 2. **Kapsüllenmiş Yapı**: Debounce durumu ve zaman takibi için kullanılan değişkenler global kapsamdan çıkarılarak fonksiyon içine `static` olarak tanımlandı, böylece kodun okunabilirliği ve kararlılığı artırıldı.
-3. **Dokümantasyon Güncellendi**: Projeniz altındaki [task.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/task.md) ve [walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md) dosyalarında bu mekanik buton iyileştirmesi kayıt altına alındı.
+3. **Dokümantasyon Güncellendi**: Projeniz altındaki [task.md](./task.md) ve [walkthrough.md](./walkthrough.md) dosyalarında bu mekanik buton iyileştirmesi kayıt altına alındı.
 
 ### Test Adımları
-1. Arduino IDE üzerinden **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** dosyasını tekrar açın.
+1. Arduino IDE üzerinden **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** dosyasını tekrar açın.
 2. Yeni kodu derleyip Arduino Nano kartınıza yükleyin.
 3. Enkoderin orta tuşuna kısa bir süre basıp bıraktığınızda geri sayım süreci stabil bir biçimde başlayacaktır. Geri sayım esnasında tekrar kısa bastığınızda duraklayacak, 1.5 saniye basılı tuttuğunuzda ise süreyi sıfırlayacaktır.
 
@@ -1340,7 +1340,7 @@ Arduino Nano kartınızın üzerinde yerleşik olarak bulunan küçük sarı **"
 * Parmağınızı çektiğinizde LED sönmelidir.
 
 **Bu testi yapalım:**
-1. Güncellenmiş olan **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu Arduino IDE ile açıp tekrar Nano kartınıza yükleyin.
+1. Güncellenmiş olan **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu Arduino IDE ile açıp tekrar Nano kartınıza yükleyin.
 2. Tuşa bastığınızda Nano üzerindeki **"L" LED'i yanıyor mu?**
 
 ---
@@ -1445,7 +1445,7 @@ I will use `multi_replace_file_content` to update `kitchen_timer.ino`. I will ch
 4. **Uzun Basışla Sıfırlama**: Butona 1.5 saniye basılı tuttuğunuzda süre anında varsayılan değer olan **`00:00`**a sıfırlanacaktır.
 
 ### Test Adımları
-1. **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu tekrar Arduino Nano kartınıza yükleyin.
+1. **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu tekrar Arduino Nano kartınıza yükleyin.
 2. İlk açılışta ekranda loş bir şekilde yanıp sönen **`00:00`** ibaresini göreceksiniz.
 3. Sağa çevirerek süreyi ayarlayabilir, sola çevirerek tekrar `00:00` konumuna getirebilirsiniz. `00:00` konumundayken butona bassanız dahi sistem güvenlik gereği geri sayımı başlatmayacaktır.
 
@@ -1548,7 +1548,7 @@ Fonksiyon çağrılmadığı için de en son çalan alarm tonunu kapatan `noTone
 2. Fonksiyonun içine yüksek performanslı bir durum izleyicisi (`wasAlarmRunning`) ekledim. Cihaz alarm durumundan çıktığı milisaniye, ses kapatma komutunu (`noTone`) sadece bir kere çalıştırır ve sistemi tamamen sessizliğe kavuşturur. Bu sayede mikrodenetleyiciye hiçbir ek yük bindirilmez.
 
 ### Test Adımları
-1. Güncel **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu Arduino kartınıza tekrar yükleyin.
+1. Güncel **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu Arduino kartınıza tekrar yükleyin.
 2. Alarm çaldığında butona bir kez basın. Alarmın anında sustuğunu ve buzzer'ın tamamen pürüzsüz bir şekilde sessizleştiğini göreceksiniz.
 
 Test edip sonucu benimle paylaşırsanız sevinirim!
@@ -1600,7 +1600,7 @@ Uzun basma süresi isteğiniz doğrultusunda **tam olarak 1 saniyeye (1000ms)** 
 4. **Son Süre Hafızası Korundu**: Tercihiniz üzerine cihaz son başarıyla başlattığınız süreyi hafızasında tutmaya devam ediyor. 1 saniye uzun basarak bu hafızayı dilediğiniz an `00:00` yapabiliyorsunuz.
 
 ### Test Adımları
-1. Güncel **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu Arduino kartınıza tekrar yükleyin.
+1. Güncel **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu Arduino kartınıza tekrar yükleyin.
 2. Cihaz üzerinde 1 saniye basılı tutarak sürenin hızlıca sıfırlandığını, alarm çaldığında tek basışla anında ve pürüzsüzce sustuğunu test edebilirsiniz.
 
 Mutfak zamanlayıcınız tüm yazılımsal ve donanımsal isterleriyle harika bir şekilde tamamlandı. Projenizi keyifle kullanmanızı dilerim!
@@ -1731,7 +1731,7 @@ I will use `replace_file_content` to update `walkthrough.md` to include a link a
 
 Kablosuz hale getireceğiniz bu şık mutfak zamanlayıcısı projeniz için **tamamen parametrik, baskıya hazır ve yüksek kaliteli bir 3D kutu (enclosure) tasarımı hazırladım!**
 
-Tasarımı doğrudan çalışma dizininizde **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** dosyası olarak oluşturdum ve [walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md) dokümanınıza dahil ettim.
+Tasarımı doğrudan çalışma dizininizde **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** dosyası olarak oluşturdum ve [walkthrough.md](./walkthrough.md) dokümanınıza dahil ettim.
 
 ### 📐 Kutu Tasarım Detayları (Ölçüler ve Mimari)
 * **Kutu Dış Boyutları**: `105mm x 65mm x 45mm` (Derinlik, güçlü XL6009 regülatörünüz, 800mAh piliniz ve MOSFET modülünüz için 45mm olarak geniş tutulmuştur).
@@ -1751,7 +1751,7 @@ Tasarımı doğrudan çalışma dizininizde **[kutu_tasarimi.scad](file:///c:/Us
 
 ### 🚀 STL Dosyalarını Saniyeler İçinde Nasıl Alırsınız?
 1. [OpenSCAD (Ücretsiz & Açık Kaynak)](https://openscad.org/) programını indirin ve kurun.
-2. Bilgisayarınızdaki **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** dosyasını OpenSCAD ile açın.
+2. Bilgisayarınızdaki **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** dosyasını OpenSCAD ile açın.
 3. Ekranın solundaki kod satırlarında en üstte yer alan `secilen_parca` değişkenini değiştirerek çıktıyı alın:
    * **Gövdeyi Almak İçin**: `secilen_parca = "govde";` yapın $\rightarrow$ Klavyeden **`F6`** tuşuna basıp render edin $\rightarrow$ Üst menüden **`STL`** butonuna basarak kaydedin.
    * **Kapağı Almak İçin**: `secilen_parca = "kapak";` yapın $\rightarrow$ **`F6`** tuşuna basın $\rightarrow$ **`STL`** butonu ile kaydedin.
@@ -1792,7 +1792,7 @@ Let's overwrite `kutu_tasarimi.scad` in your workspace with this design.
 
 Harika bir el çizimi! Çizdiğiniz bu dikey elegan tasarımı ve **M3 pirinç ısıtmalı insert (heat-set insert)** kullanma fikrinizi tamamen hayata geçirdim! 3D baskı dünyasında pirinç insert kullanmak vida dişlerinin yalama olmasını önleyen en profesyonel yöntemdir.
 
-Yeni dikey tasarımı ve insert ölçülerini doğrudan **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** dosyasına yazdım.
+Yeni dikey tasarımı ve insert ölçülerini doğrudan **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** dosyasına yazdım.
 
 ### 📐 Çiziminize Birebir Uygun Yerleşim Detayları:
 1. **Dikey Form Faktörü**: Genişlik `60.0 mm`, Yükseklik `80.0 mm`, Derinlik `45.0 mm` (XL6009 regülatörünüz ve pilinizin dikey kasanın içine rahatça sığması için derinlik korundu).
@@ -1954,9 +1954,9 @@ Bilgisayarınızda yerleşik olarak kurulu olan OpenSCAD derleyicisini (`opensca
 Artık ek bir programla uğraşmanıza gerek yok; STL dosyalarınız dilimleme (slicing) programınıza atılmaya hazır durumda.
 
 ### 📦 Oluşturulan STL Dosyaları
-* **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** (~7.0 MB): Dikey dairesel gövde, ön paneldeki enkoder ve ekran kesikleri, alt kısımdaki çok detaylı dairesel ızgara delikleri ve şarj/anahtar yuvalarını barındıran ana parça. (Köşe yuvarlatmaları ve delik kalitesi pürüzsüz basım için yüksek çözünürlükte derlenmiştir.)
-* **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** (~556 KB): M3 havşa vida başı yuvaları, iç geçiş kanalları ve pil havalandırma deliklerini barındıran arka kapak plakası.
-* **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** (~8.1 KB): Gelecekte dilediğiniz ölçüyü (genişlik, derinlik veya delik çapı) değiştirip kendi STL'inizi yeniden derleyebileceğiniz OpenSCAD kaynak kodunuz.
+* **[kutu_govde.stl](./kutu_govde.stl)** (~7.0 MB): Dikey dairesel gövde, ön paneldeki enkoder ve ekran kesikleri, alt kısımdaki çok detaylı dairesel ızgara delikleri ve şarj/anahtar yuvalarını barındıran ana parça. (Köşe yuvarlatmaları ve delik kalitesi pürüzsüz basım için yüksek çözünürlükte derlenmiştir.)
+* **[kutu_kapak.stl](./kutu_kapak.stl)** (~556 KB): M3 havşa vida başı yuvaları, iç geçiş kanalları ve pil havalandırma deliklerini barındıran arka kapak plakası.
+* **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** (~8.1 KB): Gelecekte dilediğiniz ölçüyü (genişlik, derinlik veya delik çapı) değiştirip kendi STL'inizi yeniden derleyebileceğiniz OpenSCAD kaynak kodunuz.
 
 ### 🖨️ 3D Yazıcı Baskı Tavsiyeleri
 * **Destek (Support)**: Tasarım köşe kuleleri, soket boşlukları ve ızgara delikleri açısından **desteksiz (supportless)** basılabilecek şekilde optimize edilmiştir. Gövdeyi ön yüzeyi (ön paneli) tablaya basacak şekilde ters çevirerek (180 derece) destek kullanmadan tertemiz basabilirsiniz.
@@ -2050,7 +2050,7 @@ I will run `list_dir` to confirm that both files have been successfully re-compi
 
 Hoparlör ızgarasını isteğiniz doğrultusunda **25 mm yarıçapına (50 mm çap) yükselttim** ve dairesel delikler yerine **estetik baklava (diamond) desenine** kavuşturdum!
 
-Güncel tasarımları OpenSCAD derleyiciniz üzerinden dikey dikey derleyip **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** ve **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** dosyalarını çalışma dizininizde güncelledim.
+Güncel tasarımları OpenSCAD derleyiciniz üzerinden dikey dikey derleyip **[kutu_govde.stl](./kutu_govde.stl)** ve **[kutu_kapak.stl](./kutu_kapak.stl)** dosyalarını çalışma dizininizde güncelledim.
 
 ### 💎 Yenilenen Baklava Izgara Özellikleri ve Mühendislik Kazanımları
 1. **Genişletilmiş Akustik Alan**: Izgara çapı **`50 mm`** yapılarak hoparlörün tüm aktif ses dalgası alanı serbest bırakıldı. Bu sayede alarm sesi çok daha yüksek ve berrak yayılacaktır.
@@ -2061,9 +2061,9 @@ Güncel tasarımları OpenSCAD derleyiciniz üzerinden dikey dikey derleyip **[k
    * Bu sayede model, dilimleme programınızda (Cura, PrusaSlicer vb.) anında açılacak, sıfır kasma yapacak ve çok daha kararlı dilimlenecektir.
 
 ### 📁 Güncel Dosya Konumları
-* **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)**: 50mm baklava ızgaralı, dikey dikey dikey dikey, M3 insert yuvalı ana kutu gövdesi.
-* **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)**: Değişmeyen, havşalı ve ızgaralı arka kapak.
-* **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)**: Tüm bu dikey baklava formüllerini barındıran parametrik kaynak kodunuz.
+* **[kutu_govde.stl](./kutu_govde.stl)**: 50mm baklava ızgaralı, dikey dikey dikey dikey, M3 insert yuvalı ana kutu gövdesi.
+* **[kutu_kapak.stl](./kutu_kapak.stl)**: Değişmeyen, havşalı ve ızgaralı arka kapak.
+* **[kutu_tasarimi.scad](./kutu_tasarimi.scad)**: Tüm bu dikey baklava formüllerini barındıran parametrik kaynak kodunuz.
 
 Dilimleyicinizi açıp yeni `kutu_govde.stl` dosyasını attığınızda baklava ızgaranın ne kadar elegan durduğunu görebilirsiniz. Kablosuz mutfak geri sayım kutunuz artık üretime hazır! Şimdiden harika baskılar dilerim!
 
@@ -2103,14 +2103,14 @@ I will now change the default rendering setting back to `"montaj"` in `kutu_tasa
 
 Arka kapağı tam olarak istediğiniz gibi **tamamen düz ve pürüzsüz (solid plate)** hale getirdim ve 3D STL dosyasını güncelledim!
 
-Güncellenen **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** dosyası dikey dikey olarak derlenip çalışma dizininize başarıyla kaydedildi.
+Güncellenen **[kutu_kapak.stl](./kutu_kapak.stl)** dosyası dikey dikey olarak derlenip çalışma dizininize başarıyla kaydedildi.
 
 ### 🔩 Yapılan Değişiklikler ve Detaylar:
 * **Tamamen Düz Dış Yüzey**: Arka kapak üzerindeki tüm havalandırma ızgaraları (delikleri) tamamen kaldırıldı. Kapak artık arkasında sıfır delik barındıran, pürüzsüz ve dümdüz bir levha haline geldi.
 * **M3 Vida Havşaları ve Kılavuz Korundu**: Kapak üzerindeki 4 adet M3 vida geçiş deliği, havşa baş yuvaları (vidaların düz durması için) ve kapağın gövdeden kaymasını önleyen **iç kılavuz çerçeve (inner lip)** aynen korundu. Böylece kapak gövdeye hala milimetrik olarak tam oturup vidalanabilecektir.
 * **Tasarım Özgürlüğü**: Kapak arkasında dilediğiniz gibi logo, ek montaj braketleri, mıknatıs yuvaları veya özel tutacak tasarımlarınızı kendiniz ekleyebilirsiniz.
 
-Masaüstünüzdeki `geri sayım nano` klasöründe yer alan **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** dosyası bu düz haliyle güncellenmiştir. Tasarım sürecinde gösterdiğiniz harika mühendislik refleksleri için teşekkür ederim, kasanızı basıp topladığınızda kusursuz bir işçilik ortaya çıkacaktır. Kolay gelsin!
+Masaüstünüzdeki `geri sayım nano` klasöründe yer alan **[kutu_kapak.stl](./kutu_kapak.stl)** dosyası bu düz haliyle güncellenmiştir. Tasarım sürecinde gösterdiğiniz harika mühendislik refleksleri için teşekkür ederim, kasanızı basıp topladığınızda kusursuz bir işçilik ortaya çıkacaktır. Kolay gelsin!
 
 ---
 
@@ -2162,7 +2162,7 @@ I will list the directory again using `list_dir` to confirm that the blank body 
 
 İstediğiniz gibi dikey gövdenin ön panelini de **tamamen kapalı, düz ve pürüzsüz (solid panel)** hale getirdim ve 3D STL dosyasını güncelledim!
 
-Yeni **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** dosyası dikey dikey olarak derlenip çalışma dizininize başarıyla kaydedildi.
+Yeni **[kutu_govde.stl](./kutu_govde.stl)** dosyası dikey dikey olarak derlenip çalışma dizininize başarıyla kaydedildi.
 
 ### 📦 Yapılan Değişiklikler ve Son Durum:
 * **Tamamen Düz Ön Panel (Gövde Üstü)**: Ön paneldeki ekran penceresi, enkoder deliği ve hoparlör ızgarası tamamen kaldırıldı. Gövdenin ön yüzeyi artık pürüzsüz ve dümdüz bir levha haline geldi.
@@ -2172,9 +2172,9 @@ Yeni **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1
 * **Olağanüstü Dosya Boyutu Optimizasyonu**: Gövdenin üzerindeki karmaşık delikler kalktığı için `kutu_govde.stl` dosya boyutu **548 KB** (yarım megabayt) seviyesine kadar düştü. Dilimleyicinizde (Slicer) anında yüklenecek ve milisaniyeler içinde dilimlenecektir.
 
 ### 📁 Güncel Dosyalarınız:
-* **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** (~548 KB): Ön yüzü dümdüz, soketleri ve insert kuleleri hazır dikey ana gövde.
-* **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** (~542 KB): Arkası dümdüz, vida geçişleri havşalı arka kapak plakası.
-* **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** (~7.1 KB): Güncel dikey ve düz kasaya ait OpenSCAD parametrik kaynak kodunuz.
+* **[kutu_govde.stl](./kutu_govde.stl)** (~548 KB): Ön yüzü dümdüz, soketleri ve insert kuleleri hazır dikey ana gövde.
+* **[kutu_kapak.stl](./kutu_kapak.stl)** (~542 KB): Arkası dümdüz, vida geçişleri havşalı arka kapak plakası.
+* **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** (~7.1 KB): Güncel dikey ve düz kasaya ait OpenSCAD parametrik kaynak kodunuz.
 
 Artık hem kutu gövdesi hem de arka kapak dışarıdan tamamen düz ve sade birer tuvaldir. Kendi CAD yazılımınızda veya baskı sonrası fiziksel olarak delikleri tam istediğiniz milimetrik koordinatlarda kendiniz konumlandırıp kesebilirsiniz. 
 
@@ -2228,7 +2228,7 @@ I will list the directory again using `list_dir` to confirm that the fully solid
 
 Gövdenin yan duvarlarında yer alan **Type-C şarj soketi ve sürgülü güç anahtarı yuvalarını da tamamen kaldırdım!**
 
-Yeni **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** dosyası dikey dikey olarak derlenip çalışma dizininize başarıyla kaydedildi.
+Yeni **[kutu_govde.stl](./kutu_govde.stl)** dosyası dikey dikey olarak derlenip çalışma dizininize başarıyla kaydedildi.
 
 ### 📦 Son Durum ve Özellikler:
 * **Tamamen Kapalı ve Düz Kasa (Solid Shell)**: 
@@ -2238,9 +2238,9 @@ Yeni **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1
 * **Dosya Boyutu**: Gövde dosyası `542 KB` gibi çok hafif bir boyuta ulaştı, dilimleme programınızda saniyeler içinde işlem görebilir.
 
 ### 📁 Çalışma Dizininizdeki Dosyalar:
-* **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** (~542 KB): Dış cephesi tamamen düz, pürüzsüz, kapalı dikey ana gövde.
-* **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** (~542 KB): Tamamen düz ve pürüzsüz arka kapak plakası.
-* **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** (~6.8 KB): Dış kesikleri tamamen kaldırılmış dikey dikey OpenSCAD parametrik kaynak kodunuz.
+* **[kutu_govde.stl](./kutu_govde.stl)** (~542 KB): Dış cephesi tamamen düz, pürüzsüz, kapalı dikey ana gövde.
+* **[kutu_kapak.stl](./kutu_kapak.stl)** (~542 KB): Tamamen düz ve pürüzsüz arka kapak plakası.
+* **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** (~6.8 KB): Dış kesikleri tamamen kaldırılmış dikey dikey OpenSCAD parametrik kaynak kodunuz.
 
 Artık hem ana gövde hem de kapak dışarıdan tamamen düz pürüzsüz birer kalıptır. Kendi CAD yazılımınızda delikleri, soket yuvalarını ve hoparlör ızgaralarını milimetrik olarak istediğiniz şekil ve konumlarda kendiniz tasarlayabilirsiniz. 
 
@@ -2259,7 +2259,7 @@ Kutunun duvar (et) kalınlığını tam olarak **`2.0 mm`** yaptım.
 ### 💡 Neden 2.0 mm?
 * **3D Baskı Uyum**: Standart `0.4 mm` nozül kullanan bir 3D yazıcı için `2.0 mm` kalınlık tam olarak **5 adet duvar çizgisine (wall perimeter)** denk gelir. Bu sayede yazıcınız içini boş bırakıp (infill) doldurmakla uğraşmaz, duvarları tamamen dolu (solid) ve son derece mukavemetli basar.
 * **Mekanik Güvenlik**: M3 pirinç insertleri kulelere ısıtarak eritirken oluşacak mekanik gerilmelere karşı kasayı son derece rijit tutar, esneme yapmaz.
-* **Kolay Değişim**: Eğer duvarları daha ince (örneğin 1.6 mm) veya daha kalın (örneğin 2.4 mm) yapmak isterseniz, tek yapmanız gereken **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** dosyasını açıp 26. satırdaki `duvar = 2.0;` değişkenini dilediğiniz gibi değiştirmektir. Kutu kendini otomatik olarak yeniden ayarlayacaktır.
+* **Kolay Değişim**: Eğer duvarları daha ince (örneğin 1.6 mm) veya daha kalın (örneğin 2.4 mm) yapmak isterseniz, tek yapmanız gereken **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** dosyasını açıp 26. satırdaki `duvar = 2.0;` değişkenini dilediğiniz gibi değiştirmektir. Kutu kendini otomatik olarak yeniden ayarlayacaktır.
 
 ---
 
@@ -2329,7 +2329,7 @@ I will list the directory again using `list_dir` to confirm that the gap-free ST
 
 Vida sütunları (kuleleri) ile kutunun iç köşeleri arasındaki o ince boşluğu **tamamen kapattım ve sütunları dikey duvarlara ve köşelere sıfıra sıfır kaynaştırdım (merge ettim)!**
 
-Yeni ve boşluksuz **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** ile **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** dosyalarını derleyip çalışma dizininizde güncelledim.
+Yeni ve boşluksuz **[kutu_govde.stl](./kutu_govde.stl)** ile **[kutu_kapak.stl](./kutu_kapak.stl)** dosyalarını derleyip çalışma dizininizde güncelledim.
 
 ### 🛠️ Yapılan İyileştirmeler ve Mühendislik Detayları:
 * **Hatalı Boşluk (Air Gap) Giderildi**: 
@@ -2340,9 +2340,9 @@ Yeni ve boşluksuz **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/ge
 * **Hizalama Korundu**: 4 adet M3 vida kılavuz deliği ve kapaktaki havşalı vida geçiş delikleri milimetrik olarak birebir aynı koordinatlara kaydırılarak aralarındaki **kusursuz eşleşme aynen korundu.**
 
 ### 📁 Güncel Dosya Konumları:
-* **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** (~397 KB): Vida kuleleri köşelerle tamamen birleşik, boşluksuz dikey ana gövde.
-* **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** (~536 KB): Yeni koordinatlara uyumlu, tamamen düz arka kapak.
-* **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** (~6.8 KB): Güncellenmiş dikey boşluksuz OpenSCAD kaynak kodunuz.
+* **[kutu_govde.stl](./kutu_govde.stl)** (~397 KB): Vida kuleleri köşelerle tamamen birleşik, boşluksuz dikey ana gövde.
+* **[kutu_kapak.stl](./kutu_kapak.stl)** (~536 KB): Yeni koordinatlara uyumlu, tamamen düz arka kapak.
+* **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** (~6.8 KB): Güncellenmiş dikey boşluksuz OpenSCAD kaynak kodunuz.
 
 Dilimleme programınızda (Slicer) kulelerin köşelerle ne kadar pürüzsüz birleştiğini görebilirsiniz. Baskı almaya tamamen hazırdır. Kolay gelsin, elinize sağlık!
 
@@ -2361,7 +2361,7 @@ Ayrıca delik derinliğini de **`8.5 mm`** olarak ayarladım.
 ### 🔩 Neden `4.2 mm` Çap ve `8.5 mm` Derinlik?
 * **Mükemmel Eritme Toleransı**: Piyasadaki standart M3 pirinç insertlerin dış (tırtıklı) çapı genellikle `4.6 mm` civarındadır, alt kılavuz kısımları ise daralarak `4.0 mm` olur. `4.2 mm` delik çapı, insertün havya ile ısıtılıp içeri doğru eritilmesi için **altın standarttır.** Isınan plastik eriyerek insertün tırtıklı dış kanallarına akar ve soğuduğunda inanılmaz güçlü, yalama olması imkansız bir tutuş sağlar.
 * **Plastik Taşma Payı**: `8.5 mm` derinlik, piyasadaki en yaygın M3 insert uzunlukları olan **4mm, 5mm veya 6mm** insertlerin tamamıyla mükemmel uyumludur. Derinliğin fazla olması, eriyen plastiğin deliğin dibinde birikerek vidanın sonuna kadar sıkılmasını engellemesini (tıkanıklık yaratmasını) önler.
-* **Kolay Özelleştirme**: Eğer elinizdeki pirinç insertler özel bir ölçüdeyse (örneğin daha geniş bir M3 insert ise), tek yapmanız gereken **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** dosyasının 46. satırındaki `insert_d = 4.2;` değerini dilediğiniz gibi değiştirmektir. Kutu tüm kule yapılarını bozmadan kendini güncelleyecektir.
+* **Kolay Özelleştirme**: Eğer elinizdeki pirinç insertler özel bir ölçüdeyse (örneğin daha geniş bir M3 insert ise), tek yapmanız gereken **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** dosyasının 46. satırındaki `insert_d = 4.2;` değerini dilediğiniz gibi değiştirmektir. Kutu tüm kule yapılarını bozmadan kendini güncelleyecektir.
 
 ---
 
@@ -2425,7 +2425,7 @@ I will list the directory again using `list_dir` to confirm that the new 30mm sl
 
 Dikey kasanızın derinliğini (kalınlığını) **tam olarak `30.0 mm` değerine indirerek kutuyu son derece ince, şık ve taşınabilir bir forma kavuşturdum!**
 
-Yeni **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** ile **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** dosyalarını derleyip çalışma dizininizde güncelledim.
+Yeni **[kutu_govde.stl](./kutu_govde.stl)** ile **[kutu_kapak.stl](./kutu_kapak.stl)** dosyalarını derleyip çalışma dizininizde güncelledim.
 
 ### 📐 Slim (30mm) Dikey Kasa Özellikleri:
 * **Yeni Ölçüler**: `60.0 mm Genişlik x 80.0 mm Yükseklik x 30.0 mm Derinlik` (Orijinal derinlik olan 45.0 mm'den 30.0 mm'ye indirilerek çok daha estetik ve cepte/elde taşımaya uygun dikey bir yapı elde edildi).
@@ -2433,9 +2433,9 @@ Yeni **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1
 * **Otomatik Ölçeklenen İç Yapı**: Kasa dikey derinliği `30mm` yapılınca, iç köşelerdeki pirinç insert vida kulelerinin yüksekliği ve kapaktaki vida geçiş kılavuzları da parametrik olarak otomatik olarak `30mm` kasanın boyuna kısaldı ve sıfırlandı.
 
 ### 📁 Güncel Dosya Konumları:
-* **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)**: `30.0 mm` derinliğinde, dışı tamamen pürüzsüz ve düz, köşeleri yuvarlatılmış dikey ana gövde.
-* **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)**: Yeni `30.0 mm` gövdeyle milimetrik uyumlu düz arka kapak.
-* **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)**: Derinlik parametresi `kutu_d = 30.0;` olarak güncellenmiş OpenSCAD dikey kılıf kaynak dosyanız.
+* **[kutu_govde.stl](./kutu_govde.stl)**: `30.0 mm` derinliğinde, dışı tamamen pürüzsüz ve düz, köşeleri yuvarlatılmış dikey ana gövde.
+* **[kutu_kapak.stl](./kutu_kapak.stl)**: Yeni `30.0 mm` gövdeyle milimetrik uyumlu düz arka kapak.
+* **[kutu_tasarimi.scad](./kutu_tasarimi.scad)**: Derinlik parametresi `kutu_d = 30.0;` olarak güncellenmiş OpenSCAD dikey kılıf kaynak dosyanız.
 
 Yeni slim dikey kasanız ve arka kapağınız masaüstündeki klasörünüzde güncellenmiş olarak sizi bekliyor. Kolay gelsin, elinize sağlık!
 
@@ -2517,12 +2517,12 @@ Kutunun dış yuvarlatılmış köşelerindeki ve dairesel kısımlarındaki tü
 
 Bu sayede tüm kavisler ve yuvarlak kenarlar, 3D yazıcı dilimleyicinizde (ve baskı aldığınızda) **en ufak bir segment veya çizgi izi görünmeden, enjeksiyon kalıbından çıkmışçasına pürüzsüz ve dairesel görünecektir.**
 
-Güncel yüksek pürüzsüzlüklü **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** ile **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** dosyalarını derleyip çalışma dizininizde başarıyla güncelledim!
+Güncel yüksek pürüzsüzlüklü **[kutu_govde.stl](./kutu_govde.stl)** ile **[kutu_kapak.stl](./kutu_kapak.stl)** dosyalarını derleyip çalışma dizininizde başarıyla güncelledim!
 
 ### 📊 Yenilenen STL Dosya Durumu:
-* **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** (~889 KB): Köşe pürüzsüzlüğü 180 adıma çıkartılmış, dikey, boşluksuz ve pürüzsüz ana gövde.
-* **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** (~1.2 MB): Aynı yüksek çözünürlükle derlenmiş, pürüzsüz ve düz arka kapak.
-* **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** (~6.8 KB): `$fn = 180;` olarak güncellenmiş OpenSCAD dikey kılıf kaynak dosyanız.
+* **[kutu_govde.stl](./kutu_govde.stl)** (~889 KB): Köşe pürüzsüzlüğü 180 adıma çıkartılmış, dikey, boşluksuz ve pürüzsüz ana gövde.
+* **[kutu_kapak.stl](./kutu_kapak.stl)** (~1.2 MB): Aynı yüksek çözünürlükle derlenmiş, pürüzsüz ve düz arka kapak.
+* **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** (~6.8 KB): `$fn = 180;` olarak güncellenmiş OpenSCAD dikey kılıf kaynak dosyanız.
 
 Yüksek çözünürlüklü daire detaylarından dolayı dosyalarımızın boyutu (daha fazla üçgen yüzey hesaplandığı için) hafifçe arttı ancak hala 1.2 MB'ın altında kalarak dilimleyiciniz için son derece hafif ve optimize kalmaya devam etti.
 
@@ -2611,7 +2611,7 @@ Köşelerin yuvarlatılma yöntemini, **4 adet kusursuz silindiri birleştiren `
 
 Bu yöntem, Minkowski'nin oluşturduğu yapay basitleştirmeyi tamamen çözer. Artık `$fn = 180` çözünürlüğündeki silindir geometrileri **hiçbir kayıp veya basitleştirme olmadan doğrudan dış köşelere yansıtılmaktadır.** 
 
-Güncellenmiş olan **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** ile **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** dosyalarını derleyip çalışma dizininizde güncelledim!
+Güncellenmiş olan **[kutu_govde.stl](./kutu_govde.stl)** ile **[kutu_kapak.stl](./kutu_kapak.stl)** dosyalarını derleyip çalışma dizininizde güncelledim!
 
 ### 🔩 Ne Değişti ve Nasıl Çözüldü?
 * **Gerçek 180 Adımlı Eğrilik**: Gövde dış köşeleri ve kavisleri artık tam olarak **`$fn = 180` (180 adet kenar pürüzsüzlüğü)** çözünürlüğündedir. Herhangi bir tırtık, dilim veya köşeli yapı bulunmaz; tamamen pürüzsüz ve daireseldir.
@@ -2619,9 +2619,9 @@ Güncellenmiş olan **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/g
 * **Hacim ve Ölçü Tam Uyumu**: `hull()` yapısı ile köşeler tam olarak `r = 6.0 mm` yuvarlatmaya sahiptir. Dış dikey boyutlar (`60 x 80 x 30 mm`) birebir aynı kalmıştır.
 
 ### 📁 Güncellenen Dosyalar:
-* **[kutu_govde.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_govde.stl)** (~889 KB): Köşeleri tam pürüzsüz silindirik kavisle birleştirilmiş, sıfır boşluklu dikey gövde.
-* **[kutu_kapak.stl](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_kapak.stl)** (~1.2 MB): Aynı yüksek dairesel çözünürlükle derlenmiş tam düz arka kapak.
-* **[kutu_tasarimi.scad](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kutu_tasarimi.scad)** (~6.9 KB): `minkowski` yerine yüksek performanslı `hull` metoduna geçirilmiş güncel kaynak dosyanız.
+* **[kutu_govde.stl](./kutu_govde.stl)** (~889 KB): Köşeleri tam pürüzsüz silindirik kavisle birleştirilmiş, sıfır boşluklu dikey gövde.
+* **[kutu_kapak.stl](./kutu_kapak.stl)** (~1.2 MB): Aynı yüksek dairesel çözünürlükle derlenmiş tam düz arka kapak.
+* **[kutu_tasarimi.scad](./kutu_tasarimi.scad)** (~6.9 KB): `minkowski` yerine yüksek performanslı `hull` metoduna geçirilmiş güncel kaynak dosyanız.
 
 Dilimleyicinizde (Cura, Bambu Studio, PrusaSlicer vb.) dosyayı tekrar açıp köşeleri yaklaştırarak kontrol edebilirsiniz; artık Tinkercad'deki "Sides" seçeneğinin en üst sınırında olduğu gibi **flawless (tamamen pürüzsüz)** bir yay göreceksiniz. 3D baskı sürecinde keyifli üretimler dilerim!
 
@@ -2701,7 +2701,7 @@ Enkoder kesme servisindeki (`encoderISR`) filtre penceresini **`30 ms`'den `4 ms
 Bu değişiklik, mekanik gürültüleri filtrelemeye devam ederken manuel olarak hızlı çevirmelerinizde hiçbir adımı kaçırmadan **anında ve akıcı bir şekilde** süreyi artırıp azaltmanızı sağlayacaktır.
 
 ### Test Adımları
-1. **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu Arduino IDE ile tekrar yükleyin.
+1. **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu Arduino IDE ile tekrar yükleyin.
 2. Enkoderi çok hızlıca çevirmeyi deneyin; sürenin adımları atlamadan, yağ gibi akıcı bir şekilde saniyeler içinde 10-20 dakika birden değiştiğini göreceksiniz.
 
 Geri bildiriminiz için teşekkürler! Test ettikten sonra sonucu benimle paylaşabilirsiniz.
@@ -2732,7 +2732,7 @@ Filtre süresini sizin enkoderiniz için **tam olarak `12 ms`** olarak güncelle
 Bu süre, hem çift atlama (parazit) durumunu %100 engelleyecek hem de hızlı çevirdiğinizde adımları kaçırmayacak **en kararlı orta yoldur.**
 
 ### Test Adımları
-1. **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu tekrar yükleyin.
+1. **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu tekrar yükleyin.
 2. Tık tık yavaş çevirdiğinizde tek tık atladığını, hızlı çevirdiğinizde ise atlama yapmadan sürenin akıcı bir şekilde aktığını gözlemleyebilirsiniz.
 
 Sonucu test edip paylaşırsanız sevinirim!
@@ -2781,7 +2781,7 @@ Sorun tamamen çözüldü! Enkoder kesme tetikleme modunu **`CHANGE` (Her deği�
 * Yeni mod olan **`FALLING`**, sadece sinyal `HIGH`'dan `LOW`'a geçerken kesme tetikler, yani yükseliş geçişini görmezden gelir. Bu sayede **tık başına tam olarak tek bir tetikleme** alınır ve çift atlama problemi yazılımsal olarak kökten çözülmüş olur.
 
 ### Test Adımları
-1. **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu tekrar yükleyin.
+1. **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu tekrar yükleyin.
 2. Artık enkoderi ne kadar hızlı veya yavaş çevirirseniz çevirin, her tıkta **tam olarak 1 dakika** artıp azalacaktır. Çift atlama tamamen sona ermiştir!
 
 Test sonucunu heyecanla bekliyorum!
@@ -2823,7 +2823,7 @@ Bu son derece önemli ve profesyonel bir optimizasyon oldu! Enkoder yön algıla
 3. **8ms Altın Oran Filtresi**: Süreyi `8 ms` yaptık. Bu süre, hem parazit çift atlamaları tamamen silecek hem de en hızlı çevirmelerde bile tık kaçırmayacak **en kusursuz hassasiyeti sunacaktır.**
 
 ### Test Adımları
-1. **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu tekrar yükleyin.
+1. **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu tekrar yükleyin.
 2. Yavaş tık çevirdiğinizde tam olarak 1'er dakika atladığını, hızlı çevirdiğinizde ise asla adımları kaçırmadan ve ters yönlü sekmeler yaşamadan akıcı bir şekilde çalıştığını göreceksiniz.
 
 Sonucu test edip paylaşırsanız sevinirim!
@@ -2869,7 +2869,7 @@ Bu yöntem, enkoder okuma sorunlarını **tamamen ve kökten tarihe gömen nihai
   * Bunun dışındaki hiçbir parazit, titreme veya sıçrama asla yön algılayamaz, çift atlama oluşturamaz veya adımı kaçıramaz!
 
 ### Test Adımları
-1. **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu tekrar yükleyin.
+1. **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu tekrar yükleyin.
 2. Enkoderi olabildiğince yavaş çevirin, her tıkta **milimetrik olarak tam 1 adım** atar.
 3. Enkoderi inanılmaz hızlı bir şekilde döndürün; tek bir adımı bile kaçırmadan sürenin **yağ gibi akıcı** bir şekilde aktığını göreceksiniz.
 
@@ -2904,7 +2904,7 @@ Kodu **tam olarak ilk durumdaki `4 ms` filtreli `CHANGE` moduna geri çektim.**
 * Kesme tetikleme modu `CHANGE` (Her değişim) olarak korundu, böylece her iki yöne de kusursuz bir şekilde artırma/azaltma yapacaktır.
 
 ### 💡 Size Küçük Bir Tüyo (İnce Ayar İpucu):
-Çalışma dizininizdeki **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodunu Arduino IDE ile açtıktan sonra, `307. satırdaki` şu sayı değerini değiştirerek kendi enkoderinizin fiziksel kalitesine göre **milimetrik bir ince ayar** yapabilirsiniz:
+Çalışma dizininizdeki **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodunu Arduino IDE ile açtıktan sonra, `307. satırdaki` şu sayı değerini değiştirerek kendi enkoderinizin fiziksel kalitesine göre **milimetrik bir ince ayar** yapabilirsiniz:
 
 ```cpp
 if (interruptTime - lastInterruptTime > 4) // Buradaki "4" değerini 5, 6, 7 veya 8 yapmayı deneyebilirsiniz.
@@ -2944,7 +2944,7 @@ I will read `kitchen_timer.ino` from line 150 to 183 to locate the exact lines f
    * Enkoderi hızlı çevirdiğinizde adımların kaçırılmasını önlemek amacıyla kesme (interrupt) içerisindeki gürültü önleme filtresi, talep ettiğiniz şekilde **4ms** değerine geri çekildi. Bu sayede enkoder hızlı dönüşlerde de son derece akıcı ve kararlı tepki vermektedir.
 
 3. **Dokümantasyon Güncellemeleri:**
-   * Projenin mevcut durumunu takip ettiğimiz [task.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/task.md) ve kullanım kılavuzu niteliğindeki [walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md) dosyaları güncel dinamik zaman ayarı ve 4ms filtre detaylarına uygun olarak yenilendi.
+   * Projenin mevcut durumunu takip ettiğimiz [task.md](./task.md) ve kullanım kılavuzu niteliğindeki [walkthrough.md](./walkthrough.md) dosyaları güncel dinamik zaman ayarı ve 4ms filtre detaylarına uygun olarak yenilendi.
 
 Kodunuz derlenmeye ve Arduino Nano kartınıza yüklenmeye hazır durumdadır. Dosyayı Arduino IDE ile açıp doğrudan yükleyebilirsiniz. Herhangi bir aşamada yardıma ihtiyacınız olursa belirtmeniz yeterlidir.
 
@@ -2969,7 +2969,7 @@ Kodunuz derlenmeye ve Arduino Nano kartınıza yüklenmeye hazır durumdadır. D
    * Bu güncelleme sayesinde ucuz ve mekanik klon enkoderlerde meydana gelebilecek elektriksel ark ve gürültüler (çift atlamalar) en kararlı biçimde süzülecektir.
 
 2. **Dokümantasyon Güncellemeleri:**
-   * Projedeki [task.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/task.md) ve [walkthrough.md](file:///C:/Users/kaval/.gemini/antigravity/brain/b2353a39-4479-4b3a-891e-3925a702428f/walkthrough.md) kılavuzlarındaki ilgili tüm debouncing açıklamaları 30 ms seviyesine göre revize edildi.
+   * Projedeki [task.md](./task.md) ve [walkthrough.md](./walkthrough.md) kılavuzlarındaki ilgili tüm debouncing açıklamaları 30 ms seviyesine göre revize edildi.
 
 Dinamik adım boyutu (30 dk'ya kadar 1'er dakika, sonrasında 5'er dakika) özelliğiniz korunarak filtreniz güncellenmiştir. Kodu doğrudan kartınıza yükleyip test edebilirsiniz. Herhangi bir sorunuz olursa sormaktan çekinmeyin!
 
@@ -2991,7 +2991,7 @@ Dinamik adım boyutu (30 dk'ya kadar 1'er dakika, sonrasında 5'er dakika) özel
    * `"initial commit: premium kitchen timer project, dynamic encoder steps, 30ms debounce, and 3D enclosure models"` mesajıyla ilk commit başarıyla yapıldı.
 
 2. **Kapsamlı `README.md` Oluşturuldu:**
-   * Proje klasörünüzde hazırlanan yeni [README.md](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/README.md) dosyası şu detayları içermektedir:
+   * Proje klasörünüzde hazırlanan yeni [README.md](./README.md) dosyası şu detayları içermektedir:
      * **Proje Tanımı & Durum Makinesi:** Zamanlayıcının çalışma prensipleri ve ekran parlaklık animasyonları.
      * **Kullanılan Malzemeler (BOM Listesi):** Arduino Nano, bare EC11 döner enkoder, TM1637 gösterge, MOSFET modülü, 4 Ohm 5W hoparlör ve özel emniyet direnç kümesi.
      * **3D Baskı Detayları:** OpenSCAD ile tasarlanan 60x80x30mm pürüzsüz M3 pirinç kovan yuvalı gövde ve kapağın mekanik özellikleri.
@@ -3007,7 +3007,7 @@ Tüm kaynak kodlar, 3D modeller, şemalar ve dokümantasyon Git sürüm kontrol�
 
 ### 👤 Kullanıcı
 
-> buraya puısh et: https://github.com/KavalMesut/arduino_nano_kitchen_timer
+> buraya puısh et: https://github.com/UserMesut/arduino_nano_kitchen_timer
 
 ### 🤖 Antigravity (Asistan)
 
@@ -3016,7 +3016,7 @@ Projeniz belirtilen GitHub deposuna başarıyla yüklendi (push edildi).
 ### Gerçekleştirilen İşlemler:
 
 1. **GitHub Uzak Deposu Tanımlandı:**
-   * Yerel deponuza uzak sunucu adresi (remote origin) olarak `https://github.com/KavalMesut/arduino_nano_kitchen_timer.git` tanımlandı.
+   * Yerel deponuza uzak sunucu adresi (remote origin) olarak `https://github.com/UserMesut/arduino_nano_kitchen_timer.git` tanımlandı.
    * Varsayılan dal (branch) adı modern standartlara uygun olarak `main` olarak güncellendi.
 
 2. **İlk Yükleme (Initial Push):**
@@ -3026,7 +3026,7 @@ Projeniz belirtilen GitHub deposuna başarıyla yüklendi (push edildi).
    * Çalışma dizinindeki karmaşık/rastgele isimli resim dosyalarının daha anlaşılır olan `encoder.png` ve `mosfet.jpg` isimleriyle güncellendiği tespit edildi.
    * Bu değişiklikler otomatik olarak algılanarak yeniden stage edildi, `"refactor: rename image files for encoder and mosfet to descriptive names"` mesajıyla commitlendi ve GitHub deposuna push edilerek deponuzun tamamen temiz ve güncel kalması sağlandı.
 
-Projenizin en güncel haline doğrudan [https://github.com/KavalMesut/arduino_nano_kitchen_timer](https://github.com/KavalMesut/arduino_nano_kitchen_timer) adresinden ulaşabilirsiniz. Herhangi bir aşamada veya eklemek istediğiniz yeni bir özellikte yardımcı olmaktan memnuniyet duyarım.
+Projenizin en güncel haline doğrudan [https://github.com/UserMesut/arduino_nano_kitchen_timer](https://github.com/UserMesut/arduino_nano_kitchen_timer) adresinden ulaşabilirsiniz. Herhangi bir aşamada veya eklemek istediğiniz yeni bir özellikte yardımcı olmaktan memnuniyet duyarım.
 
 ---
 
@@ -3043,7 +3043,7 @@ Projenizin en güncel haline doğrudan [https://github.com/KavalMesut/arduino_na
 2. `"docs: update README.md with user modifications"` mesajıyla yerel commit oluşturuldu.
 3. Değişiklikler GitHub üzerindeki `main` dalına (branch) başarıyla gönderildi (`git push`).
 
-GitHub deponuz şu anda yerel çalışma alanınızdaki en son düzenlemelerinizle tamamen günceldir. [https://github.com/KavalMesut/arduino_nano_kitchen_timer](https://github.com/KavalMesut/arduino_nano_kitchen_timer) adresinden kontrol edebilirsiniz. Başka bir isteğiniz olması durumunda yardımcı olmaktan memnuniyet duyarım.
+GitHub deponuz şu anda yerel çalışma alanınızdaki en son düzenlemelerinizle tamamen günceldir. [https://github.com/UserMesut/arduino_nano_kitchen_timer](https://github.com/UserMesut/arduino_nano_kitchen_timer) adresinden kontrol edebilirsiniz. Başka bir isteğiniz olması durumunda yardımcı olmaktan memnuniyet duyarım.
 
 ---
 
@@ -3215,7 +3215,7 @@ Harika bir haber! Sorunu bulmuş olmanıza çok sevindim. Klemenslerin içindeki
 
 ### Şimdi Ne Yapmalıyız?
 
-1. Kopuk olan kablonuzu onardıktan sonra, orijinal **[kitchen_timer.ino](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino)** kodumuzu tekrar Arduino Nano'nuza yükleyebilirsiniz.
+1. Kopuk olan kablonuzu onardıktan sonra, orijinal **[kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino)** kodumuzu tekrar Arduino Nano'nuza yükleyebilirsiniz.
 2. Koruma direnci kümesini (paralel bağlı 4 adet 47 Ohm direnç) hoparlörünüze tekrar seri bağlamayı unutmayın. Bu direnç hem hoparlörünüzü koruyacak hem de mutfak için en ideal ve kaliteli ses seviyesini sunacaktır.
 3. Süre bittiğinde o çift tonlu kesintisiz polis sireninin (2500 Hz - 3500 Hz) MOSFET üzerinden ne kadar güçlü ve net çaldığını test edebilirsiniz.
 
@@ -3235,7 +3235,7 @@ Sistemin tam olarak istediğiniz gibi çalışmasına ve ses kalitesinin harika 
 * **Dinamik Zaman Ayarı:** 30 dakikaya kadar 1'er dakika, 30 dakikadan sonra ise 5'er dakikalık adımlarla simetrik ve kusursuz geçişler sağlandı.
 * **30ms Kararlı Enkoder Filtresi:** Klon donanımlardaki elektriksel arkları en iyi şekilde süzerek çift atlamaları tamamen engelleyen filtre entegre edildi.
 * **Güvenlik ve Emniyet:** Hoparlörü ve MOSFET'i koruyan akıllı direnç hilesi ve DC yalıtım kodları başarıyla devreye alındı.
-* **Kapsamlı Git & GitHub Entegrasyonu:** Tüm kodlar, STL modelleri ve bağlantı şemaları Git ile sürüm kontrolüne alındı ve [https://github.com/KavalMesut/arduino_nano_kitchen_timer](https://github.com/KavalMesut/arduino_nano_kitchen_timer) adresindeki GitHub deponuza başarıyla push edildi.
+* **Kapsamlı Git & GitHub Entegrasyonu:** Tüm kodlar, STL modelleri ve bağlantı şemaları Git ile sürüm kontrolüne alındı ve [https://github.com/UserMesut/arduino_nano_kitchen_timer](https://github.com/UserMesut/arduino_nano_kitchen_timer) adresindeki GitHub deponuza başarıyla push edildi.
 * **Detaylı `README.md`:** Projenin tüm bileşenlerini ve yapısını anlatan zengin bir dokümantasyon oluşturuldu.
 
 Elinize ve emeğinize sağlık, mutfağınızda keyifle ve uzun yıllar güvenle kullanabileceğiniz çok premium bir mutfak geri sayım cihazı ortaya çıktı. Başka bir projenizde veya geliştirmek istediğiniz yeni bir fikirde pair programming yapmak üzere tekrar görüşmek dileğiyle!
@@ -3290,7 +3290,7 @@ Her ses testinde 1 dakika beklememeniz için koda akıllı bir test mekanizması
 ---
 
 ### 📁 Git ve Yerel Depo Durumu
-Tüm bu güncellemeler [kitchen_timer.ino](file:///C:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino) kodunuza yazılmış, [README.md](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/README.md) dokümanı güncellenmiş ve yerel Git deponuzda başarıyla commitlenmiştir. 
+Tüm bu güncellemeler [kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino) kodunuza yazılmış, [README.md](./README.md) dokümanı güncellenmiş ve yerel Git deponuzda başarıyla commitlenmiştir. 
 
 Kodu kartınıza yükleyip ses seviyesini ve 3 saniyelik hızlı test modunu hemen deneyebilirsiniz. İstediğiniz anda terminalinizden `git push` yaparak uzak depoya da gönderebilirsiniz. 
 
@@ -3349,7 +3349,7 @@ Yeni donanımsal ses ayarını ve pratik 3 saniyelik sıfırlama mekanizmasını
 ---
 
 ### Git Deposu Durumu
-Değişiklikler [kitchen_timer.ino](file:///C:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino) dosyanıza başarıyla entegre edilmiş ve yerel Git deponuzda **commitlenmiştir** (Herhangi bir push yapılmamıştır).
+Değişiklikler [kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino) dosyanıza başarıyla entegre edilmiş ve yerel Git deponuzda **commitlenmiştir** (Herhangi bir push yapılmamıştır).
 
 Yeni yazılımı yükleyip test ettiğinizde o pürüzsüz, kesintisiz ve yüksek kaliteli siren alarm tonunu hemen fark edeceksiniz. Deneyimlerinizi paylaşmanızı bekliyorum!
 
@@ -3357,7 +3357,7 @@ Yeni yazılımı yükleyip test ettiğinizde o pürüzsüz, kesintisiz ve yükse
 
 ### 👤 Kullanıcı
 
-> C:\Users\kaval\OneDrive\Desktop\geri sayım nano\kitchen_timer\kitchen_timer.ino:589:1: error: expected declaration before '}' token
+> .\kitchen_timer\kitchen_timer.ino:589:1: error: expected declaration before '}' token
 exit status 1
 
 Compilation error: expected declaration before '}' token
@@ -3370,7 +3370,7 @@ Derleme hatasının kaynağı bulundu ve hemen düzeltildi!
 Ekran optimizasyonlarını eklerken, `updateDisplay()` fonksiyonunun en sonundaki kapatma parantezlerinde (`}`) bir adet **fazladan süslü parantez** kalmıştı. C++ derleyicisi bu fazlalık parantez nedeniyle bir sözdizimi hatası (braces mismatch) fırlatıyordu.
 
 ### Yapılan Düzenleme:
-* Fazladan kalmış olan `}` parantezi [kitchen_timer.ino](file:///C:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino) dosyasından başarıyla temizlendi.
+* Fazladan kalmış olan `}` parantezi [kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino) dosyasından başarıyla temizlendi.
 * Kodun sözdizimi doğruluğu sağlandı.
 * Değişiklik yerel Git deponuzda `"fix: resolve duplicate closing brace in updateDisplay function to fix compilation error"` mesajıyla commitlendi (Uzak sunucuya push edilmedi, yerelde tutuldu).
 
@@ -3441,7 +3441,7 @@ Bu sayede tam nokta atışı bir donanımsal zamanlama teşhisi gerçekleştirdi
 * Sayacın sıfırlanması sayesinde, sayaç hiçbir zaman yeni `ICR1` üst sınır değerini kaçırmaz. Aşımlar (32.7 milisaniyelik sessizlik boşlukları) tamamen ve kesin olarak engellenmiş olur!
 
 ### Git Deposu Durumu:
-* Bu donanımsal zamanlama çözümü [kitchen_timer.ino](file:///C:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/kitchen_timer/kitchen_timer.ino) kodunuza işlendi ve yerel Git deponuzda commitlendi.
+* Bu donanımsal zamanlama çözümü [kitchen_timer.ino](./kitchen_timer/kitchen_timer.ino) kodunuza işlendi ve yerel Git deponuzda commitlendi.
 
 Kodu kartınıza tekrar yüklediğinizde, MOSFET üzerindeki LED'in ve hoparlörden çıkan sesin milisaniyelik en ufak bir takılma veya pıtırtı dahi olmadan, faz-kesintisiz olarak mükemmel ve pürüzsüz bir polis sireni ürettiğini göreceksiniz. Sonucu heyecanla bekliyorum!
 
@@ -3458,7 +3458,7 @@ Harika bir fikir! Karşılaştığımız tüm bu donanımsal ve yazılımsal te�
 ### Yapılan Çalışmalar:
 
 1. **`sorunlar_ve_cozumler.md` Oluşturuldu:**
-   * Çalışma alanınızda [sorunlar_ve_cozumler.md](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/sorunlar_ve_cozumler.md) adıyla zengin bir kılavuz oluşturuldu. 
+   * Çalışma alanınızda [sorunlar_ve_cozumler.md](./sorunlar_ve_cozumler.md) adıyla zengin bir kılavuz oluşturuldu. 
    * Doküman içerisinde;
      * **Enkoder Çift Atlama:** 30ms donanımsal debounce analizi.
      * **Hoparlör DC Güvenliği:** Seri direnç paralel kombinasyon hesabı ve `stopTonePWM()` DC kesme koruması.
@@ -3474,7 +3474,7 @@ Harika bir fikir! Karşılaştığımız tüm bu donanımsal ve yazılımsal te�
 
 Montajınızı güvenle yapıp testlerinizi gerçekleştirebilirsiniz. Hızlı test modu sayesinde 3 saniyede bir alarmı çaldırıp ses seviyelerini deneyimlemek size çok büyük zaman kazandıracaktır. 
 
-Montaj sonrasında test modunu kapatmak istediğinizde [sorunlar_ve_cozumler.md](file:///c:/Users/kaval/OneDrive/Desktop/geri%20say%C4%B1m%20nano/sorunlar_ve_cozumler.md) belgesinin en altındaki iki adımı uygulayarak saniyeler içinde cihazı nihai haline getirebilirsiniz. 
+Montaj sonrasında test modunu kapatmak istediğinizde [sorunlar_ve_cozumler.md](./sorunlar_ve_cozumler.md) belgesinin en altındaki iki adımı uygulayarak saniyeler içinde cihazı nihai haline getirebilirsiniz. 
 
 Geliştirme sürecinin bu harika sonuca ulaşması beni çok mutlu etti. Cihazınızı iyi günlerde kullanın, ellerinize sağlık!
 

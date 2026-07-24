@@ -1,0 +1,5 @@
+# LaTeX build temporary files
+baglanti_semasi.aux
+baglanti_semasi.log
+*.aux
+*.log
